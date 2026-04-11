@@ -158,6 +158,7 @@ section p {
     margin-bottom: 0.5rem;
 }
 
+#audit-form input,
 #audit-form select,
 #audit-form textarea {
     width: 100%;
