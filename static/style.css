@@ -132,6 +132,47 @@ section p {
     padding: 2rem 0;
 }
 
+.hidden {
+    display: none;
+}
+
+#audit-form {
+    max-width: 720px;
+    margin: 2rem auto 0;
+    text-align: left;
+}
+
+#audit-form h2 {
+    margin-top: 0;
+}
+
+#audit-form form {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#audit-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+#audit-form select,
+#audit-form textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    font: inherit;
+    color: #111827;
+}
+
+#audit-form textarea {
+    resize: vertical;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero h1 {
