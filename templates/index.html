@@ -3,173 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analytics Service</title>
+    <title>Satish Sharma — Data Analytics</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="container">
-
-    <!-- Hero Section -->
-    <section class="hero space-y-10">
-        <div>
-            <h1>Turn Your Data Into Business Growth</h1>
-            <p>
-                I help marketing agencies and businesses track performance, optimize ROI, 
-                and make smarter decisions using data dashboards.
-            </p>
-            <button class="btn" id="open-audit-btn">Get Free Data Audit</button>
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="nav-logo">Satish Sharma</div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </div>
-        <div id="audit-form" class="card hidden">
-            <h2>Free Data Audit</h2>
-            <p>Tell us a little about your tools and your biggest data challenge.</p>
-            <form id="audit-request-form">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required placeholder="Enter your email address">
-                <p id="email-error" style="color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem; display: none;"></p>
+    </nav>
 
-                <label for="tools">What tools do you use?</label>
-                <select id="tools" name="tools" required>
-                    <option value="" disabled selected>Select one</option>
-                    <option value="Excel">Excel</option>
-                    <option value="Google Sheets">Google Sheets</option>
-                    <option value="CRM">CRM</option>
-                    <option value="Other">Other</option>
-                </select>
+    <div class="container">
 
-                <label for="problem">Biggest problem?</label>
-                <textarea id="problem" name="problem" rows="4" required placeholder="Describe your top data challenge"></textarea>
-
-                <button type="submit" class="btn">Send Request</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section class="space-y-10">
-        <h2>Services</h2>
-        <div class="grid grid-3">
-            <div class="card">
-                <h3>Dashboard Creation</h3>
-                <p>Interactive dashboards using Excel & Power BI.</p>
+        <!-- Hero -->
+        <section class="hero" id="hero">
+            <div class="badge">Available for new projects</div>
+            <h1>Turn your data into business growth</h1>
+            <p>I help marketing agencies and businesses track performance, optimize ROI, and make smarter decisions using data dashboards.</p>
+            <div class="btn-row">
+                <button class="btn-primary" id="open-audit-btn">Get free data audit</button>
+                <a href="#portfolio" class="btn-outline">View my work</a>
             </div>
 
-            <div class="card">
-                <h3>Data Analysis</h3>
-                <p>Insights to improve performance and reduce costs.</p>
-            </div>
+            <!-- Audit Form -->
+            <div id="audit-form" class="audit-card hidden">
+                <h2>Free Data Audit</h2>
+                <p>Tell us a little about your tools and your biggest data challenge.</p>
+                <form id="audit-request-form">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                        <p id="email-error" class="error-msg"></p>
+                    </div>
 
-            <div class="card">
-                <h3>Automation</h3>
-                <p>Automate reports using Python & Excel.</p>
+                    <div class="form-group">
+                        <label for="tools">What tools do you use?</label>
+                        <select id="tools" name="tools" required>
+                            <option value="" disabled selected>Select one</option>
+                            <option value="Excel">Excel</option>
+                            <option value="Google Sheets">Google Sheets</option>
+                            <option value="CRM">CRM</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="problem">Biggest problem?</label>
+                        <textarea id="problem" name="problem" rows="4" required placeholder="Describe your top data challenge"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Send request</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-num">4+</div>
+                <div class="stat-label">Years experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">20+</div>
+                <div class="stat-label">Projects delivered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Client satisfaction</div>
             </div>
         </div>
-    </section>
 
-    <!-- Portfolio -->
-    <section class="space-y-10">
-        <h2>Portfolio</h2>
-        <div class="grid grid-2">
-            <div class="card">
-                <h3>Marketing Dashboard</h3>
-                <p>Tracks ROI, CPC, and campaign performance.</p>
+        <!-- Services -->
+        <section id="services">
+            <div class="section-header">
+                <h2>Services</h2>
+                <div class="section-line"></div>
             </div>
-
-            <div class="card">
-                <h3>Sales Dashboard</h3>
-                <p>Revenue trends and product performance insights.</p>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-icon icon-blue">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <rect x="1" y="1" width="7" height="7" rx="1.5" fill="#185FA5"/>
+                            <rect x="10" y="1" width="7" height="7" rx="1.5" fill="#85B7EB"/>
+                            <rect x="1" y="10" width="7" height="7" rx="1.5" fill="#85B7EB"/>
+                            <rect x="10" y="10" width="7" height="7" rx="1.5" fill="#185FA5"/>
+                        </svg>
+                    </div>
+                    <h3>Dashboard creation</h3>
+                    <p>Interactive dashboards using Power BI, Looker Studio, and Excel for real-time business insights.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon icon-green">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <polyline points="1,14 5,8 9,11 13,4 17,9" stroke="#0F6E56" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Data analysis</h3>
+                    <p>Deep analysis of your business data to uncover insights that improve performance and reduce costs.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon icon-amber">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M3 9h3l2-6 3 12 2-6h3" stroke="#854F0B" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Automation</h3>
+                    <p>Automate repetitive reporting using Python and Excel, saving your team hours every week.</p>
+                </div>
             </div>
+        </section>
+
+        <!-- How it works -->
+        <section id="process">
+            <div class="section-header">
+                <h2>How it works</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <div class="step-title">Free audit</div>
+                    <div class="step-desc">I review your current data setup and identify gaps</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <div class="step-title">Proposal</div>
+                    <div class="step-desc">You get a clear scope and fixed price — no surprises</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <div class="step-title">Build</div>
+                    <div class="step-desc">I deliver your dashboard or report within the agreed timeline</div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">4</div>
+                    <div class="step-title">Support</div>
+                    <div class="step-desc">Ongoing maintenance and updates as your business grows</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section id="portfolio">
+            <div class="section-header">
+                <h2>Portfolio</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="grid grid-2">
+                <div class="card port-card">
+                    <span class="port-tag">Marketing</span>
+                    <h3>Marketing performance dashboard</h3>
+                    <p>Tracks ROI, CPC, and campaign performance across channels for a D2C brand. Reduced reporting time by 80%.</p>
+                </div>
+                <div class="card port-card">
+                    <span class="port-tag">Sales</span>
+                    <h3>Sales analytics dashboard</h3>
+                    <p>Revenue trends, product performance insights, and forecasting for a mid-size e-commerce company.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <div class="section-header">
+                <h2>About me</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-card">
+                <div class="avatar">SS</div>
+                <div class="about-body">
+                    <div class="about-name">Satish Sharma</div>
+                    <div class="about-role">Data Analyst · Mumbai, India</div>
+                    <p class="about-bio">I am a data analyst with 4+ years of experience working with global companies. I specialize in transforming raw data into actionable insights that drive business growth through dashboards, analysis, and automation.</p>
+                    <div class="skills">
+                        <span class="skill-pill">Power BI</span>
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">Excel</span>
+                        <span class="skill-pill">Looker Studio</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">Data visualisation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Contact -->
+        <section id="contact" class="cta-section">
+            <h2>Ready to make your data work for you?</h2>
+            <p>Get a free data audit — I'll review your setup and show you exactly where you're leaving money on the table.</p>
+            <button class="btn-primary" id="open-audit-btn-2">Get free data audit</button>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>© 2026 Satish Sharma</span>
+        <div class="footer-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">Email</a>
         </div>
-    </section>
-
-    <!-- About -->
-    <section class="space-y-10">
-        <h2>About Me</h2>
-        <p>
-            I am a data analyst with 4+ years of experience working with global companies. 
-            I specialize in transforming raw data into actionable insights that drive business growth.
-        </p>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact space-y-10">
-        <div>
-            <h2>Let's Work Together</h2>
-            <p>Reach out to get a free data audit for your business.</p>
-            <button class="btn">Contact Me</button>
-        </div>
-    </section>
-
-</div>
+    </footer>
 
 <script>
-    const openBtn = document.getElementById('open-audit-btn');
-    const auditForm = document.getElementById('audit-form');
-    const auditRequestForm = document.getElementById('audit-request-form');
-    const emailInput = document.getElementById('email');
-    const emailError = document.getElementById('email-error');
+    const allowedDomains = ['gmail.com','outlook.com','yahoo.com','hotmail.com','icloud.com','protonmail.com','aol.com','zoho.com'];
 
-    // Allowed personal email domains
-    const allowedDomains = [
-        'gmail.com',
-        'outlook.com',
-        'yahoo.com',
-        'hotmail.com',
-        'icloud.com',
-        'protonmail.com',
-        'aol.com',
-        'zoho.com'
-    ];
-
-    // Validate email domain
     function validateEmailDomain(email) {
         const domain = email.split('@')[1]?.toLowerCase();
         return allowedDomains.includes(domain);
     }
 
-    // Email validation on blur
-    emailInput.addEventListener('blur', () => {
-        if (emailInput.value.trim() === '') {
-            emailError.style.display = 'none';
-            return;
-        }
+    function openAuditForm() {
+        const auditForm = document.getElementById('audit-form');
+        auditForm.classList.remove('hidden');
+        auditForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
+    document.getElementById('open-audit-btn').addEventListener('click', openAuditForm);
+    document.getElementById('open-audit-btn-2').addEventListener('click', openAuditForm);
+
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+
+    emailInput.addEventListener('blur', () => {
+        if (!emailInput.value.trim()) { emailError.style.display = 'none'; return; }
         if (!validateEmailDomain(emailInput.value)) {
-            emailError.textContent = `Please use a personal email address. Allowed domains: ${allowedDomains.join(', ')}`;
+            emailError.textContent = 'Please use a personal email (gmail, outlook, yahoo, etc.)';
             emailError.style.display = 'block';
         } else {
             emailError.style.display = 'none';
         }
     });
 
-    // Email validation on input
     emailInput.addEventListener('input', () => {
-        if (emailInput.value.trim() === '') {
-            emailError.style.display = 'none';
-        }
+        if (!emailInput.value.trim()) emailError.style.display = 'none';
     });
 
-    openBtn.addEventListener('click', () => {
-        auditForm.classList.toggle('hidden');
-        if (!auditForm.classList.contains('hidden')) {
-            auditForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
-
-    auditRequestForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        // Validate email domain before submission
+    document.getElementById('audit-request-form').addEventListener('submit', (e) => {
+        e.preventDefault();
         if (!validateEmailDomain(emailInput.value)) {
-            emailError.textContent = `Please use a personal email address. Allowed domains: ${allowedDomains.join(', ')}`;
+            emailError.textContent = 'Please use a personal email (gmail, outlook, yahoo, etc.)';
             emailError.style.display = 'block';
             emailInput.focus();
             return;
         }
-
         alert('Thank you! Your audit request has been received.');
-        auditRequestForm.reset();
-        auditForm.classList.add('hidden');
+        e.target.reset();
+        document.getElementById('audit-form').classList.add('hidden');
         emailError.style.display = 'none';
     });
 </script>
