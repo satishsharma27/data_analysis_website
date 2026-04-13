@@ -20,6 +20,10 @@ def home():
 def data_analysis():
     return render_template("data-analysis.html")
 
+@server.route("/automation")
+def automation():
+    return render_template("automation-section.html")
+
 # ═════════════════════════════════════════════════════════════════════════════
 # DASHBOARD DATA & SETUP
 # ═════════════════════════════════════════════════════════════════════════════
