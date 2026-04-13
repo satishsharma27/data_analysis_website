@@ -16,6 +16,10 @@ server.config['PROPAGATE_EXCEPTIONS'] = True
 def home():
     return render_template("index.html")
 
+@server.route("/data-analysis")
+def data_analysis():
+    return render_template("data-analysis.html")
+
 # ═════════════════════════════════════════════════════════════════════════════
 # DASHBOARD DATA & SETUP
 # ═════════════════════════════════════════════════════════════════════════════

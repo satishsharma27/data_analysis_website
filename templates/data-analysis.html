@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Analysis — Revenue Forecasting</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-logo">Satish Sharma</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#services">Services</a>
+        <a href="/#portfolio">Portfolio</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+    </div>
+</nav>
+
+<div class="container">
+
+<div class="hero">
+  <div class="badge">Data Analysis service</div>
+  <h1>Turn your business data into revenue growth</h1>
+  <p>See exactly how much your business will earn in the next 12 months. Enter two numbers — get a clear forecast with best, worst, and base scenarios.</p>
+  <div class="btn-row">
+    <button class="btn-w" onclick="document.getElementById('tool').scrollIntoView({behavior:'smooth'})">Try the forecast tool</button>
+    <button class="btn-o" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">See how it works</button>
+  </div>
+</div>
+
+<div class="stats-row">
+  <div class="stat-card"><div class="stat-num">4+</div><div class="stat-label">Years experience</div></div>
+  <div class="stat-card"><div class="stat-num">20+</div><div class="stat-label">Projects delivered</div></div>
+  <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Client satisfaction</div></div>
+  <div class="stat-card"><div class="stat-num">Free</div><div class="stat-label">Data audit</div></div>
+</div>
+
+<div class="section">
+  <p class="s-label">Why revenue forecasting</p>
+  <h2 class="s-title">Stop guessing — plan with real numbers</h2>
+  <p class="s-desc">Most business owners make decisions based on gut feeling. This tool gives you a data-driven picture of your future earnings so you can act with confidence.</p>
+  <div class="g4">
+    <div class="bc"><div class="bi" style="background:rgba(79,142,247,0.12);">📈</div><h3>Plan hiring</h3><p>Know if your revenue supports a new hire before you commit.</p></div>
+    <div class="bc"><div class="bi" style="background:rgba(46,196,160,0.12);">💰</div><h3>Impress investors</h3><p>Show professional revenue projections with all scenarios included.</p></div>
+    <div class="bc"><div class="bi" style="background:rgba(232,113,74,0.12);">🎯</div><h3>Set real targets</h3><p>See exactly what growth rate you need to hit your annual goal.</p></div>
+    <div class="bc"><div class="bi" style="background:rgba(240,165,0,0.1);">🛡️</div><h3>Prepare for slowdowns</h3><p>The pessimistic view shows the buffer you need if growth slows.</p></div>
+  </div>
+</div>
+
+<hr class="div">
+
+<div class="section" id="how">
+  <p class="s-label">How it works</p>
+  <h2 class="s-title">Simple 4-step process</h2>
+  <p class="s-desc">You do not need to be a finance expert. Provide two numbers — the tool does all the math.</p>
+  <div class="g4">
+    <div class="bc"><div class="hw-num">1</div><h3>Enter revenue</h3><p>Tell us your current monthly earnings. A rough estimate works fine.</p></div>
+    <div class="bc"><div class="hw-num">2</div><h3>Set growth target</h3><p>Pick your expected monthly growth. Healthy businesses grow 5–15%.</p></div>
+    <div class="bc"><div class="hw-num">3</div><h3>See 3 scenarios</h3><p>Base, optimistic, and pessimistic — covering every possible outcome.</p></div>
+    <div class="bc"><div class="hw-num">4</div><h3>Make decisions</h3><p>Use the data to hire, invest, or prepare — with full confidence.</p></div>
+  </div>
+</div>
+
+<hr class="div">
+
+<div class="section" id="tool">
+  <p class="s-label">Live forecast tool</p>
+  <h2 class="s-title">Try it yourself — move the sliders</h2>
+  <p class="s-desc">Enter your starting monthly revenue and expected growth rate. Instantly see your 12-month revenue forecast across three scenarios.</p>
+
+  <div class="tool-box">
+    <div class="tool-hd"><h3>12-month revenue forecast</h3><p>Adjust the sliders to match your business numbers</p></div>
+    <div class="mg" id="metrics"></div>
+    <div class="cg">
+      <div class="cb">
+        <label>Current monthly revenue (₹)</label>
+        <div class="cr"><input type="range" id="startRev" min="50000" max="10000000" step="50000" value="500000"><span class="cv" id="startRevVal">₹5L</span></div>
+      </div>
+      <div class="cb">
+        <label>Expected monthly growth rate</label>
+        <div class="cr"><input type="range" id="growthRate" min="1" max="25" step="1" value="8"><span class="cv" id="growthRateVal">8%</span></div>
+      </div>
+    </div>
+    <div class="leg">
+      <span><span class="ld" style="background:#4f8ef7;"></span>Base (as planned)</span>
+      <span><span class="ld" style="background:#2ec4a0;"></span>Optimistic (+50% growth)</span>
+      <span><span class="ld" style="background:#e8714a;"></span>Pessimistic (−40% growth)</span>
+    </div>
+    <div class="cw"><canvas id="forecastChart" role="img" aria-label="12-month revenue forecast with three scenarios"></canvas></div>
+    <div style="overflow-x:auto;"><table id="forecastTable"></table></div>
+  </div>
+
+  <div class="sc-grid">
+    <div class="sc"><div class="sc-badge" style="background:rgba(79,142,247,0.15);color:#4f8ef7;">Base scenario</div><h4>Things go as planned</h4><p>Your business grows at exactly the rate you set. Use this as your primary planning number.</p></div>
+    <div class="sc"><div class="sc-badge" style="background:rgba(46,196,160,0.15);color:#2ec4a0;">Optimistic scenario</div><h4>Business is booming</h4><p>You land a big client or campaign works great. Growth is 50% faster than planned.</p></div>
+    <div class="sc"><div class="sc-badge" style="background:rgba(232,113,74,0.15);color:#e8714a;">Pessimistic scenario</div><h4>Slow period hits</h4><p>Seasonality or market dip. Shows the minimum cash buffer you should keep in reserve.</p></div>
+  </div>
+</div>
+
+<hr class="div">
+
+<div class="section">
+  <p class="s-label">Common questions</p>
+  <h2 class="s-title">Frequently asked questions</h2>
+  <p class="s-desc">Everything you need to know about revenue forecasting and this tool.</p>
+  <div class="faq-list" id="faqList">
+    <div class="faq-item">
+      <button class="faq-q">What is a revenue forecast? <span class="faq-arr">&#8964;</span></button>
+      <div class="faq-a">A revenue forecast tells you how much money your business will earn in the future, based on your current numbers and expected growth. It helps you plan spending, hiring, and investment — instead of guessing.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">What is the difference between the 3 scenarios? <span class="faq-arr">&#8964;</span></button>
+      <div class="faq-a">Base uses your exact growth rate. Optimistic assumes 50% faster growth — for example a big client joins. Pessimistic assumes 40% slower growth — an off-season. Planning all three keeps you prepared no matter what happens.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">How accurate is this tool? <span class="faq-arr">&#8964;</span></button>
+      <div class="faq-a">This tool gives a strong starting estimate based on compound growth. For a more precise forecast that accounts for your industry, costs, and seasonality, I can build a custom model. Contact me for a free audit.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Who is this useful for? <span class="faq-arr">&#8964;</span></button>
+      <div class="faq-a">Business owners, startup founders, freelancers, and managers who want to understand future earnings. Especially useful when pitching investors, applying for a loan, planning a new hire, or deciding whether to expand.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Can I get a custom report for my business? <span class="faq-arr">&#8964;</span></button>
+      <div class="faq-a">Yes. I offer a Data Analysis Report starting at ₹5,000 — detailed revenue forecast, cost analysis, and recommendations in a professional PDF you can share with investors or your board.</div>
+    </div>
+  </div>
+</div>
+
+<hr class="div">
+
+<div class="cta">
+  <h2>Ready to make your data work for you?</h2>
+  <p>Get a free data audit — I'll review your setup and show you exactly where you're leaving money on the table.</p>
+  <div class="btn-row">
+    <a class="btn-w" href="mailto:hello@yourdomain.com">Get free data audit</a>
+    <button class="btn-o" onclick="document.getElementById('tool').scrollIntoView({behavior:'smooth'})">Try the tool again</button>
+  </div>
+</div>
+
+<footer class="footer">
+    <span>© 2026 Satish Sharma</span>
+    <div class="footer-links">
+        <a href="#">LinkedIn</a>
+        <a href="#">Email</a>
+    </div>
+</footer>
+
+<script>
+const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+let chart;
+function fmt(v){if(v>=10000000)return'₹'+(v/10000000).toFixed(2)+' Cr';if(v>=100000)return'₹'+(v/100000).toFixed(1)+'L';return'₹'+Math.round(v).toLocaleString('en-IN');}
+function build(start,rate){const b=[],o=[],p=[];for(let i=0;i<12;i++){b.push(Math.round(start*Math.pow(1+rate/100,i)));o.push(Math.round(start*Math.pow(1+rate*1.5/100,i)));p.push(Math.round(start*Math.pow(1+rate*0.6/100,i)));}return{b,o,p};}
+function metrics(d){const tb=d.b.reduce((a,c)=>a+c,0),to=d.o.reduce((a,c)=>a+c,0),tp=d.p.reduce((a,c)=>a+c,0);document.getElementById('metrics').innerHTML=[{l:'Year-end revenue',v:fmt(d.b[11]),s:'Base scenario'},{l:'Annual total (base)',v:fmt(tb),s:'12-month sum'},{l:'Annual total (optimistic)',v:fmt(to),s:'Best case'},{l:'Annual total (pessimistic)',v:fmt(tp),s:'Worst case'}].map(c=>`<div class="mc"><div class="mc-l">${c.l}</div><div class="mc-v">${c.v}</div><div class="mc-s">${c.s}</div></div>`).join('');}
+function renderChart(d){const cfg={type:'line',data:{labels:months,datasets:[{label:'Base',data:d.b,borderColor:'#4f8ef7',backgroundColor:'rgba(79,142,247,0.07)',fill:true,tension:0.35,pointRadius:4,borderWidth:2,pointBackgroundColor:'#4f8ef7'},{label:'Optimistic',data:d.o,borderColor:'#2ec4a0',backgroundColor:'transparent',fill:false,tension:0.35,borderDash:[6,3],pointRadius:3,borderWidth:1.5,pointBackgroundColor:'#2ec4a0'},{label:'Pessimistic',data:d.p,borderColor:'#e8714a',backgroundColor:'transparent',fill:false,tension:0.35,borderDash:[3,3],pointRadius:3,borderWidth:1.5,pointBackgroundColor:'#e8714a'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a1a',borderColor:'rgba(255,255,255,0.1)',borderWidth:1,titleColor:'#fff',bodyColor:'#999',callbacks:{label:c=>'  '+c.dataset.label+': '+fmt(c.raw)}}},scales:{x:{ticks:{autoSkip:false,maxRotation:0,font:{size:11},color:'#555'},grid:{display:false},border:{color:'rgba(255,255,255,0.06)'}},y:{ticks:{callback:v=>fmt(v),font:{size:10},color:'#555'},grid:{color:'rgba(255,255,255,0.04)'},border:{color:'rgba(255,255,255,0.06)'}}}}};if(chart){chart.data=cfg.data;chart.update();}else chart=new Chart(document.getElementById('forecastChart'),cfg);}
+function renderTable(d){const hdr=`<thead><tr><th>Month</th><th style="text-align:right;color:#4f8ef7;">Base</th><th style="text-align:right;color:#2ec4a0;">Optimistic</th><th style="text-align:right;color:#e8714a;">Pessimistic</th><th style="text-align:right;">MoM growth</th></tr></thead>`;const rows=months.map((m,i)=>{const g=i===0?'—':'+'+((( d.b[i]-d.b[i-1])/d.b[i-1])*100).toFixed(1)+'%';return`<tr><td>${m}</td><td style="text-align:right;color:#fff;">${fmt(d.b[i])}</td><td style="text-align:right;color:#2ec4a0;">${fmt(d.o[i])}</td><td style="text-align:right;color:#e8714a;">${fmt(d.p[i])}</td><td style="text-align:right;">${g}</td></tr>`;}).join('');document.getElementById('forecastTable').innerHTML=hdr+'<tbody>'+rows+'</tbody>';}
+function refresh(){const s=+document.getElementById('startRev').value,r=+document.getElementById('growthRate').value;document.getElementById('startRevVal').textContent=fmt(s);document.getElementById('growthRateVal').textContent=r+'%';const d=build(s,r);metrics(d);renderChart(d);renderTable(d);}
+document.getElementById('startRev').addEventListener('input',refresh);
+document.getElementById('growthRate').addEventListener('input',refresh);
+refresh();
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.closest('.faq-item'),open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open');});});
+</script>
+</body>
+</html>
