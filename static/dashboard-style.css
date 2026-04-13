@@ -1,0 +1,215 @@
+/* ── CSS Variables ── */
+:root {
+  --bg:        #F7F7F5;
+  --card:      #FFFFFF;
+  --border:    #E8E6E0;
+  --text:      #2C2C2A;
+  --muted:     #888780;
+  --blue:      #378ADD;
+  --teal:      #1D9E75;
+  --amber:     #BA7517;
+  --pink:      #D4537E;
+  --purple:    #7F77DD;
+  --green:     #3B6D11;
+  --green-bg:  #EAF3DE;
+  --amber-c:   #854F0B;
+  --amber-bg:  #FAEEDA;
+  --red:       #A32D2D;
+  --red-bg:    #FCEBEB;
+  --font:      'Arial', 'Helvetica Neue', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── Dashboard Wrapper ── */
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 28px;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.header .subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.live-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+hr.divider {
+  border: none;
+  border-top: 0.5px solid var(--border);
+  margin: 0 0 4px;
+}
+
+/* ── Section Label ── */
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin: 18px 0 8px;
+}
+
+/* ── KPI Row ── */
+.kpi-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.kpi-card {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.kpi-card .kpi-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.kpi-card .kpi-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.kpi-card .kpi-delta {
+  font-size: 11px;
+}
+
+.kpi-card .kpi-delta.up   { color: var(--green); }
+.kpi-card .kpi-delta.down { color: var(--red); }
+
+/* ── Cards ── */
+.card {
+  background: var(--card);
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--border);
+  padding: 16px 20px;
+}
+
+.card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+/* ── Chart Rows ── */
+.charts-row,
+.bottom-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.charts-row .card-trend  { flex: 1.6; min-width: 300px; }
+.charts-row .card-donut  { flex: 1;   min-width: 260px; }
+.bottom-row .card-channel { flex: 1;   min-width: 260px; }
+.bottom-row .card-campaign{ flex: 1.4; min-width: 300px; }
+
+/* ── Campaign Table ── */
+.campaign-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.campaign-table th {
+  padding: 0 12px 10px 0;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+
+.campaign-table td {
+  padding: 9px 12px 9px 0;
+  font-size: 12px;
+  color: var(--muted);
+  vertical-align: middle;
+}
+
+.campaign-table td:first-child { color: var(--text); }
+
+.campaign-table tr:nth-child(odd) td { background: var(--bg); }
+
+/* ── Status Badges ── */
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.badge-live   { background: var(--green-bg); color: var(--green); }
+.badge-paused { background: var(--amber-bg); color: var(--amber-c); }
+.badge-ended  { background: var(--red-bg);   color: var(--red); }
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .dashboard { padding: 16px; }
+  .kpi-card  { min-width: calc(50% - 5px); }
+  .charts-row .card-trend,
+  .charts-row .card-donut,
+  .bottom-row .card-channel,
+  .bottom-row .card-campaign { flex: 1 1 100%; }
+}
