@@ -221,14 +221,18 @@
         return allowedDomains.includes(domain);
     }
 
-    function openAuditForm() {
+    function toggleAuditForm() {
         const auditForm = document.getElementById('audit-form');
-        auditForm.classList.remove('hidden');
-        auditForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (auditForm.classList.contains('hidden')) {
+            auditForm.classList.remove('hidden');
+            auditForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            auditForm.classList.add('hidden');
+        }
     }
 
-    document.getElementById('open-audit-btn').addEventListener('click', openAuditForm);
-    document.getElementById('open-audit-btn-2').addEventListener('click', openAuditForm);
+    document.getElementById('open-audit-btn').addEventListener('click', toggleAuditForm);
+    document.getElementById('open-audit-btn-2').addEventListener('click', toggleAuditForm);
 
     const emailInput = document.getElementById('email');
     const emailError = document.getElementById('email-error');
