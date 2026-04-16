@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server error</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-logo">Satish Sharma</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/data-analysis">Data Analysis</a>
+            <a href="/automation">Automation</a>
+        </div>
+    </nav>
+    <div class="container">
+        <section class="section" style="text-align:center; padding: 6rem 0;">
+            <p class="s-label">500 error</p>
+            <h2 class="s-title">Something went wrong</h2>
+            <p class="s-desc">An unexpected server error occurred. Please try again later or refresh the page.</p>
+            <a class="btn-primary" href="/">Return home</a>
+        </section>
+    </div>
+</body>
+</html>
