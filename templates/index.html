@@ -98,7 +98,7 @@
                     </div>
                     <h3>Dashboard creation</h3>
                     <p>Interactive dashboards using Excel for real-time business insights.</p>
-                    <button onclick="window.location.href='/dashboard'" class="btn-primary" style="margin-top: 20px; font-size: 1.15rem;">View Live Demo</button>
+                    <button onclick="window.location.href='/dashboard'" class="btn-primary" style="margin-top: auto; font-size: 1.15rem;">View Live Demo</button>
                 </div>
                 <div class="card">
                     <div class="card-icon icon-green">
@@ -108,7 +108,7 @@
                     </div>
                     <h3>Data analysis</h3>
                     <p>Deep analysis of your business data to uncover insights that improve performance and reduce costs.</p>
-                    <button onclick="window.location.href='/data-analysis'" class="btn-primary" style="margin-top: 12px; font-size: 1.15rem;">View Data Analysis</button>
+                    <button onclick="window.location.href='/data-analysis'" class="btn-primary" style="margin-top: auto; font-size: 1.15rem;">View Data Analysis</button>
                 </div>
                 <div class="card">
                     <div class="card-icon icon-amber">
@@ -118,7 +118,7 @@
                     </div>
                     <h3>Automation</h3>
                     <p>Automate repetitive reporting using Python and Excel, saving your team hours every week.</p>
-                    <button onclick="window.location.href='/automation'" class="btn-primary" style="margin-top: 12px; font-size: 1.15rem;">View Automation</button>
+                    <button onclick="window.location.href='/automation'" class="btn-primary" style="margin-top: auto; font-size: 1.15rem;">View Automation</button>
                 </div>
             </div>
         </section>
@@ -274,7 +274,7 @@
         if (!emailInput.value.trim()) emailError.style.display = 'none';
     });
 
-    document.getElementById('audit-request-form').addEventListener('submit', (e) => {
+    document.getElementById('audit-request-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         if (!validateEmailDomain(emailInput.value)) {
             emailError.textContent = 'Please use a personal email (gmail, outlook, yahoo, etc.)';
@@ -282,10 +282,38 @@
             emailInput.focus();
             return;
         }
-        alert('Thank you! Your audit request has been received.');
-        e.target.reset();
-        document.getElementById('audit-form').classList.add('hidden');
-        emailError.style.display = 'none';
+
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        const payload = {
+            email:   emailInput.value.trim(),
+            tools:   document.getElementById('tools').value,
+            problem: document.getElementById('problem').value.trim(),
+        };
+
+        try {
+            const res = await fetch('/submit-audit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const json = await res.json();
+            if (json.ok) {
+                alert('Thank you! Your audit request has been received. I\'ll be in touch soon.');
+                e.target.reset();
+                document.getElementById('audit-form').classList.add('hidden');
+                emailError.style.display = 'none';
+            } else {
+                alert('Something went wrong. Please try again or email me directly.');
+            }
+        } catch {
+            alert('Network error. Please check your connection and try again.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send request';
+        }
     });
 </script>
 
