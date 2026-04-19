@@ -104,22 +104,103 @@
   </div>
 </div>
 
-<section id="contact" class="cta-section">
-    <h2>Get in Touch</h2>
-    <div class="contact-details">
-        <a href="https://www.linkedin.com/in/satsham" target="_blank" rel="noopener noreferrer" class="contact-item contact-linkedin">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-        </a>
-        <div class="contact-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-            Email : sharma.satishkumar2709@gmail.com
+<section id="contact">
+  <div class="ct-wrap">
+
+    <p style="font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:0.5rem;">Get in touch</p>
+    <h2 style="font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:0.4rem;">Let's talk about your data</h2>
+    <p style="font-size:15px;color:var(--color-text-secondary);margin-bottom:1.75rem;line-height:1.6;">Book a free 20-min call — no pitch, just a look at your current setup and what's possible.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.75rem;">
+
+      <div class="ct-card" style="border:2px solid var(--color-border-info);">
+        <span class="ct-tag">Recommended</span>
+        <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Book a free 20-min call</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;line-height:1.6;">Pick a slot that works for you. We'll look at your data setup together.</div>
+        <div class="ct-pill-row">
+          <span class="ct-pill">Video call</span>
+          <span class="ct-pill">20 minutes</span>
+          <span class="ct-pill">No commitment</span>
         </div>
-        <div class="contact-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Mobile no : 8369645979
+        <button class="ct-cal-btn" onclick="window.open('https://calendly.com/sharma-satishkumar2709/30min','_blank')">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="2" width="14" height="13" rx="2" stroke="#4f8ef7" stroke-width="1.2"/><path d="M1 6h14" stroke="#4f8ef7" stroke-width="1.2"/><path d="M5 1v2M11 1v2" stroke="#4f8ef7" stroke-width="1.2" stroke-linecap="round"/><rect x="4" y="8.5" width="2" height="2" rx="0.5" fill="#4f8ef7"/><rect x="7" y="8.5" width="2" height="2" rx="0.5" fill="#4f8ef7"/><rect x="4" y="11" width="2" height="2" rx="0.5" fill="#4f8ef7"/><rect x="7" y="11" width="2" height="2" rx="0.5" fill="#4f8ef7"/></svg>
+          Book on Calendly
+        </button>
+      </div>
+
+      <div class="ct-card">
+        <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Send a quick message</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;line-height:1.6;">Prefer to write first? Fill this in and I'll reply within 24 hrs.</div>
+
+        <div id="ct-contact-form">
+          <div style="margin-bottom:12px;">
+            <label class="ct-label">Your name</label>
+            <input type="text" class="ct-input" placeholder="Rahul Mehta" id="ct-name"/>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label class="ct-label">Email address</label>
+            <input type="email" class="ct-input" placeholder="rahul@brand.com" id="ct-email"/>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label class="ct-label">What's your biggest data challenge?</label>
+            <textarea class="ct-textarea" placeholder="We spend ₹2L/month on ads but have no idea which channel actually works..." id="ct-msg"></textarea>
+          </div>
+          <button class="ct-submit" onclick="ctHandleSubmit()">Send message</button>
         </div>
+
+        <div class="ct-success" id="ct-success-msg">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(46,196,160,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:18px;color:#2ec4a0;">✓</div>
+          <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px;">Message sent!</div>
+          <div style="font-size:13px;color:var(--color-text-secondary);">I'll get back to you within 24 hrs at the email you provided.</div>
+        </div>
+      </div>
+
     </div>
+
+    <div class="ct-divider">
+      <div class="ct-divider-line"></div>
+      <span>or reach me directly</span>
+      <div class="ct-divider-line"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+      <a href="mailto:sharma.satishkumar2709@gmail.com" style="text-decoration:none;">
+        <div class="ct-card" style="text-align:center;padding:1rem 0.75rem;cursor:pointer;">
+          <div class="ct-icon-box" style="background:rgba(46,196,160,0.12);margin:0 auto 8px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="#2ec4a0" stroke-width="1.2"/><path d="M1.5 3.5l6.5 5 6.5-5" stroke="#2ec4a0" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;">Email</div>
+          <div style="font-size:11px;color:var(--color-text-tertiary);">sharma.satish...</div>
+        </div>
+      </a>
+
+      <a href="https://wa.me/918369645979" target="_blank" style="text-decoration:none;">
+        <div class="ct-card" style="text-align:center;padding:1rem 0.75rem;cursor:pointer;">
+          <div class="ct-icon-box" style="background:rgba(46,196,160,0.12);margin:0 auto 8px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#2ec4a0" stroke-width="1.2"/><path d="M5.5 5.5c.2-.4.8-.8 1.2-.5l.8 1-.6.8c.3.6.8 1.1 1.4 1.4l.8-.6 1 .8c.3.4-.1 1-.5 1.2-1.5.7-3.8-1.6-4.1-4.1z" fill="#2ec4a0"/></svg>
+          </div>
+          <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;">WhatsApp</div>
+          <div style="font-size:11px;color:var(--color-text-tertiary);">+91 83696 45979</div>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/satish-sharma-104545403" target="_blank" style="text-decoration:none;">
+        <div class="ct-card" style="text-align:center;padding:1rem 0.75rem;cursor:pointer;">
+          <div class="ct-icon-box" style="background:rgba(79,142,247,0.12);margin:0 auto 8px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="#4f8ef7" stroke-width="1.2"/><path d="M4 6.5V12M4 4v.5" stroke="#4f8ef7" stroke-width="1.4" stroke-linecap="round"/><path d="M7.5 12V9c0-1.4 4-1.4 4 0v3M7.5 6.5V12" stroke="#4f8ef7" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;">LinkedIn</div>
+          <div style="font-size:11px;color:var(--color-text-tertiary);">Satish Sharma</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="ct-avail">
+      <div style="width:8px;height:8px;border-radius:50%;background:#1D9E75;flex-shrink:0;"></div>
+      <div style="font-size:13px;color:var(--color-text-secondary);">Available for new projects — typically reply within <span style="font-weight:500;color:var(--color-text-primary);">24 hours</span></div>
+    </div>
+
+  </div>
 </section>
 
 <footer class="footer">
@@ -127,6 +208,15 @@
 </footer>
 
 <script>
+function ctHandleSubmit(){
+  var n=document.getElementById('ct-name').value.trim();
+  var e=document.getElementById('ct-email').value.trim();
+  var m=document.getElementById('ct-msg').value.trim();
+  if(!n||!e||!m){alert('Please fill in all fields before sending.');return;}
+  document.getElementById('ct-contact-form').style.display='none';
+  document.getElementById('ct-success-msg').style.display='block';
+}
+
 // FAQ toggle
 document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
