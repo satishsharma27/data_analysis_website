@@ -23,84 +23,163 @@
 <div class="container">
 
 <div class="section">
-  <p class="s-label">Why automation</p>
-  <h2 class="s-title">Save time and reduce errors with smart automation</h2>
-  <p class="s-desc">Manual reporting eats up hours every week. Automation handles the repetitive tasks so your team can focus on strategy and growth.</p>
-  <div class="g4">
-    <div class="bc"><div class="bi" style="background:rgba(79,142,247,0.12);">⚡</div><h3>Faster reporting</h3><p>Generate reports in minutes instead of hours with automated data processing.</p></div>
-    <div class="bc"><div class="bi" style="background:rgba(46,196,160,0.12);">🎯</div><h3>Zero errors</h3><p>Eliminate human mistakes with consistent, rule-based automation.</p></div>
-    <div class="bc"><div class="bi" style="background:rgba(232,113,74,0.12);">📊</div><h3>Real-time insights</h3><p>Get up-to-date reports automatically as new data comes in.</p></div>
-    <div class="bc"><div class="bi" style="background:rgba(240,165,0,0.1);">🔄</div><h3>Scalable processes</h3><p>Handle growing data volumes without increasing your team's workload.</p></div>
-  </div>
-</div>
+  <div class="auto-wrap">
 
-<hr class="div">
+    <p class="eyebrow">Automation</p>
+    <h2 class="sec-title">Stop doing manually what a script can do for you</h2>
+    <p class="sec-sub">Most D2C brands and agencies waste 10–15 hrs/week on reports nobody enjoys making. Here's what I can automate for you.</p>
 
-<div class="section" id="how">
-  <p class="s-label">How it works</p>
-  <h2 class="s-title">Simple 4-step automation process</h2>
-  <p class="s-desc">I analyze your current workflows, identify automation opportunities, and build custom solutions that integrate seamlessly.</p>
-  <div class="g4">
-    <div class="bc"><div class="hw-num">1</div><h3>Workflow audit</h3><p>Review your current processes to find repetitive tasks that can be automated.</p></div>
-    <div class="bc"><div class="hw-num">2</div><h3>Design solution</h3><p>Create a custom automation script using Python, Excel macros, or APIs.</p></div>
-    <div class="bc"><div class="hw-num">3</div><h3>Build & test</h3><p>Develop the automation with thorough testing to ensure reliability.</p></div>
-    <div class="bc"><div class="hw-num">4</div><h3>Deploy & train</h3><p>Implement the solution and train your team on using the automated system.</p></div>
-  </div>
-</div>
-
-<hr class="div">
-
-<div class="section" id="tool">
-  <p class="s-label">Automation examples</p>
-  <h2 class="s-title">See what automation can do for you</h2>
-  <p class="s-desc">Here are common automation scenarios that save businesses time and money.</p>
-
-  <div class="tool-box">
-    <div class="tool-hd"><h3>Sample automation workflows</h3><p>Examples of tasks that can be automated</p></div>
-    <div class="automation-examples">
-      <div class="example">
-        <h4>📊 Monthly Sales Report</h4>
-        <p>Automatically pull data from CRM, calculate metrics, and generate PDF reports.</p>
+    <!-- TASK CARDS -->
+    <div class="tasks-grid" id="task-grid">
+      <div class="task-card" data-hours="5" onclick="toggleTask(this)">
+        <div class="task-icon" style="background:#E1F5EE;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="#0F6E56" stroke-width="1.2"/><path d="M5 8h6M5 5.5h6M5 10.5h4" stroke="#0F6E56" stroke-width="1.1" stroke-linecap="round"/></svg>
+        </div>
+        <p class="task-name">Weekly ad report</p>
+        <p class="task-desc">Pull Meta + Google spend, ROAS, CPL into one formatted PDF</p>
+        <p class="task-hours">~5 hrs/week</p>
       </div>
-      <div class="example">
-        <h4>📈 Email Campaign Analysis</h4>
-        <p>Fetch email metrics from API, analyze performance, and send summary emails.</p>
+      <div class="task-card" data-hours="3" onclick="toggleTask(this)">
+        <div class="task-icon" style="background:#E1F5EE;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 12L6 8l2.5 3L11 6l2 3" stroke="#0F6E56" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="1" y="1" width="14" height="14" rx="2" stroke="#0F6E56" stroke-width="1.1"/></svg>
+        </div>
+        <p class="task-name">Sales dashboard update</p>
+        <p class="task-desc">Revenue, orders, top SKUs refreshed every morning automatically</p>
+        <p class="task-hours">~3 hrs/week</p>
       </div>
-      <div class="example">
-        <h4>📉 Inventory Alerts</h4>
-        <p>Monitor stock levels and automatically send alerts when items are low.</p>
+      <div class="task-card" data-hours="4" onclick="toggleTask(this)">
+        <div class="task-icon" style="background:#E1F5EE;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v3M8 11v3M2 8h3M11 8h3" stroke="#0F6E56" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="8" r="2.5" stroke="#0F6E56" stroke-width="1.2"/></svg>
+        </div>
+        <p class="task-name">Client report PDF</p>
+        <p class="task-desc">Monthly branded PDF sent to each client automatically</p>
+        <p class="task-hours">~4 hrs/month</p>
+      </div>
+      <div class="task-card" data-hours="2" onclick="toggleTask(this)">
+        <div class="task-icon" style="background:#E1F5EE;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h7M3 12h5" stroke="#0F6E56" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <p class="task-name">Inventory alerts</p>
+        <p class="task-desc">WhatsApp/email alert when stock drops below threshold</p>
+        <p class="task-hours">~2 hrs/week</p>
+      </div>
+      <div class="task-card" data-hours="3" onclick="toggleTask(this)">
+        <div class="task-icon" style="background:#E1F5EE;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#0F6E56" stroke-width="1.2"/><path d="M2 6.5h12" stroke="#0F6E56" stroke-width="1.1"/><path d="M6 3V2M10 3V2" stroke="#0F6E56" stroke-width="1.1" stroke-linecap="round"/></svg>
+        </div>
+        <p class="task-name">CRM data sync</p>
+        <p class="task-desc">Auto-sync leads from ads into Google Sheets or CRM daily</p>
+        <p class="task-hours">~3 hrs/week</p>
+      </div>
+      <div class="task-card" data-hours="4" onclick="toggleTask(this)">
+        <div class="task-icon" style="background:#E1F5EE;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#0F6E56" stroke-width="1.2"/><path d="M8 5v3l2 1.5" stroke="#0F6E56" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <p class="task-name">Scheduled email digest</p>
+        <p class="task-desc">Daily/weekly KPI summary to your inbox every morning at 8am</p>
+        <p class="task-hours">~4 hrs/week</p>
       </div>
     </div>
-  </div>
-</div>
 
-<hr class="div">
+    <!-- CALCULATOR -->
+    <div class="calc-section auto-card">
+      <p style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:1rem;">Time cost calculator</p>
 
-<div class="section">
-  <p class="s-label">Common questions</p>
-  <h2 class="s-title">Frequently asked questions</h2>
-  <p class="s-desc">Everything you need to know about automation services.</p>
-  <div class="faq-list" id="faqList">
-    <div class="faq-item">
-      <button class="faq-q">What can be automated? <span class="faq-arr">&#8964;</span></button>
-      <div class="faq-a">Almost any repetitive task involving data: report generation, data cleaning, email sending, API integrations, file processing, and more.</div>
+      <div class="slider-row">
+        <span class="slider-label">Hours on reports per week</span>
+        <input type="range" min="1" max="30" value="8" step="1" id="sl-hours" oninput="calc()"/>
+        <span class="slider-val" id="out-hours">8 hrs</span>
+      </div>
+      <div class="slider-row">
+        <span class="slider-label">Your hourly cost (&#8377;)</span>
+        <input type="range" min="500" max="5000" value="1500" step="100" id="sl-rate" oninput="calc()"/>
+        <span class="slider-val" id="out-rate">&#8377;1,500</span>
+      </div>
+      <div class="slider-row">
+        <span class="slider-label">Team members doing this</span>
+        <input type="range" min="1" max="10" value="2" step="1" id="sl-people" oninput="calc()"/>
+        <span class="slider-val" id="out-people">2 people</span>
+      </div>
+
+      <div class="results-grid" style="margin-top:1.25rem;">
+        <div class="result-card">
+          <p class="result-label">Monthly cost</p>
+          <p class="result-val" id="r-monthly">&#8377;96K</p>
+        </div>
+        <div class="result-card">
+          <p class="result-label">Hours lost/month</p>
+          <p class="result-val" id="r-hours">64 hrs</p>
+        </div>
+        <div class="result-card">
+          <p class="result-label">Automation saves</p>
+          <p class="result-val green" id="r-save">~90%</p>
+        </div>
+      </div>
     </div>
-    <div class="faq-item">
-      <button class="faq-q">Do I need technical skills? <span class="faq-arr">&#8964;</span></button>
-      <div class="faq-a">No technical skills required. I handle all the coding and setup. You just need to tell me what you want to automate.</div>
+
+    <!-- VERDICT STRIP -->
+    <div class="verdict" id="verdict-strip" style="background:#E1F5EE;margin-top:10px;">
+      <div class="verdict-dot" style="background:#1D9E75;"></div>
+      <p style="font-size:13px;color:#085041;" id="verdict-text">You're spending &#8377;96,000/month on manual reporting. A one-time automation costs &#8377;15,000 — that's a 6x return in month one.</p>
     </div>
-    <div class="faq-item">
-      <button class="faq-q">How long does it take? <span class="faq-arr">&#8964;</span></button>
-      <div class="faq-a">Simple automations take 1-2 weeks. Complex integrations might take 3-4 weeks. I provide regular updates throughout the process.</div>
+
+    <!-- WORKFLOW BEFORE/AFTER -->
+    <p style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px;margin-top:1.5rem;">How it changes your week</p>
+    <div class="workflow-grid">
+      <div class="wf-col">
+        <p class="wf-label" style="color:#A32D2D;">Before</p>
+        <div class="wf-step">
+          <div class="step-num" style="background:#FCEBEB;color:#A32D2D;">1</div>
+          <p class="step-text">Open 4 tabs — Meta, Google, Sheets, last week's report</p>
+        </div>
+        <div class="wf-step">
+          <div class="step-num" style="background:#FCEBEB;color:#A32D2D;">2</div>
+          <p class="step-text">Copy-paste numbers, fix broken formulas</p>
+        </div>
+        <div class="wf-step">
+          <div class="step-num" style="background:#FCEBEB;color:#A32D2D;">3</div>
+          <p class="step-text">Format the PDF, double-check every figure</p>
+        </div>
+        <div class="wf-step">
+          <div class="step-num" style="background:#FCEBEB;color:#A32D2D;">4</div>
+          <p class="step-text">Email to client, wait for "can you add X?" reply</p>
+        </div>
+        <p class="wf-time" style="color:#A32D2D;">3–5 hours every single week</p>
+      </div>
+      <div class="wf-arrow">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="var(--color-text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="wf-col">
+        <p class="wf-label" style="color:#0F6E56;">After</p>
+        <div class="wf-step">
+          <div class="step-num" style="background:#E1F5EE;color:#0F6E56;">1</div>
+          <p class="step-text">Script runs at 8am every Monday automatically</p>
+        </div>
+        <div class="wf-step">
+          <div class="step-num" style="background:#E1F5EE;color:#0F6E56;">2</div>
+          <p class="step-text">Pulls all data, calculates KPIs, formats report</p>
+        </div>
+        <div class="wf-step">
+          <div class="step-num" style="background:#E1F5EE;color:#0F6E56;">3</div>
+          <p class="step-text">PDF lands in your inbox (and client's) automatically</p>
+        </div>
+        <div class="wf-step">
+          <div class="step-num" style="background:#E1F5EE;color:#0F6E56;">4</div>
+          <p class="step-text">You drink chai and actually review the numbers</p>
+        </div>
+        <p class="wf-time" style="color:#0F6E56;">20 minutes to review — zero to build</p>
+      </div>
     </div>
-    <div class="faq-item">
-      <button class="faq-q">What tools do you use? <span class="faq-arr">&#8964;</span></button>
-      <div class="faq-a">Python for scripting, Excel/VBA for spreadsheet automation, APIs for integrations, and cloud services like AWS Lambda for scheduled tasks.</div>
+
+    <!-- CTA -->
+    <div class="cta-strip">
+      <div>
+        <p style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;">Tell me what you're automating manually</p>
+        <p style="font-size:13px;color:var(--color-text-secondary);">Describe your task — I'll tell you if it can be automated and what it costs.</p>
+      </div>
+      <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a quote &#8599;</button>
     </div>
-    <div class="faq-item">
-      <button class="faq-q">Is it secure? <span class="faq-arr">&#8964;</span></button>
-      <div class="faq-a">Yes, I follow security best practices. Data is encrypted, access is controlled, and I never store sensitive information unnecessarily.</div>
-    </div>
+
   </div>
 </div>
 
@@ -217,55 +296,107 @@ function ctHandleSubmit(){
   document.getElementById('ct-success-msg').style.display='block';
 }
 
-// FAQ toggle
-document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const open = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!open) item.classList.add('open');
-    });
-});
+function toggleTask(el){
+  el.classList.toggle('selected');
+  updateTaskHours();
+}
+
+function updateTaskHours(){
+  var selected=document.querySelectorAll('.task-card.selected');
+  if(selected.length===0){return;}
+  var total=0;
+  selected.forEach(function(c){total+=parseInt(c.getAttribute('data-hours'));});
+  document.getElementById('sl-hours').value=Math.min(total,30);
+  calc();
+}
+
+function calc(){
+  var h=parseInt(document.getElementById('sl-hours').value);
+  var r=parseInt(document.getElementById('sl-rate').value);
+  var p=parseInt(document.getElementById('sl-people').value);
+
+  document.getElementById('out-hours').textContent=h+' hrs';
+  document.getElementById('out-rate').textContent='₹'+r.toLocaleString('en-IN');
+  document.getElementById('out-people').textContent=p+(p===1?' person':' people');
+
+  var monthlyHours=h*4*p;
+  var monthlyCost=monthlyHours*r;
+
+  document.getElementById('r-monthly').textContent='₹'+Math.round(monthlyCost/1000)+'K';
+  document.getElementById('r-hours').textContent=monthlyHours+' hrs';
+  document.getElementById('r-save').textContent='~90%';
+
+  var strip=document.getElementById('verdict-strip');
+  var txt=document.getElementById('verdict-text');
+
+  if(monthlyCost<20000){
+    strip.style.background='#E6F1FB';
+    txt.style.color='#0C447C';
+    txt.textContent="You're spending ₹"+Math.round(monthlyCost/1000)+"K/month on manual reporting. Automation starts at ₹8,000 — you recover the cost in month one.";
+  } else if(monthlyCost<80000){
+    strip.style.background='#E1F5EE';
+    txt.style.color='#085041';
+    txt.textContent="You're losing ₹"+Math.round(monthlyCost/1000)+"K/month to manual work. A one-time automation for ₹15,000 pays for itself in under 2 weeks.";
+  } else {
+    strip.style.background='#FAEEDA';
+    txt.style.color='#633806';
+    txt.textContent="₹"+Math.round(monthlyCost/1000)+"K/month on manual reporting is a serious leak. Automating this is one of the highest-ROI investments you can make right now.";
+  }
+}
+
+calc();
 </script>
 
 <style>
-.automation-examples {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
+/* ── AUTOMATION WRAP ── */
+.auto-wrap{max-width:680px;font-family:var(--font-sans);padding:0 0 2rem;}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.5rem;}
+.sec-title{font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:0.4rem;}
+.sec-sub{font-size:14px;color:var(--color-text-secondary);margin-bottom:1.75rem;line-height:1.65;}
+.auto-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;}
 
-.example {
-    background: #f8f9fa;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 1px solid #e9ecef;
-}
+/* ── TASK CARDS ── */
+.tasks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:1.75rem;}
+.task-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;cursor:pointer;transition:border-color 0.15s;}
+.task-card:hover{border-color:var(--color-border-secondary);}
+.task-card.selected{border:1.5px solid #1D9E75;background:#f0fdf8;}
+.task-icon{width:32px;height:32px;border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+.task-name{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;}
+.task-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.5;margin-bottom:8px;}
+.task-hours{font-size:11px;color:#0F6E56;font-weight:500;}
 
-.example h4 {
-    margin: 0 0 0.5rem 0;
-    color: #2c2c2a;
-}
+/* ── CALCULATOR ── */
+.calc-section{margin-bottom:1.75rem;}
+.slider-row{display:flex;align-items:center;gap:12px;margin-bottom:1rem;}
+.slider-label{font-size:13px;color:var(--color-text-secondary);min-width:160px;}
+.slider-val{font-size:13px;font-weight:500;color:var(--color-text-primary);min-width:60px;text-align:right;}
+input[type=range]{flex:1;}
 
-.example p {
-    margin: 0 0 1rem 0;
-    color: #666;
-}
+/* ── RESULT CARDS ── */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1rem;}
+.result-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem;text-align:center;}
+.result-label{font-size:11px;color:var(--color-text-tertiary);margin-bottom:6px;}
+.result-val{font-size:22px;font-weight:500;color:var(--color-text-primary);}
+.result-val.green{color:#0F6E56;}
 
-.code-snippet {
-    background: #1e1e1e;
-    color: #d4d4d4;
-    padding: 1rem;
-    border-radius: 4px;
-    overflow-x: auto;
-}
+/* ── VERDICT STRIP ── */
+.verdict{border-radius:var(--border-radius-md);padding:14px 16px;display:flex;align-items:center;gap:14px;margin-bottom:1.75rem;}
+.verdict-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
 
-.code-snippet code {
-    font-family: 'Courier New', monospace;
-    font-size: 0.85rem;
-    line-height: 1.4;
-}
+/* ── WORKFLOW ── */
+.workflow-grid{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:start;margin-bottom:1.75rem;}
+.wf-col{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.1rem;}
+.wf-arrow{display:flex;align-items:center;justify-content:center;padding-top:3rem;}
+.wf-label{font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px;}
+.wf-step{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;}
+.step-num{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px;}
+.step-text{font-size:12px;color:var(--color-text-secondary);line-height:1.5;}
+.wf-time{font-size:12px;font-weight:500;margin-top:10px;padding-top:10px;border-top:0.5px solid var(--color-border-tertiary);}
+
+/* ── CTA ── */
+.cta-strip{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.cta-btn{padding:10px 20px;font-size:13px;font-weight:500;background:#1D9E75;color:#fff;border:none;border-radius:var(--border-radius-md);cursor:pointer;white-space:nowrap;font-family:var(--font-sans);}
+.cta-btn:hover{background:#0F6E56;}
 </style>
 
 </body>
