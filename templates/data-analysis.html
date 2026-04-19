@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data Analysis — Revenue Forecasting</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -22,151 +21,291 @@
 
 <div class="container">
 
+
+<!-- SECTION: BEFORE vs AFTER -->
 <div class="section">
-  <p class="s-label">Data Analyst · Mumbai</p>
-  <h2 class="s-title">I turn your messy data into dashboards that drive decisions</h2>
-  <p class="s-desc">6+ years experience. Dashboards, analysis &amp; automation for D2C brands and startups. Starting at ₹15,000.</p>
-  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
-    <a href="#contact" style="display:inline-block;padding:12px 24px;background:#4f8ef7;color:#fff;border-radius:8px;font-weight:600;text-decoration:none;font-size:15px;">Get a free data audit</a>
-    <a href="/#portfolio" style="display:inline-block;padding:12px 24px;border:2px solid #4f8ef7;color:#4f8ef7;border-radius:8px;font-weight:600;text-decoration:none;font-size:15px;">See my work</a>
-  </div>
-  <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:16px;">
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:#aaa;"><span style="width:8px;height:8px;background:#2ec4a0;border-radius:50%;display:inline-block;"></span>6+ years experience</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:#aaa;"><span style="width:8px;height:8px;background:#2ec4a0;border-radius:50%;display:inline-block;"></span>Response in 24 hrs</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;color:#aaa;"><span style="width:8px;height:8px;background:#2ec4a0;border-radius:50%;display:inline-block;"></span>Plotly Dash · Python · Excel</span>
-  </div>
-</div>
+  <p class="s-label">Transformation</p>
+  <h2 class="s-title">What changes when you work with me</h2>
+  <p class="s-desc">One real example — a D2C brand's marketing reporting, before and after.</p>
 
-<hr class="div">
-
-<div class="section" id="how">
-  <p class="s-label">How it works</p>
-  <h2 class="s-title">Simple 4-step process</h2>
-  <p class="s-desc">You do not need to be a finance expert. Provide two numbers — the tool does all the math.</p>
-  <div class="g4">
-    <div class="bc"><div class="hw-num">1</div><h3>Enter revenue</h3><p>Tell us your current monthly earnings. A rough estimate works fine.</p></div>
-    <div class="bc"><div class="hw-num">2</div><h3>Set growth target</h3><p>Pick your expected monthly growth. Healthy businesses grow 5–15%.</p></div>
-    <div class="bc"><div class="hw-num">3</div><h3>See 3 scenarios</h3><p>Base, optimistic, and pessimistic — covering every possible outcome.</p></div>
-    <div class="bc"><div class="hw-num">4</div><h3>Make decisions</h3><p>Use the data to hire, invest, or prepare — with full confidence.</p></div>
-  </div>
-</div>
-
-<hr class="div">
-
-<div class="section" id="tool">
-  <p class="s-label">Live forecast tool</p>
-  <h2 class="s-title">Try it yourself — move the sliders</h2>
-  <p class="s-desc">Enter your starting monthly revenue and expected growth rate. Instantly see your 12-month revenue forecast across three scenarios.</p>
-
-  <div class="tool-box">
-    <div class="tool-hd"><h3>12-month revenue forecast</h3><p>Adjust the sliders to match your business numbers</p></div>
-    <div class="mg" id="metrics"></div>
-    <div class="cg">
-      <div class="cb">
-        <label>Current monthly revenue (₹)</label>
-        <div class="cr"><input type="range" id="startRev" min="50000" max="10000000" step="50000" value="500000"><span class="cv" id="startRevVal">₹5L</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem;">
+    <!-- Before card -->
+    <div class="bc" style="border-left:3px solid #E24B4A;">
+      <span style="display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:99px;background:rgba(226,75,74,0.15);color:#E24B4A;margin-bottom:12px;">Before</span>
+      <div style="background:var(--bg-card2);border-radius:8px;padding:1rem;margin-bottom:12px;font-family:monospace;font-size:11px;color:var(--muted);line-height:1.8;">
+        <div style="color:var(--faint);">Sheet1 — raw_data_final_v3</div>
+        <div>A2: =SUM(D2:D847)</div>
+        <div>A3: #REF!</div>
+        <div>A4: =VLOOKUP(B2,Sheet3...</div>
+        <div style="color:#E24B4A;">⚠ Circular reference</div>
       </div>
-      <div class="cb">
-        <label>Expected monthly growth rate</label>
-        <div class="cr"><input type="range" id="growthRate" min="1" max="25" step="1" value="8"><span class="cv" id="growthRateVal">8%</span></div>
-      </div>
+      <ul style="font-size:13px;color:var(--muted);line-height:2;list-style:none;padding:0;">
+        <li>⏱ 6 hrs/week on reporting</li>
+        <li>❓ No idea which channel drives ROI</li>
+        <li>📁 5 disconnected spreadsheets</li>
+        <li>😰 Numbers change every time</li>
+      </ul>
     </div>
-    <div class="leg">
-      <span><span class="ld" style="background:#4f8ef7;"></span>Base (as planned)</span>
-      <span><span class="ld" style="background:#2ec4a0;"></span>Optimistic (+50% growth)</span>
-      <span><span class="ld" style="background:#e8714a;"></span>Pessimistic (−40% growth)</span>
-    </div>
-    <div class="cw"><canvas id="forecastChart" role="img" aria-label="12-month revenue forecast with three scenarios"></canvas></div>
-    <div style="overflow-x:auto;"><table id="forecastTable"></table></div>
-  </div>
 
-  <div class="sc-grid">
-    <div class="sc"><div class="sc-badge" style="background:rgba(79,142,247,0.15);color:#4f8ef7;">Base scenario</div><h4>Things go as planned</h4><p>Your business grows at exactly the rate you set. Use this as your primary planning number.</p></div>
-    <div class="sc"><div class="sc-badge" style="background:rgba(46,196,160,0.15);color:#2ec4a0;">Optimistic scenario</div><h4>Business is booming</h4><p>You land a big client or campaign works great. Growth is 50% faster than planned.</p></div>
-    <div class="sc"><div class="sc-badge" style="background:rgba(232,113,74,0.15);color:#e8714a;">Pessimistic scenario</div><h4>Slow period hits</h4><p>Seasonality or market dip. Shows the minimum cash buffer you should keep in reserve.</p></div>
+    <!-- After card -->
+    <div class="bc" style="border-left:3px solid #1D9E75;">
+      <span style="display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:99px;background:rgba(29,158,117,0.15);color:#1D9E75;margin-bottom:12px;">After</span>
+      <div style="background:var(--bg-card2);border-radius:8px;padding:1rem;margin-bottom:12px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <div style="background:var(--bg-card);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:18px;font-weight:600;color:#1D9E75;">3.2x</div>
+            <div style="font-size:10px;color:var(--faint);">ROI (Meta)</div>
+          </div>
+          <div style="background:var(--bg-card);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:18px;font-weight:600;color:#1D9E75;">80%</div>
+            <div style="font-size:10px;color:var(--faint);">Less reporting time</div>
+          </div>
+          <div style="background:var(--bg-card);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:18px;font-weight:600;color:#1D9E75;">₹1.2L</div>
+            <div style="font-size:10px;color:var(--faint);">Wasted spend found</div>
+          </div>
+          <div style="background:var(--bg-card);border-radius:6px;padding:8px;text-align:center;">
+            <div style="font-size:18px;font-weight:600;color:#1D9E75;">1 view</div>
+            <div style="font-size:10px;color:var(--faint);">All channels unified</div>
+          </div>
+        </div>
+      </div>
+      <ul style="font-size:13px;color:var(--muted);line-height:2;list-style:none;padding:0;">
+        <li style="color:#1D9E75;">✓ 20 min/week to review</li>
+        <li style="color:#1D9E75;">✓ Clear channel-by-channel ROI</li>
+        <li style="color:#1D9E75;">✓ One live dashboard</li>
+        <li style="color:#1D9E75;">✓ CEO checks it every morning</li>
+      </ul>
+    </div>
   </div>
 </div>
 
 <hr class="div">
 
+<!-- SECTION: FREE TEARDOWN -->
 <div class="section">
-  <p class="s-label">Common questions</p>
-  <h2 class="s-title">Frequently asked questions</h2>
-  <p class="s-desc">Everything you need to know about revenue forecasting and this tool.</p>
-  <div class="faq-list" id="faqList">
-    <div class="faq-item">
-      <button class="faq-q">What is a revenue forecast? <span class="faq-arr">&#8964;</span></button>
-      <div class="faq-a">A revenue forecast tells you how much money your business will earn in the future, based on your current numbers and expected growth. It helps you plan spending, hiring, and investment — instead of guessing.</div>
+  <p class="s-label">Free offer</p>
+  <h2 class="s-title">Get a free 5-min data teardown</h2>
+  <p class="s-desc">Send me your current report or dashboard. I'll record a Loom video pointing out 3 specific things you can improve — no strings attached.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1.5rem;">
+    <div class="bc" style="text-align:center;padding:1.25rem 1rem;">
+      <div style="font-size:22px;margin-bottom:8px;">📤</div>
+      <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;">You share</div>
+      <div style="font-size:12px;color:var(--muted);">Your report, dashboard, or spreadsheet</div>
     </div>
-    <div class="faq-item">
-      <button class="faq-q">What is the difference between the 3 scenarios? <span class="faq-arr">&#8964;</span></button>
-      <div class="faq-a">Base uses your exact growth rate. Optimistic assumes 50% faster growth — for example a big client joins. Pessimistic assumes 40% slower growth — an off-season. Planning all three keeps you prepared no matter what happens.</div>
+    <div class="bc" style="text-align:center;padding:1.25rem 1rem;">
+      <div style="font-size:22px;margin-bottom:8px;">🎥</div>
+      <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;">I record</div>
+      <div style="font-size:12px;color:var(--muted);">A 5-min Loom with 3 improvements</div>
     </div>
-    <div class="faq-item">
-      <button class="faq-q">How accurate is this tool? <span class="faq-arr">&#8964;</span></button>
-      <div class="faq-a">This tool gives a strong starting estimate based on compound growth. For a more precise forecast that accounts for your industry, costs, and seasonality, I can build a custom model. Contact me for a free audit.</div>
+    <div class="bc" style="text-align:center;padding:1.25rem 1rem;">
+      <div style="font-size:22px;margin-bottom:8px;">💡</div>
+      <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;">You decide</div>
+      <div style="font-size:12px;color:var(--muted);">No pressure to hire — keep the insights</div>
     </div>
-    <div class="faq-item">
-      <button class="faq-q">Who is this useful for? <span class="faq-arr">&#8964;</span></button>
-      <div class="faq-a">Business owners, startup founders, freelancers, and managers who want to understand future earnings. Especially useful when pitching investors, applying for a loan, planning a new hire, or deciding whether to expand.</div>
+  </div>
+
+  <div class="bc" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;">
+    <div>
+      <div style="font-size:14px;font-weight:600;color:#fff;">Ready to see what's holding your data back?</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px;">Takes 2 min to submit. Response within 24 hrs.</div>
     </div>
-    <div class="faq-item">
-      <button class="faq-q">Can I get a custom report for my business? <span class="faq-arr">&#8964;</span></button>
-      <div class="faq-a">Yes. I offer a Data Analysis Report starting at ₹5,000 — detailed revenue forecast, cost analysis, and recommendations in a professional PDF you can share with investors or your board.</div>
+    <a href="#contact" style="white-space:nowrap;padding:10px 18px;font-size:13px;font-weight:600;background:rgba(79,142,247,0.15);color:#4f8ef7;border:1px solid rgba(79,142,247,0.3);border-radius:8px;text-decoration:none;">Get my free teardown ↗</a>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- SECTION: FIT CHECK -->
+<div class="section">
+  <p class="s-label">Fit check</p>
+  <h2 class="s-title">Is this right for you?</h2>
+  <p class="s-desc">I work best with a specific kind of business. Here's how to tell.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div class="bc">
+      <div style="font-size:13px;font-weight:600;color:#1D9E75;margin-bottom:12px;display:flex;align-items:center;gap:6px;">
+        <span style="width:18px;height:18px;background:rgba(29,158,117,0.15);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;">✓</span>
+        Good fit
+      </div>
+      <ul style="font-size:13px;color:var(--muted);line-height:2.2;list-style:none;padding:0;">
+        <li>D2C brand or marketing agency</li>
+        <li>Spending ₹50K+/month on ads</li>
+        <li>Making decisions from gut, not data</li>
+        <li>Reports take hours every week</li>
+        <li>Multiple tools, no single view</li>
+      </ul>
+    </div>
+    <div class="bc">
+      <div style="font-size:13px;font-weight:600;color:#E24B4A;margin-bottom:12px;display:flex;align-items:center;gap:6px;">
+        <span style="width:18px;height:18px;background:rgba(226,75,74,0.15);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;">✕</span>
+        Not a fit
+      </div>
+      <ul style="font-size:13px;color:var(--muted);line-height:2.2;list-style:none;padding:0;">
+        <li>Need real-time data engineering</li>
+        <li>Enterprise-scale pipelines</li>
+        <li>Just starting, no data yet</li>
+        <li>Looking for a full-time hire</li>
+        <li>Need ML/AI model building</li>
+      </ul>
     </div>
   </div>
 </div>
 
-<section id="contact" class="cta-section">
-    <h2>Get a Free Data Audit</h2>
-    <p style="color:#aaa;margin-bottom:24px;">Tell us a little about your tools and your biggest data challenge.</p>
+<hr class="div">
 
-    <div id="da-audit-form" class="audit-card" style="max-width:520px;margin:0 auto 32px;">
-        <form id="da-audit-request-form">
-            <div class="form-group">
-                <label for="da-email">Email address</label>
-                <input type="email" id="da-email" name="email" required placeholder="Enter your email address">
-                <p id="da-email-error" class="error-msg"></p>
-            </div>
+<!-- SECTION: PRICING -->
+<div class="section">
+  <p class="s-label">Packages</p>
+  <h2 class="s-title">Simple, fixed pricing</h2>
+  <p class="s-desc">No hidden costs. You know exactly what you get before we start.</p>
 
-            <div class="form-group">
-                <label for="da-tools">What tools do you use?</label>
-                <select id="da-tools" name="tools" required>
-                    <option value="" disabled selected>Select one</option>
-                    <option value="Excel">Excel</option>
-                    <option value="Google Sheets">Google Sheets</option>
-                    <option value="CRM">CRM</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-            <div class="form-group" id="da-tools-other-group" style="display:none;">
-                <label for="da-tools-other">Others</label>
-                <input type="text" id="da-tools-other" name="tools_other" placeholder="Please specify your tool">
-            </div>
-
-            <div class="form-group">
-                <label for="da-problem">Biggest problem?</label>
-                <textarea id="da-problem" name="problem" rows="4" required placeholder="Describe your top data challenge"></textarea>
-            </div>
-
-            <button type="submit" id="da-submit-btn" class="btn-primary" style="width:100%;">Send request</button>
-        </form>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+    <!-- Starter -->
+    <div class="bc">
+      <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;">Starter</div>
+      <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:2px;">₹15,000</div>
+      <div style="font-size:12px;color:var(--faint);margin-bottom:16px;">one-time</div>
+      <ul style="font-size:12px;color:var(--muted);line-height:2.1;list-style:none;padding:0;border-top:1px solid var(--border);padding-top:12px;">
+        <li>✓ 1 dashboard (up to 2 sources)</li>
+        <li>✓ Delivered in 5 days</li>
+        <li>✓ 1 revision round</li>
+        <li>✓ Walkthrough recording</li>
+        <li style="color:var(--faint);">✕ Automation</li>
+      </ul>
     </div>
 
-    <div class="contact-details">
-        <a href="https://www.linkedin.com/in/satsham" target="_blank" rel="noopener noreferrer" class="contact-item contact-linkedin">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-        </a>
-        <div class="contact-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-            Email : sharma.satishkumar2709@gmail.com
-        </div>
-        <div class="contact-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Mobile no : 8369645979
-        </div>
+    <!-- Growth — highlighted -->
+    <div class="bc" style="border:1px solid rgba(79,142,247,0.4);position:relative;">
+      <span style="display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:99px;background:rgba(79,142,247,0.15);color:#4f8ef7;margin-bottom:8px;">Most popular</span>
+      <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;">Growth</div>
+      <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:2px;">₹35,000</div>
+      <div style="font-size:12px;color:var(--faint);margin-bottom:16px;">one-time</div>
+      <ul style="font-size:12px;color:var(--muted);line-height:2.1;list-style:none;padding:0;border-top:1px solid var(--border);padding-top:12px;">
+        <li>✓ Up to 3 dashboards</li>
+        <li>✓ Full data analysis report</li>
+        <li>✓ Delivered in 10 days</li>
+        <li>✓ 2 revision rounds</li>
+        <li>✓ Basic automation included</li>
+      </ul>
     </div>
+
+    <!-- Ongoing retainer -->
+    <div class="bc">
+      <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:4px;">Ongoing</div>
+      <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:2px;">₹20,000</div>
+      <div style="font-size:12px;color:var(--faint);margin-bottom:16px;">per month</div>
+      <ul style="font-size:12px;color:var(--muted);line-height:2.1;list-style:none;padding:0;border-top:1px solid var(--border);padding-top:12px;">
+        <li>✓ Monthly report updates</li>
+        <li>✓ Dashboard maintenance</li>
+        <li>✓ New metrics on request</li>
+        <li>✓ Priority response</li>
+        <li>✓ Slack/WhatsApp access</li>
+      </ul>
+    </div>
+  </div>
+
+  <p style="font-size:12px;color:var(--faint);margin-top:1rem;text-align:center;">Not sure which fits? Start with the free teardown above — I'll recommend the right package for your situation.</p>
+</div>
+
+<section id="contact">
+  <div class="ct-wrap">
+
+    <p style="font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:0.5rem;">Get in touch</p>
+    <h2 style="font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:0.4rem;">Let's talk about your data</h2>
+    <p style="font-size:15px;color:var(--color-text-secondary);margin-bottom:1.75rem;line-height:1.6;">Book a free 20-min call — no pitch, just a look at your current setup and what's possible.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.75rem;">
+
+      <div class="ct-card" style="border:2px solid var(--color-border-info);">
+        <span class="ct-tag">Recommended</span>
+        <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Book a free 20-min call</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;line-height:1.6;">Pick a slot that works for you. We'll look at your data setup together.</div>
+        <div class="ct-pill-row">
+          <span class="ct-pill">Video call</span>
+          <span class="ct-pill">20 minutes</span>
+          <span class="ct-pill">No commitment</span>
+        </div>
+        <button class="ct-cal-btn" onclick="window.open('https://calendly.com/sharma-satishkumar2709/30min','_blank')">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="2" width="14" height="13" rx="2" stroke="#4f8ef7" stroke-width="1.2"/><path d="M1 6h14" stroke="#4f8ef7" stroke-width="1.2"/><path d="M5 1v2M11 1v2" stroke="#4f8ef7" stroke-width="1.2" stroke-linecap="round"/><rect x="4" y="8.5" width="2" height="2" rx="0.5" fill="#4f8ef7"/><rect x="7" y="8.5" width="2" height="2" rx="0.5" fill="#4f8ef7"/><rect x="4" y="11" width="2" height="2" rx="0.5" fill="#4f8ef7"/><rect x="7" y="11" width="2" height="2" rx="0.5" fill="#4f8ef7"/></svg>
+          Book on Calendly
+        </button>
+      </div>
+
+      <div class="ct-card">
+        <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Send a quick message</div>
+        <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;line-height:1.6;">Prefer to write first? Fill this in and I'll reply within 24 hrs.</div>
+
+        <div id="ct-contact-form">
+          <div style="margin-bottom:12px;">
+            <label class="ct-label">Your name</label>
+            <input type="text" class="ct-input" placeholder="Rahul Mehta" id="ct-name"/>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label class="ct-label">Email address</label>
+            <input type="email" class="ct-input" placeholder="rahul@brand.com" id="ct-email"/>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label class="ct-label">What's your biggest data challenge?</label>
+            <textarea class="ct-textarea" placeholder="We spend ₹2L/month on ads but have no idea which channel actually works..." id="ct-msg"></textarea>
+          </div>
+          <button class="ct-submit" onclick="ctHandleSubmit()">Send message</button>
+        </div>
+
+        <div class="ct-success" id="ct-success-msg">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(46,196,160,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:18px;color:#2ec4a0;">✓</div>
+          <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px;">Message sent!</div>
+          <div style="font-size:13px;color:var(--color-text-secondary);">I'll get back to you within 24 hrs at the email you provided.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ct-divider">
+      <div class="ct-divider-line"></div>
+      <span>or reach me directly</span>
+      <div class="ct-divider-line"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+      <a href="mailto:sharma.satishkumar2709@gmail.com" style="text-decoration:none;">
+        <div class="ct-card" style="text-align:center;padding:1rem 0.75rem;cursor:pointer;">
+          <div class="ct-icon-box" style="background:rgba(46,196,160,0.12);margin:0 auto 8px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="#2ec4a0" stroke-width="1.2"/><path d="M1.5 3.5l6.5 5 6.5-5" stroke="#2ec4a0" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;">Email</div>
+          <div style="font-size:11px;color:var(--color-text-tertiary);">sharma.satish...</div>
+        </div>
+      </a>
+
+      <a href="https://wa.me/918369645979" target="_blank" style="text-decoration:none;">
+        <div class="ct-card" style="text-align:center;padding:1rem 0.75rem;cursor:pointer;">
+          <div class="ct-icon-box" style="background:rgba(46,196,160,0.12);margin:0 auto 8px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#2ec4a0" stroke-width="1.2"/><path d="M5.5 5.5c.2-.4.8-.8 1.2-.5l.8 1-.6.8c.3.6.8 1.1 1.4 1.4l.8-.6 1 .8c.3.4-.1 1-.5 1.2-1.5.7-3.8-1.6-4.1-4.1z" fill="#2ec4a0"/></svg>
+          </div>
+          <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;">WhatsApp</div>
+          <div style="font-size:11px;color:var(--color-text-tertiary);">+91 83696 45979</div>
+        </div>
+      </a>
+
+      <a href="https://www.linkedin.com/in/satish-sharma-104545403" target="_blank" style="text-decoration:none;">
+        <div class="ct-card" style="text-align:center;padding:1rem 0.75rem;cursor:pointer;">
+          <div class="ct-icon-box" style="background:rgba(79,142,247,0.12);margin:0 auto 8px;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="#4f8ef7" stroke-width="1.2"/><path d="M4 6.5V12M4 4v.5" stroke="#4f8ef7" stroke-width="1.4" stroke-linecap="round"/><path d="M7.5 12V9c0-1.4 4-1.4 4 0v3M7.5 6.5V12" stroke="#4f8ef7" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;">LinkedIn</div>
+          <div style="font-size:11px;color:var(--color-text-tertiary);">Satish Sharma</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="ct-avail">
+      <div style="width:8px;height:8px;border-radius:50%;background:#1D9E75;flex-shrink:0;"></div>
+      <div style="font-size:13px;color:var(--color-text-secondary);">Available for new projects — typically reply within <span style="font-weight:500;color:var(--color-text-primary);">24 hours</span></div>
+    </div>
+
+  </div>
 </section>
 
 <footer class="footer">
@@ -174,58 +313,14 @@
 </footer>
 
 <script>
-const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-let chart;
-function fmt(v){if(v>=10000000)return'₹'+(v/10000000).toFixed(2)+' Cr';if(v>=100000)return'₹'+(v/100000).toFixed(1)+'L';return'₹'+Math.round(v).toLocaleString('en-IN');}
-function build(start,rate){const b=[],o=[],p=[];for(let i=0;i<12;i++){b.push(Math.round(start*Math.pow(1+rate/100,i)));o.push(Math.round(start*Math.pow(1+rate*1.5/100,i)));p.push(Math.round(start*Math.pow(1+rate*0.6/100,i)));}return{b,o,p};}
-function metrics(d){const tb=d.b.reduce((a,c)=>a+c,0),to=d.o.reduce((a,c)=>a+c,0),tp=d.p.reduce((a,c)=>a+c,0);document.getElementById('metrics').innerHTML=[{l:'Year-end revenue',v:fmt(d.b[11]),s:'Base scenario'},{l:'Annual total (base)',v:fmt(tb),s:'12-month sum'},{l:'Annual total (optimistic)',v:fmt(to),s:'Best case'},{l:'Annual total (pessimistic)',v:fmt(tp),s:'Worst case'}].map(c=>`<div class="mc"><div class="mc-l">${c.l}</div><div class="mc-v">${c.v}</div><div class="mc-s">${c.s}</div></div>`).join('');}
-function renderChart(d){const cfg={type:'line',data:{labels:months,datasets:[{label:'Base',data:d.b,borderColor:'#4f8ef7',backgroundColor:'rgba(79,142,247,0.07)',fill:true,tension:0.35,pointRadius:4,borderWidth:2,pointBackgroundColor:'#4f8ef7'},{label:'Optimistic',data:d.o,borderColor:'#2ec4a0',backgroundColor:'transparent',fill:false,tension:0.35,borderDash:[6,3],pointRadius:3,borderWidth:1.5,pointBackgroundColor:'#2ec4a0'},{label:'Pessimistic',data:d.p,borderColor:'#e8714a',backgroundColor:'transparent',fill:false,tension:0.35,borderDash:[3,3],pointRadius:3,borderWidth:1.5,pointBackgroundColor:'#e8714a'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a1a',borderColor:'rgba(255,255,255,0.1)',borderWidth:1,titleColor:'#fff',bodyColor:'#999',callbacks:{label:c=>'  '+c.dataset.label+': '+fmt(c.raw)}}},scales:{x:{ticks:{autoSkip:false,maxRotation:0,font:{size:11},color:'#555'},grid:{display:false},border:{color:'rgba(255,255,255,0.06)'}},y:{ticks:{callback:v=>fmt(v),font:{size:10},color:'#555'},grid:{color:'rgba(255,255,255,0.04)'},border:{color:'rgba(255,255,255,0.06)'}}}}};if(chart){chart.data=cfg.data;chart.update();}else chart=new Chart(document.getElementById('forecastChart'),cfg);}
-function renderTable(d){const hdr=`<thead><tr><th>Month</th><th style="text-align:right;color:#4f8ef7;">Base</th><th style="text-align:right;color:#2ec4a0;">Optimistic</th><th style="text-align:right;color:#e8714a;">Pessimistic</th><th style="text-align:right;">MoM growth</th></tr></thead>`;const rows=months.map((m,i)=>{const g=i===0?'—':'+'+((( d.b[i]-d.b[i-1])/d.b[i-1])*100).toFixed(1)+'%';return`<tr><td>${m}</td><td style="text-align:right;color:#fff;">${fmt(d.b[i])}</td><td style="text-align:right;color:#2ec4a0;">${fmt(d.o[i])}</td><td style="text-align:right;color:#e8714a;">${fmt(d.p[i])}</td><td style="text-align:right;">${g}</td></tr>`;}).join('');document.getElementById('forecastTable').innerHTML=hdr+'<tbody>'+rows+'</tbody>';}
-function refresh(){const s=+document.getElementById('startRev').value,r=+document.getElementById('growthRate').value;document.getElementById('startRevVal').textContent=fmt(s);document.getElementById('growthRateVal').textContent=r+'%';const d=build(s,r);metrics(d);renderChart(d);renderTable(d);}
-document.getElementById('startRev').addEventListener('input',refresh);
-document.getElementById('growthRate').addEventListener('input',refresh);
-refresh();
-document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.closest('.faq-item'),open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open');});});
-
-(function(){
-    const allowedDomains=['gmail.com','outlook.com','yahoo.com','hotmail.com','icloud.com','protonmail.com','aol.com','zoho.com'];
-    function validateEmailDomain(email){const domain=email.split('@')[1]?.toLowerCase();return allowedDomains.includes(domain);}
-
-    const daToolsSelect=document.getElementById('da-tools');
-    const daToolsOtherGroup=document.getElementById('da-tools-other-group');
-    const daToolsOtherInput=document.getElementById('da-tools-other');
-    daToolsSelect.addEventListener('change',()=>{
-        const isOther=daToolsSelect.value==='Other';
-        daToolsOtherGroup.style.display=isOther?'block':'none';
-        daToolsOtherInput.required=isOther;
-    });
-
-    const emailInput=document.getElementById('da-email');
-    const emailError=document.getElementById('da-email-error');
-
-    emailInput.addEventListener('blur',()=>{
-        if(!emailInput.value.trim()){emailError.style.display='none';return;}
-        if(!validateEmailDomain(emailInput.value)){emailError.textContent='Please use a personal email (gmail, outlook, yahoo, etc.)';emailError.style.display='block';}
-        else{emailError.style.display='none';}
-    });
-    emailInput.addEventListener('input',()=>{if(!emailInput.value.trim())emailError.style.display='none';});
-
-    document.getElementById('da-audit-request-form').addEventListener('submit',async(e)=>{
-        e.preventDefault();
-        if(!validateEmailDomain(emailInput.value)){emailError.textContent='Please use a personal email (gmail, outlook, yahoo, etc.)';emailError.style.display='block';emailInput.focus();return;}
-        const submitBtn=document.getElementById('da-submit-btn');
-        submitBtn.disabled=true;submitBtn.textContent='Sending…';
-        const selectedTool=daToolsSelect.value;
-        const payload={email:emailInput.value.trim(),tools:selectedTool==='Other'?(daToolsOtherInput.value.trim()||'Other'):selectedTool,problem:document.getElementById('da-problem').value.trim()};
-        try{
-            const res=await fetch('/submit-audit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-            const json=await res.json();
-            if(json.ok){alert('Thank you! Your audit request has been received. I\'ll be in touch soon.');e.target.reset();daToolsOtherGroup.style.display='none';daToolsOtherInput.required=false;emailError.style.display='none';}
-            else{alert('Something went wrong. Please try again or email me directly.');}
-        }catch{alert('Network error. Please check your connection and try again.');}
-        finally{submitBtn.disabled=false;submitBtn.textContent='Send request';}
-    });
-})();
+function ctHandleSubmit(){
+  var n=document.getElementById('ct-name').value.trim();
+  var e=document.getElementById('ct-email').value.trim();
+  var m=document.getElementById('ct-msg').value.trim();
+  if(!n||!e||!m){alert('Please fill in all fields before sending.');return;}
+  document.getElementById('ct-contact-form').style.display='none';
+  document.getElementById('ct-success-msg').style.display='block';
+}
 </script>
 </body>
 </html>
