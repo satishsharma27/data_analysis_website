@@ -7,4 +7,16 @@ Connect the ‘Get Free Data Audit’ button to a form submission workflow so th
 
 -- arcr lmkr kklr nmnh
 
-3. form is working in my local system but it after deployment it is not working 
+3.In the Contact section, make the following changes:
+
+Remove "Get free data audit", LinkedIn, and Email from their current placements.
+Add a LinkedIn option that is clickable. When the user clicks on it, they should be redirected to:
+www.linkedin.com/in/satsham
+Add an Email field, but do not make it clickable. It should be displayed exactly as:
+Email : sharma.satishkumar2709@gmail.com
+Add a Mobile Number field displayed as:
+Mobile no : 8369645979
+
+Ensure the layout remains clean, professional, and consistent with the rest of the website design.
+
+

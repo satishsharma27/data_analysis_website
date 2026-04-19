@@ -554,6 +554,33 @@ section {
     color: #ffffff;
 }
 
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1rem;
+    color: #a8b2d4;
+}
+
+a.contact-linkedin {
+    color: #60a5fa;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.18s ease;
+}
+
+a.contact-linkedin:hover {
+    color: #93c5fd;
+}
+
 .s-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--faint); margin-bottom: 6px; }
 .s-title { font-size: 23px; font-weight: 700; letter-spacing: -0.02em; color: #fff; margin-bottom: 6px; }
 .s-desc { font-size: 13px; color: var(--muted); max-width: 540px; line-height: 1.7; margin-bottom: 1.75rem; }
