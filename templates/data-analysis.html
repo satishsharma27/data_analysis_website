@@ -139,6 +139,10 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
+            <div class="form-group" id="da-tools-other-group" style="display:none;">
+                <label for="da-tools-other">Others</label>
+                <input type="text" id="da-tools-other" name="tools_other" placeholder="Please specify your tool">
+            </div>
 
             <div class="form-group">
                 <label for="da-problem">Biggest problem?</label>
@@ -187,6 +191,15 @@ document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',(
     const allowedDomains=['gmail.com','outlook.com','yahoo.com','hotmail.com','icloud.com','protonmail.com','aol.com','zoho.com'];
     function validateEmailDomain(email){const domain=email.split('@')[1]?.toLowerCase();return allowedDomains.includes(domain);}
 
+    const daToolsSelect=document.getElementById('da-tools');
+    const daToolsOtherGroup=document.getElementById('da-tools-other-group');
+    const daToolsOtherInput=document.getElementById('da-tools-other');
+    daToolsSelect.addEventListener('change',()=>{
+        const isOther=daToolsSelect.value==='Other';
+        daToolsOtherGroup.style.display=isOther?'block':'none';
+        daToolsOtherInput.required=isOther;
+    });
+
     const emailInput=document.getElementById('da-email');
     const emailError=document.getElementById('da-email-error');
 
@@ -202,11 +215,12 @@ document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',(
         if(!validateEmailDomain(emailInput.value)){emailError.textContent='Please use a personal email (gmail, outlook, yahoo, etc.)';emailError.style.display='block';emailInput.focus();return;}
         const submitBtn=document.getElementById('da-submit-btn');
         submitBtn.disabled=true;submitBtn.textContent='Sending…';
-        const payload={email:emailInput.value.trim(),tools:document.getElementById('da-tools').value,problem:document.getElementById('da-problem').value.trim()};
+        const selectedTool=daToolsSelect.value;
+        const payload={email:emailInput.value.trim(),tools:selectedTool==='Other'?(daToolsOtherInput.value.trim()||'Other'):selectedTool,problem:document.getElementById('da-problem').value.trim()};
         try{
             const res=await fetch('/submit-audit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
             const json=await res.json();
-            if(json.ok){alert('Thank you! Your audit request has been received. I\'ll be in touch soon.');e.target.reset();emailError.style.display='none';}
+            if(json.ok){alert('Thank you! Your audit request has been received. I\'ll be in touch soon.');e.target.reset();daToolsOtherGroup.style.display='none';daToolsOtherInput.required=false;emailError.style.display='none';}
             else{alert('Something went wrong. Please try again or email me directly.');}
         }catch{alert('Network error. Please check your connection and try again.');}
         finally{submitBtn.disabled=false;submitBtn.textContent='Send request';}
