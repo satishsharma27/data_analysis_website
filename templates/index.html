@@ -330,13 +330,36 @@
     </footer>
 
 <script>
-    function ctHandleSubmit(){
+    async function ctHandleSubmit(){
       var n=document.getElementById('ct-name').value.trim();
       var e=document.getElementById('ct-email').value.trim();
       var m=document.getElementById('ct-msg').value.trim();
       if(!n||!e||!m){alert('Please fill in all fields before sending.');return;}
-      document.getElementById('ct-contact-form').style.display='none';
-      document.getElementById('ct-success-msg').style.display='block';
+
+      var btn=document.querySelector('.ct-submit');
+      btn.disabled=true;
+      btn.textContent='Sending…';
+
+      try {
+        var res=await fetch('/submit-contact',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({name:n,email:e,message:m})
+        });
+        var json=await res.json();
+        if(json.ok){
+          document.getElementById('ct-contact-form').style.display='none';
+          document.getElementById('ct-success-msg').style.display='block';
+        } else {
+          alert('Something went wrong. Please try again or email me directly.');
+          btn.disabled=false;
+          btn.textContent='Send message';
+        }
+      } catch {
+        alert('Network error. Please check your connection and try again.');
+        btn.disabled=false;
+        btn.textContent='Send message';
+      }
     }
 
     const allowedDomains = ['gmail.com','outlook.com','yahoo.com','hotmail.com','icloud.com','protonmail.com','aol.com','zoho.com'];

@@ -12,6 +12,25 @@ MAIL_USER = os.environ.get("MAIL_USER", "").strip()
 MAIL_PASS = os.environ.get("MAIL_PASS", "").strip()
 
 
+def send_contact_email(name: str, user_email: str, message: str) -> None:
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = f"New Quick Message from {name} ({user_email})"
+    msg["From"] = MAIL_USER
+    msg["To"] = MAIL_USER
+
+    body = (
+        f"New contact message received:\n\n"
+        f"Name:    {name}\n"
+        f"Email:   {user_email}\n"
+        f"Message: {message}\n"
+    )
+    msg.attach(MIMEText(body, "plain"))
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(MAIL_USER, MAIL_PASS)
+        smtp.sendmail(MAIL_USER, MAIL_USER, msg.as_string())
+
+
 def send_audit_email(user_email: str, tools: str, problem: str) -> None:
     msg = MIMEMultipart("alternative")
     msg["Subject"] = f"New Free Data Audit Request from {user_email}"
@@ -59,6 +78,23 @@ def register_routes(server):
             return jsonify({"ok": True})
         except Exception as exc:
             server.logger.error("Email send failed: %s", exc)
+            return jsonify({"ok": False, "error": "Failed to send email"}), 500
+
+    @server.route("/submit-contact", methods=["POST"])
+    def submit_contact():
+        data = request.get_json(silent=True) or {}
+        name = data.get("name", "").strip()
+        user_email = data.get("email", "").strip()
+        message = data.get("message", "").strip()
+
+        if not name or not user_email or not message:
+            return jsonify({"ok": False, "error": "Missing fields"}), 400
+
+        try:
+            send_contact_email(name, user_email, message)
+            return jsonify({"ok": True})
+        except Exception as exc:
+            server.logger.error("Contact email send failed: %s", exc)
             return jsonify({"ok": False, "error": "Failed to send email"}), 500
 
     @server.errorhandler(404)
