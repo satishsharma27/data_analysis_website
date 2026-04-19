@@ -8,8 +8,8 @@ from flask import jsonify, render_template, request
 
 load_dotenv()
 
-MAIL_USER = os.environ.get("MAIL_USER", "")
-MAIL_PASS = os.environ.get("MAIL_PASS", "")
+MAIL_USER = os.environ.get("MAIL_USER", "").strip()
+MAIL_PASS = os.environ.get("MAIL_PASS", "").strip()
 
 
 def send_audit_email(user_email: str, tools: str, problem: str) -> None:

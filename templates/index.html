@@ -274,8 +274,6 @@
         if (!emailInput.value.trim()) emailError.style.display = 'none';
     });
 
-    const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY_HERE'; // Replace with your Web3Forms access key
-
     document.getElementById('audit-request-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         if (!validateEmailDomain(emailInput.value)) {
@@ -289,20 +287,20 @@
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
 
-        const formData = new FormData();
-        formData.append('access_key', WEB3FORMS_KEY);
-        formData.append('subject', 'New Free Data Audit Request');
-        formData.append('Email Address', emailInput.value.trim());
-        formData.append('Tools Used', document.getElementById('tools').value);
-        formData.append('Biggest Problem', document.getElementById('problem').value.trim());
+        const payload = {
+            email:   emailInput.value.trim(),
+            tools:   document.getElementById('tools').value,
+            problem: document.getElementById('problem').value.trim(),
+        };
 
         try {
-            const res = await fetch('https://api.web3forms.com/submit', {
+            const res = await fetch('/submit-audit', {
                 method: 'POST',
-                body: formData,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
             });
             const json = await res.json();
-            if (json.success) {
+            if (json.ok) {
                 alert('Thank you! Your audit request has been received. I\'ll be in touch soon.');
                 e.target.reset();
                 document.getElementById('audit-form').classList.add('hidden');
