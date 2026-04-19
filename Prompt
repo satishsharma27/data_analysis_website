@@ -19,4 +19,47 @@ Mobile no : 8369645979
 
 Ensure the layout remains clean, professional, and consistent with the rest of the website design.
 
+4. correcting the View Data Analysis and View Automation page
+ 
+ 
+Update the View Data Analysis and View Automation pages with the following changes:
 
+Footer Section Update:
+At the bottom of both pages, replace the existing section with the same "Get in Touch" section used on the Home page.
+Ensure it includes:
+LinkedIn (clickable, redirecting to: www.linkedin.com/in/satsham
+)
+Email (non-clickable, displayed as: Email: sharma.satishkumar2709@gmail.com
+)
+Mobile Number: 8369645979
+Remove Existing Text:
+Remove the line: "Ready to make your data work for you?"
+Consistency:
+Ensure both Data Analysis and Automation pages have the same footer layout and styling as the Home page.
+Important:
+Do not make any changes to the Home page.
+
+
+www.linkedin.com/in/satish-sharma-104545403
+
+# new changes in website 
+
+make the changes in data-analysis page
+
+Three specific edits to make:
+1. Change the opening headline — right now it says "Stop guessing — plan with real numbers." Replace that entire section with:
+
+Eyebrow text (small, above headline): "Data Analyst · Mumbai"
+Main headline: "I turn your messy data into dashboards that drive decisions"
+Subtext: "6+ years experience. Dashboards, analysis & automation for D2C brands and startups. Starting at ₹15,000."
+
+2. Add two CTA buttons immediately below that subtext:
+
+Primary button (solid blue): "Get a free data audit" → links to your contact section or a Calendly link
+Secondary button (outline): "See my work" → links to your portfolio section
+
+3. Add 3 trust chips (small text with green dots) below the buttons:
+
+✓ 6+ years experience
+✓ Response in 24 hrs
+✓ Plotly Dash · Python · Excel
