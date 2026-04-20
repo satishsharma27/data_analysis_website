@@ -34,7 +34,7 @@ def trend_chart(df, category_filter="All"):
         line=dict(color=BLUE, width=2.5),
         marker=dict(size=4),
         fill="tozeroy",
-        fillcolor="rgba(55,138,221,0.1)",
+        fillcolor="rgba(79,142,247,0.1)",
         hovertemplate="<b>%{x|%b %d}</b><br>Revenue: $%{y:,.0f}<extra></extra>",
     ))
 
@@ -277,12 +277,13 @@ def init_dashboard(server, df):
                         [
                             html.Div(
                                 [
-                                    html.Label("Category:", style={"fontWeight": "600", "fontSize": "12px"}),
+                                    html.Label("Category:", style={"fontWeight": "600", "fontSize": "12px", "color": TEXT, "marginBottom": "6px", "display": "block"}),
                                     dcc.Dropdown(
                                         id="category-filter",
                                         options=category_options,
                                         value="All",
                                         style={"width": "100%"},
+                                        className="dark-dropdown",
                                     ),
                                 ],
                                 style={"marginRight": "15px", "flex": "1", "minWidth": "150px"},

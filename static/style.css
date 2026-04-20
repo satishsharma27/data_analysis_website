@@ -452,14 +452,10 @@ section {
 }
 
 .about-card {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.4rem;
-    align-items: start;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
-    padding: 2rem;
+    padding: 2rem 2.5rem;
 }
 
 .avatar {
@@ -490,9 +486,11 @@ section {
 }
 
 .about-bio {
-    font-size: 0.96rem;
+    font-size: 1rem;
     color: #b8c1d9;
-    line-height: 1.85;
+    line-height: 1.9;
+    max-width: 680px;
+    margin: 0;
 }
 
 .skills {
@@ -596,8 +594,8 @@ a.contact-linkedin:hover {
 }
 
 /* ── new contact section ── */
-#contact { text-align: left; background: none; border: none; padding: 3.5rem 2rem; }
-#contact .ct-wrap { max-width: 900px; margin: 0 auto; }
+#contact { text-align: left; background: none; border: none; padding: 3.5rem 0; }
+#contact .ct-wrap { width: 100%; }
 #contact .ct-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; }
 #contact .ct-tag { display:inline-block; font-size:11px; font-weight:500; padding:3px 10px; border-radius:99px; background:var(--color-background-info); color:var(--color-text-info); margin-bottom:12px; }
 #contact .ct-icon-box { width:36px; height:36px; border-radius:var(--border-radius-md); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px; }
