@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reallocation Plan · Kaya Skincare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .rp-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2.5rem 0 4rem;
+        }
+        .rp-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+        .rp-back:hover { color: #f0f0f0; }
+        .rp-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #2ec4a0;
+            background: rgba(46,196,160,0.1);
+            border: 1px solid rgba(46,196,160,0.25);
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 0.85rem;
+        }
+        .rp-title {
+            font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 0.5rem;
+            line-height: 1.25;
+        }
+        .rp-subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        /* Summary banner */
+        .rp-banner {
+            background: rgba(46,196,160,0.07);
+            border: 1px solid rgba(46,196,160,0.2);
+            border-radius: 12px;
+            padding: 1.1rem 1.4rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .rp-banner-stat { flex: 1; min-width: 120px; }
+        .rp-banner-label { font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+        .rp-banner-val { font-size: 20px; font-weight: 600; color: #2ec4a0; }
+        .rp-banner-note { font-size: 11px; color: #888; margin-top: 2px; }
+
+        /* Channel cards */
+        .rp-section-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 1.25rem;
+        }
+        .rp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 2rem;
+        }
+        @media (max-width: 720px) { .rp-grid { grid-template-columns: 1fr; } }
+
+        .rp-card {
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.25rem 1.35rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .rp-card-channel {
+            font-size: 11px;
+            font-weight: 500;
+            padding: 2px 9px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+            width: fit-content;
+        }
+        .rp-card-campaign { font-size: 14px; font-weight: 500; color: #f0f0f0; margin-bottom: 0.35rem; }
+        .rp-card-amount { font-size: 22px; font-weight: 600; color: #2ec4a0; margin-bottom: 0.2rem; }
+        .rp-card-prev { font-size: 12px; color: #555; margin-bottom: 0.85rem; }
+        .rp-card-divider { height: 1px; background: rgba(255,255,255,0.06); margin-bottom: 0.85rem; }
+        .rp-card-why-label { font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+        .rp-card-why { font-size: 13px; color: #888; line-height: 1.65; }
+        .rp-card-expected {
+            margin-top: auto;
+            padding-top: 0.85rem;
+            font-size: 12px;
+            color: #2ec4a0;
+            background: rgba(46,196,160,0.07);
+            border-radius: 8px;
+            padding: 8px 10px;
+            margin-top: 0.85rem;
+        }
+
+        /* Rationale block */
+        .rp-rationale {
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 1.75rem 2rem;
+            margin-bottom: 2rem;
+        }
+        .rp-rationale p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+        .rp-rationale p:last-child { margin-bottom: 0; }
+        .rp-rationale strong { color: #c8d0e0; font-weight: 500; }
+
+        /* CTA */
+        .rp-cta {
+            background: linear-gradient(135deg, rgba(79,142,247,0.08), rgba(46,196,160,0.06));
+            border: 1px solid rgba(79,142,247,0.2);
+            border-radius: 14px;
+            padding: 1.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .rp-cta h3 { font-size: 17px; font-weight: 500; color: #f0f0f0; margin-bottom: 0.3rem; }
+        .rp-cta p { font-size: 13px; color: #888; }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-logo">Satish Sharma</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/#services">Services</a>
+            <a href="/#portfolio">Portfolio</a>
+            <a href="/#about">About</a>
+            <a href="/#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="rp-wrap">
+
+            <a href="/underperforming-campaigns" class="rp-back">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Back to Underperforming Campaigns
+            </a>
+
+            <div class="rp-tag">Reallocation Plan</div>
+
+            <!-- Summary alert banner -->
+            <div style="background: rgba(46,196,160,0.08); border-left: 3px solid #2ec4a0; border-radius: 0 10px 10px 0; padding: 14px 18px; margin-bottom: 1.75rem;">
+                <div style="font-size: 14px; font-weight: 500; color: #2ec4a0; margin-bottom: 3px;">Reallocation plan: ₹47,200</div>
+                <div style="font-size: 13px; color: #888;">Move to 3 proven winners + 1 test. Projected blended ROAS: 3.9x → 4.2x</div>
+            </div>
+
+            <!-- Allocation cards — 2×2 grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 1.75rem;">
+
+                <!-- Vitamin C Serum -->
+                <div class="rp-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <div class="rp-card-campaign">Vitamin C Serum · Retargeting</div>
+                            <span class="rp-card-channel" style="background:#1a2a3a;color:#6ea8d8;">Meta</span>
+                        </div>
+                        <span style="font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: rgba(46,196,160,0.12); color: #2ec4a0;">5.23x</span>
+                    </div>
+                    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px;">
+                        <span style="font-size: 13px; color: #555;">₹18,400</span>
+                        <span style="font-size: 13px; color: #555;">→</span>
+                        <span style="font-size: 22px; font-weight: 600; color: #f0f0f0;">₹33,400</span>
+                        <span style="font-size: 11px; padding: 2px 7px; border-radius: 20px; background: rgba(46,196,160,0.1); color: #2ec4a0;">+₹15,000</span>
+                    </div>
+                    <div class="rp-card-divider"></div>
+                    <div class="rp-card-why">Retargeting pool is warm and under-spent. Current audience only seeing ads 1.8x/week — can push to 3x without fatigue. Expected additional revenue: ₹78,000.</div>
+                </div>
+
+                <!-- Brand search -->
+                <div class="rp-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <div class="rp-card-campaign">Brand search · High intent</div>
+                            <span class="rp-card-channel" style="background:#1e1a3a;color:#9b94e0;">Google</span>
+                        </div>
+                        <span style="font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: rgba(46,196,160,0.12); color: #2ec4a0;">4.93x</span>
+                    </div>
+                    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px;">
+                        <span style="font-size: 13px; color: #555;">₹22,100</span>
+                        <span style="font-size: 13px; color: #555;">→</span>
+                        <span style="font-size: 22px; font-weight: 600; color: #f0f0f0;">₹34,300</span>
+                        <span style="font-size: 11px; padding: 2px 7px; border-radius: 20px; background: rgba(46,196,160,0.1); color: #2ec4a0;">+₹12,200</span>
+                    </div>
+                    <div class="rp-card-divider"></div>
+                    <div class="rp-card-why">Currently capped by daily budget — missing 23% of branded searches ("kaya skincare", "kaya vitamin c"). These are buyers already looking for you. Cheapest conversions you'll ever get.</div>
+                </div>
+
+                <!-- Skincare creators -->
+                <div class="rp-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <div class="rp-card-campaign">Skincare creators · Influencer</div>
+                            <span class="rp-card-channel" style="background:#2a1a20;color:#d08090;">Influencer</span>
+                        </div>
+                        <span style="font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: rgba(46,196,160,0.12); color: #2ec4a0;">4.40x</span>
+                    </div>
+                    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px;">
+                        <span style="font-size: 13px; color: #555;">₹45,000</span>
+                        <span style="font-size: 13px; color: #555;">→</span>
+                        <span style="font-size: 22px; font-weight: 600; color: #f0f0f0;">₹57,000</span>
+                        <span style="font-size: 11px; padding: 2px 7px; border-radius: 20px; background: rgba(46,196,160,0.1); color: #2ec4a0;">+₹12,000</span>
+                    </div>
+                    <div class="rp-card-divider"></div>
+                    <div class="rp-card-why">Double down on the 3 creators who drove 80% of last cycle's influencer revenue. Unlike the micro-influencer bundle, these have proven skincare audiences and 2.8% conversion rate on coupon codes.</div>
+                </div>
+
+                <!-- Sunscreen UGC test -->
+                <div class="rp-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+                        <div>
+                            <div class="rp-card-campaign">New: Sunscreen · UGC test</div>
+                            <span class="rp-card-channel" style="background:#1a2a3a;color:#6ea8d8;">Meta</span>
+                        </div>
+                        <span style="font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: rgba(240,180,60,0.12); color: #d4a030;">Test</span>
+                    </div>
+                    <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px;">
+                        <span style="font-size: 13px; color: #555;">₹0</span>
+                        <span style="font-size: 13px; color: #555;">→</span>
+                        <span style="font-size: 22px; font-weight: 600; color: #f0f0f0;">₹8,000</span>
+                        <span style="font-size: 11px; padding: 2px 7px; border-radius: 20px; background: rgba(46,196,160,0.1); color: #2ec4a0;">+₹8,000</span>
+                    </div>
+                    <div class="rp-card-divider"></div>
+                    <div class="rp-card-why">Small test budget for user-generated content creatives on summer sunscreen range. Seasonal demand spiking on Google Trends. Cap at 2 weeks, kill if ROAS &lt; 2.0x.</div>
+                </div>
+
+            </div>
+
+            <!-- Projected impact -->
+            <div style="background: #151515; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 1.75rem;">
+                <div class="rp-section-label" style="margin-bottom: 1rem;">Projected impact · next 30 days</div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+                    <div>
+                        <div style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Additional revenue</div>
+                        <div style="font-size: 20px; font-weight: 600; color: #2ec4a0;">+₹1,85,000</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Blended ROAS</div>
+                        <div style="font-size: 20px; font-weight: 600; color: #f0f0f0;">4.2x</div>
+                        <div style="font-size: 11px; color: #555; margin-top: 2px;">up from 3.4x</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 11px; color: #555; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">Blended CAC</div>
+                        <div style="font-size: 20px; font-weight: 600; color: #f0f0f0;">₹348</div>
+                        <div style="font-size: 11px; color: #555; margin-top: 2px;">down from ₹412</div>
+                    </div>
+                </div>
+                <div style="font-size: 12px; color: #555; margin-top: 1rem;">Total ad budget stays at ₹3,08,500. Only the allocation changes.</div>
+            </div>
+
+            <!-- Rationale -->
+            <div class="rp-rationale">
+                <p>Here's the logic behind how I split the ₹47,200:</p>
+                <p>The rule I used: <strong>put money where marginal ROAS is highest, not where current ROAS is highest.</strong></p>
+                <p>Those two things sound the same but they're not. A campaign sitting at 5.2x ROAS today might only hold 3x if you triple its budget — diminishing returns. So the question isn't "which campaign has the best ROAS?" It's <strong>"which campaign can absorb more money without its ROAS collapsing?"</strong></p>
+                <p>That's why the split isn't evenly distributed across the top 3:</p>
+                <p>
+                    <strong>Retargeting got the biggest chunk (₹15,000)</strong> because warm audiences are the cheapest conversions and it's currently under-frequency — room to grow.<br><br>
+                    <strong>Brand search got ₹12,200</strong> because branded keyword traffic is capped by budget, not demand. Every rupee here captures someone already searching for Kaya by name. You literally can't find cheaper customers.<br><br>
+                    <strong>Proven influencers got ₹12,000</strong> instead of throwing more money at random creators.<br><br>
+                    <strong>₹8,000 goes to a test</strong> — always reserve 15–20% of reallocations for testing new creatives or angles. Without tests, the account stagnates.
+                </p>
+            </div>
+
+            <!-- CTA -->
+            <div class="rp-cta">
+                <div>
+                    <h3>Want this kind of analysis for your campaigns?</h3>
+                    <p>I'll map out exactly where your budget is leaking and where to move it.</p>
+                </div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                    <button onclick="window.open('https://calendly.com/sharma-satishkumar2709/30min','_blank')" class="btn-primary">Book a free call</button>
+                    <a href="/#contact" class="btn-outline">Send a message</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <span>© 2026 Satish Sharma</span>
+    </footer>
+
+</body>
+</html>

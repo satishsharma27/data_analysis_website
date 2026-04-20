@@ -67,6 +67,14 @@ def register_routes(server):
     def marketing_portfolio():
         return render_template("marketing-portfolio.html")
 
+    @server.route("/underperforming-campaigns")
+    def underperforming_campaigns():
+        return render_template("underperforming-campaigns.html")
+
+    @server.route("/reallocation-plan")
+    def reallocation_plan():
+        return render_template("reallocation-plan.html")
+
     @server.route("/submit-audit", methods=["POST"])
     def submit_audit():
         data = request.get_json(silent=True) or {}

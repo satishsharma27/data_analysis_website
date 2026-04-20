@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underperforming Campaigns · Kaya Skincare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .uc-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2.5rem 0 4rem;
+        }
+        .uc-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+        .uc-back:hover { color: #f0f0f0; }
+        .uc-header {
+            margin-bottom: 1.75rem;
+        }
+        .uc-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #e8714a;
+            background: rgba(232,113,74,0.1);
+            border: 1px solid rgba(232,113,74,0.25);
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 0.85rem;
+        }
+        .uc-title {
+            font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 0.5rem;
+            line-height: 1.25;
+        }
+        .uc-subtitle {
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* Dashboard embed container */
+        .uc-dashboard {
+            --color-background-primary: #151515;
+            --color-background-secondary: #1e1e1e;
+            --color-border-tertiary: rgba(255,255,255,0.08);
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #888;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Analyst breakdown */
+        .uc-breakdown {
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 1.75rem 2rem;
+            margin-bottom: 2rem;
+        }
+        .uc-breakdown-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        .uc-breakdown-intro {
+            font-size: 15px;
+            color: #c8d0e0;
+            margin-bottom: 1.5rem;
+            line-height: 1.65;
+        }
+        .uc-breakdown-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .uc-breakdown-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .uc-breakdown-num {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(232,113,74,0.12);
+            border: 1px solid rgba(232,113,74,0.25);
+            color: #e8714a;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+        .uc-breakdown-text {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.7;
+        }
+        .uc-breakdown-text strong {
+            color: #c8d0e0;
+            font-weight: 500;
+        }
+
+        /* CTA */
+        .uc-cta {
+            background: linear-gradient(135deg, rgba(79,142,247,0.08), rgba(46,196,160,0.06));
+            border: 1px solid rgba(79,142,247,0.2);
+            border-radius: 14px;
+            padding: 1.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .uc-cta h3 {
+            font-size: 17px;
+            font-weight: 500;
+            color: #f0f0f0;
+            margin-bottom: 0.3rem;
+        }
+        .uc-cta p {
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-logo">Satish Sharma</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/#services">Services</a>
+            <a href="/#portfolio">Portfolio</a>
+            <a href="/#about">About</a>
+            <a href="/#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="uc-wrap">
+
+            <a href="/marketing-portfolio" class="uc-back">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Back to Dashboard
+            </a>
+
+            <div class="uc-header">
+                <div class="uc-tag">Wasted Spend Alert</div>
+                <h1 class="uc-title">4 Campaigns Below Break-Even</h1>
+                <p class="uc-subtitle">Kaya Skincare · Oct 2025 · ₹47,200 in identified wasted spend</p>
+            </div>
+
+            <!-- Campaign cards from reference -->
+            <div class="uc-dashboard">
+                {% include 'underperforming_campaigns_embed.html' %}
+            </div>
+
+            <!-- Analyst breakdown -->
+            <div class="uc-breakdown">
+                <div class="uc-breakdown-label">Analyst breakdown</div>
+                <p class="uc-breakdown-intro">There's your breakdown. The short version of why each one should be paused:</p>
+                <ul class="uc-breakdown-list">
+                    <li class="uc-breakdown-item">
+                        <span class="uc-breakdown-num">1</span>
+                        <p class="uc-breakdown-text"><strong>Anti-aging · Interest stack</strong> — wrong audience type. High-AOV skincare doesn't convert from cold interest targeting. These people need to have already shown intent before you spend money on them.</p>
+                    </li>
+                    <li class="uc-breakdown-item">
+                        <span class="uc-breakdown-num">2</span>
+                        <p class="uc-breakdown-text"><strong>Acne range · Broad prospecting</strong> — classic ad fatigue. A frequency of 4.8 means the same person has seen the same creative almost 5 times. CTR has collapsed from 2.1% to 0.6% as a result.</p>
+                    </li>
+                    <li class="uc-breakdown-item">
+                        <span class="uc-breakdown-num">3</span>
+                        <p class="uc-breakdown-text"><strong>Micro-influencer bundle</strong> — wrong niche. The influencers had decent reach but their followers weren't skincare buyers. Clicks don't equal purchases when the audience has no product intent.</p>
+                    </li>
+                    <li class="uc-breakdown-item">
+                        <span class="uc-breakdown-num">4</span>
+                        <p class="uc-breakdown-text"><strong>YouTube pre-roll</strong> — wrong format for the goal. Pre-roll is a brand awareness play, not a sales driver. If you're measuring it by ROAS, it will always lose. Either change the format goal or move the budget to Google Shopping where the buyer intent already exists.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CTA -->
+            <div class="uc-cta">
+                <div>
+                    <h3>Want this level of clarity on your campaigns?</h3>
+                    <p>I'll audit your ad accounts and show you exactly where your budget is leaking.</p>
+                </div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                    <button onclick="window.open('https://calendly.com/sharma-satishkumar2709/30min','_blank')" class="btn-primary">Book a free call</button>
+                    <a href="/#contact" class="btn-outline">Send a message</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <span>© 2026 Satish Sharma</span>
+    </footer>
+
+</body>
+</html>
