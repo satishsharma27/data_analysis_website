@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threadly — Sales Analytics Dashboard · Satish Sharma</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .mp-hero {
+            padding: 3.5rem 0 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .mp-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+        .mp-back:hover { color: #f0f0f0; }
+        .mp-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #4f8ef7;
+            background: rgba(79,142,247,0.1);
+            border: 1px solid rgba(79,142,247,0.2);
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+        .mp-title {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 0.6rem;
+            line-height: 1.25;
+        }
+        .mp-subtitle {
+            font-size: 15px;
+            color: #888;
+            margin-bottom: 1.75rem;
+        }
+        .mp-meta-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .mp-meta-pill {
+            font-size: 12px;
+            color: #888;
+            background: #1c1c1c;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .mp-outcomes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 2.5rem 0;
+        }
+        @media (max-width: 700px) {
+            .mp-outcomes { grid-template-columns: repeat(2, 1fr); }
+        }
+        .mp-outcome-card {
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.1rem 1.25rem;
+        }
+        .mp-outcome-label {
+            font-size: 11px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.4rem;
+        }
+        .mp-outcome-val {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+        }
+        .mp-outcome-delta {
+            font-size: 12px;
+            color: #2ec4a0;
+        }
+        .mp-outcome-delta.neg { color: #e8714a; }
+
+        .cs-section {
+            padding: 2.5rem 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .cs-section-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        .cs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.25rem;
+        }
+        @media (max-width: 800px) {
+            .cs-grid { grid-template-columns: 1fr; }
+        }
+        .cs-block {
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.4rem 1.5rem;
+        }
+        .cs-block-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.85rem;
+            font-size: 16px;
+        }
+        .cs-block-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 0.65rem;
+        }
+        .cs-block-body {
+            font-size: 13.5px;
+            color: #888;
+            line-height: 1.7;
+        }
+        .cs-block-body strong { color: #c8d0e0; font-weight: 500; }
+
+        .cs-result-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .cs-result-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13.5px;
+            color: #888;
+            line-height: 1.6;
+        }
+        .cs-result-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #2ec4a0;
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        .mp-dashboard-wrap {
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        .mp-dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .mp-dashboard-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: #f0f0f0;
+        }
+        .mp-dashboard-note {
+            font-size: 12px;
+            color: #555;
+        }
+
+        #sp-dashboard-content {
+            --color-background-primary: #1c1c1c;
+            --color-background-secondary: #232323;
+            --color-background-success: rgba(15,110,86,0.15);
+            --color-background-warning: rgba(239,159,39,0.12);
+            --color-background-info: rgba(79,142,247,0.15);
+            --color-text-success: #2ec4a0;
+            --color-text-danger: #e8714a;
+            --color-text-warning: #EF9F27;
+            --color-text-info: #4f8ef7;
+            --color-border-tertiary: rgba(255,255,255,0.08);
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #888;
+            --color-text-tertiary: #555;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+        #sp-dashboard-content select,
+        #sp-dashboard-content button {
+            background: #2a2a2a;
+            color: #c8d0e0;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 5px 10px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        /* Cohort reader block */
+        .cohort-guide {
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2.5rem 0 0;
+        }
+        .cohort-guide-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        .cohort-guide-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #f0f0f0;
+            margin-bottom: 0.75rem;
+        }
+        .cohort-guide-body {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.75;
+        }
+        .cohort-guide-body strong { color: #c8d0e0; font-weight: 500; }
+        .cohort-guide-insights {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .cohort-insight {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            font-size: 13.5px;
+            color: #888;
+            line-height: 1.6;
+        }
+        .cohort-insight-num {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(79,142,247,0.15);
+            color: #4f8ef7;
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .mp-cta {
+            background: linear-gradient(135deg, rgba(79,142,247,0.08), rgba(46,196,160,0.06));
+            border: 1px solid rgba(79,142,247,0.2);
+            border-radius: 14px;
+            padding: 2rem 2.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2.5rem 0;
+        }
+        .mp-cta-text h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #f0f0f0;
+            margin-bottom: 0.35rem;
+        }
+        .mp-cta-text p {
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-logo">Satish Sharma</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/#services">Services</a>
+            <a href="/#portfolio">Portfolio</a>
+            <a href="/#about">About</a>
+            <a href="/#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero -->
+        <section class="mp-hero">
+            <a href="/#portfolio" class="mp-back">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Back to Portfolio
+            </a>
+            <div class="mp-tag">Sales Analytics</div>
+            <h1 class="mp-title">Threadly — Sales Analytics Dashboard</h1>
+            <p class="mp-subtitle">D2C fashion brand · Revenue, product margin, cohort retention &amp; 30-day forecast · FY26</p>
+            <div class="mp-meta-row">
+                <span class="mp-meta-pill">Python</span>
+                <span class="mp-meta-pill">Chart.js</span>
+                <span class="mp-meta-pill">Cohort Analysis</span>
+                <span class="mp-meta-pill">Revenue Forecasting</span>
+                <span class="mp-meta-pill">SKU Margin Analysis</span>
+                <span class="mp-meta-pill">Apr 2026</span>
+            </div>
+        </section>
+
+        <!-- Outcome metrics -->
+        <div class="mp-outcomes">
+            <div class="mp-outcome-card">
+                <div class="mp-outcome-label">MTD revenue</div>
+                <div class="mp-outcome-val">₹87.4L</div>
+                <div class="mp-outcome-delta">↑ 12.3% vs last month</div>
+            </div>
+            <div class="mp-outcome-card">
+                <div class="mp-outcome-label">YoY growth</div>
+                <div class="mp-outcome-val">+47.2%</div>
+                <div class="mp-outcome-delta">vs Apr 2025</div>
+            </div>
+            <div class="mp-outcome-card">
+                <div class="mp-outcome-label">Ad spend shifted</div>
+                <div class="mp-outcome-val">₹4L/mo</div>
+                <div class="mp-outcome-delta">to high-margin SKUs</div>
+            </div>
+            <div class="mp-outcome-card">
+                <div class="mp-outcome-label">Contribution margin</div>
+                <div class="mp-outcome-val">+28%</div>
+                <div class="mp-outcome-delta">after reallocation</div>
+            </div>
+        </div>
+
+        <!-- Live Dashboard -->
+        <div class="mp-dashboard-wrap">
+            <div class="mp-dashboard-header">
+                <div class="mp-dashboard-title">Live dashboard preview</div>
+                <div class="mp-dashboard-note">FY26 · updated 19 Apr 2026</div>
+            </div>
+            <div id="sp-dashboard-content">
+                {% include 'threadly_sales_analytics_embed.html' %}
+            </div>
+        </div>
+
+        <!-- How to read the cohort chart -->
+        <div class="cohort-guide">
+            <div class="cohort-guide-label">Dashboard guide</div>
+            <div class="cohort-guide-title">How to read the cohort retention chart</div>
+            <div class="cohort-guide-body">
+                There's your Threadly dashboard — one scrollable page, all five sections the brief called for.
+                <br><br>
+                Each row is everyone who made their <strong>first purchase in that month</strong>. M0 is always 100% (by definition — that's when they first bought). M1 through M11 show what % of that cohort came back and ordered in each subsequent month. <strong>Darker green = better retention.</strong>
+            </div>
+            <div class="cohort-guide-insights">
+                <div class="cohort-insight">
+                    <div class="cohort-insight-num">1</div>
+                    <span>The <strong>Sep–Nov 2025 cohorts retain meaningfully better</strong> than earlier ones — something changed in acquisition quality, worth investigating.</span>
+                </div>
+                <div class="cohort-insight">
+                    <div class="cohort-insight-num">2</div>
+                    <span>By month 6, cohorts stabilize around <strong>20–25%</strong> — that's Threadly's "true" loyal customer rate and what LTV should be modeled on.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study -->
+        <section class="cs-section">
+            <div class="cs-section-label">Case study</div>
+            <div class="cs-grid">
+
+                <!-- The Problem -->
+                <div class="cs-block">
+                    <div class="cs-block-icon" style="background:rgba(232,113,74,0.12);">🔥</div>
+                    <div class="cs-block-title">The problem</div>
+                    <div class="cs-block-body">
+                        A D2C fashion brand doing <strong>₹87L/month</strong> couldn't tell which SKUs were actually making money.
+                        <br><br>
+                        Revenue reports showed the bestselling products — but margin, cohort retention, and geographic concentration were invisible. The team was optimising for top-line while contribution margin quietly eroded.
+                        <br><br>
+                        Without a unified view, every ad-spend decision was a guess.
+                    </div>
+                </div>
+
+                <!-- What I built -->
+                <div class="cs-block">
+                    <div class="cs-block-icon" style="background:rgba(79,142,247,0.12);">⚙️</div>
+                    <div class="cs-block-title">What I built</div>
+                    <ul class="cs-result-list">
+                        <li class="cs-result-item"><span class="cs-result-dot" style="background:#4f8ef7;"></span><span><strong>SKU-level margin analysis</strong> that surfaces the 10 highest-revenue and 10 highest-margin products side by side</span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot" style="background:#4f8ef7;"></span><span><strong>Cohort retention heatmap</strong> tracking every first-time buyer cohort through 12 months of repeat purchase behaviour</span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot" style="background:#4f8ef7;"></span><span><strong>State-level revenue breakdown</strong> with fastest-growing cities and highest-AOV markets called out</span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot" style="background:#4f8ef7;"></span><span><strong>30-day Prophet forecast</strong> with 80% confidence band — ₹94–108L projected for the next 30 days</span></li>
+                    </ul>
+                </div>
+
+                <!-- The outcome -->
+                <div class="cs-block">
+                    <div class="cs-block-icon" style="background:rgba(46,196,160,0.12);">📈</div>
+                    <div class="cs-block-title">The outcome</div>
+                    <ul class="cs-result-list">
+                        <li class="cs-result-item"><span class="cs-result-dot"></span><span>Discovered the bestseller tee had only <strong>14% margin</strong> while Linen Kurta Set had <strong>58%</strong> — ranked #7 in revenue</span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot"></span><span>Shifted <strong>₹4L/month ad spend</strong> toward high-margin SKUs</span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot"></span><span>Contribution margin improved <strong>by 28%</strong></span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot"></span><span>Identified Sep–Nov 2025 as a cohort quality inflection point, enabling the team to <strong>double down on acquisition channels</strong> that were working</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="mp-cta">
+            <div class="mp-cta-text">
+                <h3>Want a dashboard like this for your brand?</h3>
+                <p>I'll review your current setup and show you exactly what's possible — no pitch, just clarity.</p>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <button onclick="window.open('https://calendly.com/sharma-satishkumar2709/30min','_blank')" class="btn-primary">Book a free call</button>
+                <a href="/#contact" class="btn-outline">Send a message</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <span>© 2026 Satish Sharma</span>
+    </footer>
+
+</body>
+</html>

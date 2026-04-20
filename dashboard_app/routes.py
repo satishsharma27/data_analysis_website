@@ -67,6 +67,10 @@ def register_routes(server):
     def marketing_portfolio():
         return render_template("marketing-portfolio.html")
 
+    @server.route("/sales-portfolio")
+    def sales_portfolio():
+        return render_template("sales-portfolio.html")
+
     @server.route("/underperforming-campaigns")
     def underperforming_campaigns():
         return render_template("underperforming-campaigns.html")

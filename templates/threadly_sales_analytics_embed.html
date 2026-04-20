@@ -1,0 +1,391 @@
+<h2 class="sr-only">Threadly sales analytics dashboard showing revenue overview, product performance, cohort retention, geographic revenue, and 30-day forecast.</h2>
+
+<div style="padding: 1rem 0;">
+
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 12px;">
+  <div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <div style="width: 32px; height: 32px; border-radius: var(--border-radius-md); background: var(--color-background-info); display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 14px; color: var(--color-text-info);">T</div>
+      <h1 style="font-size: 22px; font-weight: 500; margin: 0;">Threadly — sales analytics</h1>
+    </div>
+    <p style="font-size: 13px; color: var(--color-text-secondary); margin: 6px 0 0 42px;">D2C fashion · FY26 · updated 19 Apr 2026, 23:45 IST</p>
+  </div>
+  <div style="display: flex; gap: 8px;">
+    <select style="font-size: 13px;">
+      <option>Last 30 days</option>
+      <option>Last 90 days</option>
+      <option>FY26 MTD</option>
+      <option>FY26 YTD</option>
+    </select>
+    <button>Export CSV</button>
+  </div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 2rem;">
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">MTD revenue</div>
+    <div style="font-size: 24px; font-weight: 500;">₹87.4L</div>
+    <div style="font-size: 12px; color: var(--color-text-success); margin-top: 4px;">▲ 12.3% vs last month</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">YoY growth</div>
+    <div style="font-size: 24px; font-weight: 500;">+47.2%</div>
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-top: 4px;">vs Apr 2025</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Avg order value</div>
+    <div style="font-size: 24px; font-weight: 500;">₹2,143</div>
+    <div style="font-size: 12px; color: var(--color-text-success); margin-top: 4px;">▲ ₹187 vs L30D</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Repeat purchase rate</div>
+    <div style="font-size: 24px; font-weight: 500;">31.8%</div>
+    <div style="font-size: 12px; color: var(--color-text-danger); margin-top: 4px;">▼ 1.4 pts vs L30D</div>
+  </div>
+</div>
+
+<!-- Product performance -->
+<div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 4px;">
+  <h2 style="font-size: 18px; font-weight: 500; margin: 0;">Product performance</h2>
+  <span style="font-size: 12px; color: var(--color-text-tertiary);">top 10 SKUs</span>
+</div>
+<p style="font-size: 13px; color: var(--color-text-secondary); margin: 4px 0 14px;">Revenue leaders and margin leaders rarely overlap — only 3 SKUs appear in both lists.</p>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 2rem;">
+  <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 10px; font-weight: 500;">By revenue</div>
+    <div style="position: relative; width: 100%; height: 320px;">
+      <canvas id="revChart" role="img" aria-label="Top 10 SKUs by revenue, horizontal bar chart">Essential Oversized Tee leads at 12.4L revenue.</canvas>
+    </div>
+  </div>
+  <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 10px; font-weight: 500;">By margin %</div>
+    <div style="position: relative; width: 100%; height: 320px;">
+      <canvas id="marginChart" role="img" aria-label="Top 10 SKUs by margin percentage, horizontal bar chart">Linen Kurta Set tops margin at 58 percent.</canvas>
+    </div>
+  </div>
+</div>
+
+<div style="background: var(--color-background-warning); border-radius: var(--border-radius-md); padding: 12px 14px; margin-bottom: 2rem; display: flex; gap: 10px; align-items: flex-start;">
+  <div style="width: 18px; height: 18px; border-radius: 50%; background: var(--color-background-primary); color: var(--color-text-warning); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; flex-shrink: 0; margin-top: 1px;">!</div>
+  <div style="font-size: 13px; color: var(--color-text-warning); line-height: 1.6;">
+    <span style="font-weight: 500;">Bestseller trap —</span> Essential Oversized Tee is #1 in revenue but only 14% margin. Linen Kurta Set ranks #7 in revenue with 58% margin. Shifting ad spend toward higher-margin SKUs is the single biggest profit lever on this page.
+  </div>
+</div>
+
+<!-- Cohort retention -->
+<div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 4px;">
+  <h2 style="font-size: 18px; font-weight: 500; margin: 0;">Cohort retention by signup month</h2>
+  <span style="font-size: 12px; color: var(--color-text-tertiary);">% of cohort ordering in month N</span>
+</div>
+<p style="font-size: 13px; color: var(--color-text-secondary); margin: 4px 0 14px;">Each row is a cohort of first-time buyers. Darker = more of them came back that month.</p>
+
+<div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 2rem; overflow-x: auto;">
+  <table id="cohortTable" style="width: 100%; border-collapse: separate; border-spacing: 2px; font-size: 12px; table-layout: fixed;">
+    <thead>
+      <tr>
+        <th style="text-align: left; color: var(--color-text-secondary); font-weight: 500; padding: 4px 8px; width: 110px;">Cohort</th>
+        <th style="text-align: right; color: var(--color-text-secondary); font-weight: 500; padding: 4px 8px; width: 60px;">Size</th>
+        <th id="cohortHeaders" colspan="12" style="padding: 0;"></th>
+      </tr>
+    </thead>
+    <tbody id="cohortBody"></tbody>
+  </table>
+</div>
+
+<!-- Geography -->
+<div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 4px;">
+  <h2 style="font-size: 18px; font-weight: 500; margin: 0;">Revenue by state</h2>
+  <span style="font-size: 12px; color: var(--color-text-tertiary);">L30D · in lakhs ₹</span>
+</div>
+<p style="font-size: 13px; color: var(--color-text-secondary); margin: 4px 0 14px;">Maharashtra, Karnataka, and Delhi NCR drive 54% of revenue. Tier-2 cities (Pune, Jaipur, Indore) are growing fastest.</p>
+
+<div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem; margin-bottom: 2rem;">
+  <div style="position: relative; width: 100%; height: 360px;">
+    <canvas id="geoChart" role="img" aria-label="Revenue by Indian state, horizontal bar chart">Maharashtra leads at 21 lakhs.</canvas>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 0.5px solid var(--color-border-tertiary);">
+    <div style="font-size: 12px;"><span style="color: var(--color-text-secondary);">Top city:</span> <span style="font-weight: 500;">Mumbai (₹9.2L)</span></div>
+    <div style="font-size: 12px;"><span style="color: var(--color-text-secondary);">Fastest growing:</span> <span style="font-weight: 500;">Pune (+34%)</span></div>
+    <div style="font-size: 12px;"><span style="color: var(--color-text-secondary);">Highest AOV:</span> <span style="font-weight: 500;">Delhi (₹2,840)</span></div>
+    <div style="font-size: 12px;"><span style="color: var(--color-text-secondary);">Repeat rate lead:</span> <span style="font-weight: 500;">Bengaluru (38%)</span></div>
+  </div>
+</div>
+
+<!-- Forecast -->
+<div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 4px;">
+  <h2 style="font-size: 18px; font-weight: 500; margin: 0;">30-day revenue forecast</h2>
+  <span style="font-size: 12px; color: var(--color-text-tertiary);">Prophet model · 80% CI</span>
+</div>
+<p style="font-size: 13px; color: var(--color-text-secondary); margin: 4px 0 14px;">Projected ₹94–108L over next 30 days. Shaded band shows 80% confidence interval.</p>
+
+<div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem; margin-bottom: 1rem;">
+  <div style="position: relative; width: 100%; height: 280px;">
+    <canvas id="forecastChart" role="img" aria-label="Daily revenue actuals and 30-day forecast with confidence band">Actuals trend upward, forecast continues growth with widening uncertainty.</canvas>
+  </div>
+  <div style="display: flex; gap: 20px; margin-top: 12px; padding-top: 12px; border-top: 0.5px solid var(--color-border-tertiary); flex-wrap: wrap;">
+    <div><div style="font-size: 12px; color: var(--color-text-secondary);">Point estimate</div><div style="font-size: 15px; font-weight: 500;">₹101.2L</div></div>
+    <div><div style="font-size: 12px; color: var(--color-text-secondary);">Low (P10)</div><div style="font-size: 15px; font-weight: 500;">₹94.1L</div></div>
+    <div><div style="font-size: 12px; color: var(--color-text-secondary);">High (P90)</div><div style="font-size: 15px; font-weight: 500;">₹108.4L</div></div>
+    <div><div style="font-size: 12px; color: var(--color-text-secondary);">vs last 30d actual</div><div style="font-size: 15px; font-weight: 500; color: var(--color-text-success);">+15.8%</div></div>
+  </div>
+</div>
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+(function() {
+  const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const textMuted = isDark ? 'rgba(255,255,255,0.65)' : 'rgba(0,0,0,0.6)';
+  const gridColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)';
+
+  // ===== Revenue chart =====
+  const revSkus = [
+    ['Essential Oversized Tee', 12.4],
+    ['Cargo Pants Classic', 9.8],
+    ['Hooded Sweatshirt', 8.2],
+    ['Denim Straight Jeans', 7.6],
+    ['Linen Shirt Summer', 6.9],
+    ['Graphic Crew Tee', 5.8],
+    ['Linen Kurta Set', 5.1],
+    ['Bomber Jacket Lite', 4.7],
+    ['Joggers Everyday', 4.2],
+    ['Polo Knit Pique', 3.9]
+  ];
+  new Chart(document.getElementById('revChart'), {
+    type: 'bar',
+    data: {
+      labels: revSkus.map(r => r[0]),
+      datasets: [{
+        data: revSkus.map(r => r[1]),
+        backgroundColor: '#378ADD',
+        borderRadius: 3,
+        barThickness: 14
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (c) => '₹' + c.parsed.x.toFixed(1) + 'L' } }
+      },
+      scales: {
+        x: { grid: { color: gridColor }, ticks: { color: textMuted, callback: (v) => '₹' + v + 'L' } },
+        y: { grid: { display: false }, ticks: { color: textMuted, font: { size: 11 } } }
+      }
+    }
+  });
+
+  // ===== Margin chart =====
+  const marginSkus = [
+    ['Linen Kurta Set', 58],
+    ['Silk Scarf Printed', 54],
+    ['Linen Shirt Summer', 49],
+    ['Handloom Stole', 47],
+    ['Embroidered Tote', 44],
+    ['Bomber Jacket Lite', 38],
+    ['Denim Straight Jeans', 31],
+    ['Polo Knit Pique', 28],
+    ['Hooded Sweatshirt', 22],
+    ['Essential Oversized Tee', 14]
+  ];
+  new Chart(document.getElementById('marginChart'), {
+    type: 'bar',
+    data: {
+      labels: marginSkus.map(r => r[0]),
+      datasets: [{
+        data: marginSkus.map(r => r[1]),
+        backgroundColor: marginSkus.map(r => r[1] >= 40 ? '#1D9E75' : r[1] >= 25 ? '#EF9F27' : '#E24B4A'),
+        borderRadius: 3,
+        barThickness: 14
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (c) => c.parsed.x + '% margin' } }
+      },
+      scales: {
+        x: { grid: { color: gridColor }, ticks: { color: textMuted, callback: (v) => v + '%' }, max: 65 },
+        y: { grid: { display: false }, ticks: { color: textMuted, font: { size: 11 } } }
+      }
+    }
+  });
+
+  // ===== Cohort retention heatmap =====
+  const cohorts = [
+    { label: 'May 2025', size: 1240, vals: [100, 42, 31, 26, 23, 21, 19, 18, 17, 16, 15, 15] },
+    { label: 'Jun 2025', size: 1380, vals: [100, 45, 33, 28, 25, 22, 20, 19, 18, 17, 16, null] },
+    { label: 'Jul 2025', size: 1520, vals: [100, 44, 32, 27, 24, 22, 20, 19, 18, 17, null, null] },
+    { label: 'Aug 2025', size: 1610, vals: [100, 47, 35, 29, 26, 23, 21, 20, 19, null, null, null] },
+    { label: 'Sep 2025', size: 1890, vals: [100, 51, 38, 32, 28, 25, 23, 22, null, null, null, null] },
+    { label: 'Oct 2025', size: 2340, vals: [100, 54, 41, 34, 30, 27, 25, null, null, null, null, null] },
+    { label: 'Nov 2025', size: 2780, vals: [100, 56, 42, 35, 31, 28, null, null, null, null, null, null] },
+    { label: 'Dec 2025', size: 2410, vals: [100, 49, 36, 30, 27, null, null, null, null, null, null, null] },
+    { label: 'Jan 2026', size: 2180, vals: [100, 48, 36, 31, null, null, null, null, null, null, null, null] },
+    { label: 'Feb 2026', size: 2310, vals: [100, 52, 39, null, null, null, null, null, null, null, null, null] },
+    { label: 'Mar 2026', size: 2560, vals: [100, 54, null, null, null, null, null, null, null, null, null, null] },
+    { label: 'Apr 2026', size: 1890, vals: [100, null, null, null, null, null, null, null, null, null, null, null] }
+  ];
+
+  const colorForPct = (v) => {
+    if (v == null) return 'transparent';
+    if (v >= 90) return '#0F6E56';
+    if (v >= 50) return '#1D9E75';
+    if (v >= 35) return '#5DCAA5';
+    if (v >= 25) return '#9FE1CB';
+    if (v >= 15) return '#E1F5EE';
+    return '#F1EFE8';
+  };
+  const textForPct = (v) => {
+    if (v == null) return 'transparent';
+    if (v >= 50) return '#ffffff';
+    return '#04342C';
+  };
+
+  const headerRow = document.getElementById('cohortHeaders');
+  const headerHtml = Array.from({length: 12}, (_, i) =>
+    `<th style="font-size: 11px; color: ${textMuted}; font-weight: 400; padding: 4px 0; width: 32px;">M${i}</th>`
+  ).join('');
+  headerRow.outerHTML = headerHtml;
+
+  const body = document.getElementById('cohortBody');
+  cohorts.forEach(c => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="padding: 4px 8px; color: var(--color-text-primary); font-size: 12px;">${c.label}</td>
+      <td style="padding: 4px 8px; text-align: right; color: var(--color-text-secondary); font-size: 12px;">${c.size.toLocaleString()}</td>
+      ${c.vals.map(v => {
+        if (v == null) return `<td style="padding: 0;"></td>`;
+        return `<td style="background: ${colorForPct(v)}; color: ${textForPct(v)}; text-align: center; padding: 6px 0; border-radius: 3px; font-size: 11px; font-weight: ${v === 100 ? 500 : 400};">${v}%</td>`;
+      }).join('')}
+    `;
+    body.appendChild(tr);
+  });
+
+  // ===== Geo chart =====
+  const states = [
+    ['Maharashtra', 21.2],
+    ['Karnataka', 14.8],
+    ['Delhi NCR', 11.3],
+    ['Tamil Nadu', 8.9],
+    ['Telangana', 6.7],
+    ['Gujarat', 5.4],
+    ['West Bengal', 4.8],
+    ['Rajasthan', 4.1],
+    ['Kerala', 3.6],
+    ['Uttar Pradesh', 3.2],
+    ['Punjab', 1.9],
+    ['Haryana', 1.5]
+  ];
+  new Chart(document.getElementById('geoChart'), {
+    type: 'bar',
+    data: {
+      labels: states.map(s => s[0]),
+      datasets: [{
+        data: states.map(s => s[1]),
+        backgroundColor: states.map((_, i) => {
+          const alpha = 1 - (i * 0.055);
+          return `rgba(55, 138, 221, ${alpha})`;
+        }),
+        borderRadius: 3,
+        barThickness: 14
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (c) => '₹' + c.parsed.x.toFixed(1) + 'L (' + (c.parsed.x / 87.4 * 100).toFixed(1) + '%)' } }
+      },
+      scales: {
+        x: { grid: { color: gridColor }, ticks: { color: textMuted, callback: (v) => '₹' + v + 'L' } },
+        y: { grid: { display: false }, ticks: { color: textMuted, font: { size: 11 } } }
+      }
+    }
+  });
+
+  // ===== Forecast =====
+  const days = 60;
+  const actualDays = 30;
+  const labels = [];
+  const actuals = [];
+  const point = [];
+  const low = [];
+  const high = [];
+
+  let base = 240000;
+  for (let i = 0; i < days; i++) {
+    const d = new Date(2026, 2, 21);
+    d.setDate(d.getDate() + i);
+    labels.push(d.getDate() + '/' + (d.getMonth() + 1));
+    const weekly = Math.sin((i / 7) * Math.PI * 2) * 35000;
+    const trend = i * 1800;
+    if (i < actualDays) {
+      const noise = (Math.sin(i * 2.3) + Math.cos(i * 1.7)) * 22000;
+      actuals.push(Math.round(base + trend + weekly + noise));
+      point.push(null);
+      low.push(null);
+      high.push(null);
+    } else {
+      actuals.push(null);
+      const p = Math.round(base + trend + weekly);
+      const spread = 18000 + (i - actualDays) * 1200;
+      point.push(p);
+      low.push(p - spread);
+      high.push(p + spread);
+    }
+  }
+  // connect actuals endpoint to forecast start
+  actuals[actualDays - 1] = actuals[actualDays - 1];
+  point[actualDays - 1] = actuals[actualDays - 1];
+  low[actualDays - 1] = actuals[actualDays - 1];
+  high[actualDays - 1] = actuals[actualDays - 1];
+
+  new Chart(document.getElementById('forecastChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'High', data: high, borderColor: 'transparent', backgroundColor: 'rgba(127, 119, 221, 0.18)', fill: '+1', pointRadius: 0, tension: 0.3 },
+        { label: 'Low', data: low, borderColor: 'transparent', backgroundColor: 'transparent', fill: false, pointRadius: 0, tension: 0.3 },
+        { label: 'Forecast', data: point, borderColor: '#534AB7', borderDash: [5, 4], backgroundColor: 'transparent', fill: false, pointRadius: 0, borderWidth: 2, tension: 0.3 },
+        { label: 'Actual', data: actuals, borderColor: '#185FA5', backgroundColor: 'transparent', fill: false, pointRadius: 0, borderWidth: 2, tension: 0.3 }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (c) => c.dataset.label + ': ₹' + (c.parsed.y / 100000).toFixed(2) + 'L' } }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: textMuted, maxTicksLimit: 10, font: { size: 10 } } },
+        y: { grid: { color: gridColor }, ticks: { color: textMuted, callback: (v) => '₹' + (v / 100000).toFixed(1) + 'L' } }
+      }
+    }
+  });
+
+  // Custom legend for forecast
+  const forecastWrapper = document.getElementById('forecastChart').parentElement;
+  const legend = document.createElement('div');
+  legend.style.cssText = 'display: flex; gap: 16px; font-size: 11px; color: ' + textMuted + '; margin-top: -8px; margin-bottom: 8px; justify-content: flex-end;';
+  legend.innerHTML = `
+    <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 14px; height: 2px; background: #185FA5;"></span>Actual</span>
+    <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 14px; height: 2px; background: #534AB7; border-top: 2px dashed #534AB7;"></span>Forecast</span>
+    <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 14px; height: 10px; background: rgba(127, 119, 221, 0.25); border-radius: 2px;"></span>80% CI</span>
+  `;
+  forecastWrapper.parentElement.insertBefore(legend, forecastWrapper);
+})();
+</script>
