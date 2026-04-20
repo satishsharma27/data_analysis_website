@@ -25,377 +25,88 @@
 <div style="padding-top:3.5rem;">
   <div class="auto-wrap">
 
-    <p class="eyebrow">Automation</p>
-    <h2 class="sec-title">Stop doing manually what a script can do for you</h2>
-    <p class="sec-sub">Most D2C brands and agencies waste 10–15 hrs/week on reports nobody enjoys making. Here's what I can automate for you.</p>
+    <!-- HEADER -->
+    <div style="margin-bottom:2rem;">
+      <div style="display:inline-block;font-size:13px;color:var(--color-text-info);background:var(--color-background-info);padding:5px 14px;border-radius:999px;margin-bottom:14px;font-weight:500;">Automation</div>
+      <h2 style="font-size:28px;font-weight:500;margin:0 0 10px;line-height:1.3;">Stop losing 10 hours a week to manual reports.</h2>
+      <p style="font-size:17px;color:var(--color-text-secondary);margin:0;line-height:1.6;">I build Python and Google Sheets automations that run themselves. You get the report — not the work.</p>
+    </div>
 
-    <!-- TASK CARDS -->
-    <div class="tasks-grid" id="task-grid">
-      <div class="task-card" data-hours="5" onclick="toggleTask(this)">
-        <div class="task-icon" style="background:#E1F5EE;">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="#0F6E56" stroke-width="1.2"/><path d="M5 8h6M5 5.5h6M5 10.5h4" stroke="#0F6E56" stroke-width="1.1" stroke-linecap="round"/></svg>
-        </div>
-        <p class="task-name">Weekly ad report</p>
-        <p class="task-desc">Pull Meta + Google spend, ROAS, CPL into one formatted PDF</p>
-        <p class="task-hours">~5 hrs/week</p>
+    <!-- SERVICE CARDS -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:2rem;">
+
+      <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.4rem;">
+        <div style="font-size:13px;color:var(--color-text-success);background:var(--color-background-success);display:inline-block;padding:3px 10px;border-radius:999px;margin-bottom:12px;font-weight:500;">Saves 6 hrs/week</div>
+        <p style="font-size:16px;font-weight:500;margin:0 0 6px;">Daily ad-spend dashboard</p>
+        <p style="font-size:14px;color:var(--color-text-secondary);margin:0;line-height:1.6;">Pulls Meta + Google Ads into one sheet every morning at 8 AM.</p>
       </div>
-      <div class="task-card" data-hours="3" onclick="toggleTask(this)">
-        <div class="task-icon" style="background:#E1F5EE;">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 12L6 8l2.5 3L11 6l2 3" stroke="#0F6E56" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="1" y="1" width="14" height="14" rx="2" stroke="#0F6E56" stroke-width="1.1"/></svg>
-        </div>
-        <p class="task-name">Sales dashboard update</p>
-        <p class="task-desc">Revenue, orders, top SKUs refreshed every morning automatically</p>
-        <p class="task-hours">~3 hrs/week</p>
+
+      <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.4rem;">
+        <div style="font-size:13px;color:var(--color-text-success);background:var(--color-background-success);display:inline-block;padding:3px 10px;border-radius:999px;margin-bottom:12px;font-weight:500;">Saves 4 hrs/week</div>
+        <p style="font-size:16px;font-weight:500;margin:0 0 6px;">Weekly client report</p>
+        <p style="font-size:14px;color:var(--color-text-secondary);margin:0;line-height:1.6;">Auto-generated PDF emailed to clients every Monday at 9 AM.</p>
       </div>
-      <div class="task-card" data-hours="4" onclick="toggleTask(this)">
-        <div class="task-icon" style="background:#E1F5EE;">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v3M8 11v3M2 8h3M11 8h3" stroke="#0F6E56" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="8" r="2.5" stroke="#0F6E56" stroke-width="1.2"/></svg>
-        </div>
-        <p class="task-name">Client report PDF</p>
-        <p class="task-desc">Monthly branded PDF sent to each client automatically</p>
-        <p class="task-hours">~4 hrs/month</p>
+
+      <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.4rem;">
+        <div style="font-size:13px;color:var(--color-text-success);background:var(--color-background-success);display:inline-block;padding:3px 10px;border-radius:999px;margin-bottom:12px;font-weight:500;">Saves 3 hrs/week</div>
+        <p style="font-size:16px;font-weight:500;margin:0 0 6px;">Shopify → Slack digest</p>
+        <p style="font-size:14px;color:var(--color-text-secondary);margin:0;line-height:1.6;">Daily sales and inventory summary lands in your team's Slack.</p>
       </div>
-      <div class="task-card" data-hours="2" onclick="toggleTask(this)">
-        <div class="task-icon" style="background:#E1F5EE;">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 4h10M3 8h7M3 12h5" stroke="#0F6E56" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <p class="task-name">Inventory alerts</p>
-        <p class="task-desc">WhatsApp/email alert when stock drops below threshold</p>
-        <p class="task-hours">~2 hrs/week</p>
+
+    </div>
+
+    <!-- TECH STACK -->
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 18px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);margin-bottom:2rem;">
+      <span style="font-size:14px;color:var(--color-text-secondary);margin-right:4px;">Built with</span>
+      <span style="font-size:13px;font-weight:500;padding:4px 12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:999px;">Python</span>
+      <span style="font-size:13px;font-weight:500;padding:4px 12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:999px;">pandas</span>
+      <span style="font-size:13px;font-weight:500;padding:4px 12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:999px;">Google Sheets API</span>
+      <span style="font-size:13px;font-weight:500;padding:4px 12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:999px;">Make</span>
+      <span style="font-size:13px;font-weight:500;padding:4px 12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:999px;">Power Query</span>
+    </div>
+
+    <!-- STATS BAR -->
+    <div style="display:flex;align-items:center;gap:16px;padding:18px 20px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);margin-bottom:2rem;">
+      <div style="flex:1;">
+        <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 4px;">Typical timeline</p>
+        <p style="font-size:17px;font-weight:500;margin:0;">7–10 days</p>
       </div>
-      <div class="task-card" data-hours="3" onclick="toggleTask(this)">
-        <div class="task-icon" style="background:#E1F5EE;">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="#0F6E56" stroke-width="1.2"/><path d="M2 6.5h12" stroke="#0F6E56" stroke-width="1.1"/><path d="M6 3V2M10 3V2" stroke="#0F6E56" stroke-width="1.1" stroke-linecap="round"/></svg>
-        </div>
-        <p class="task-name">CRM data sync</p>
-        <p class="task-desc">Auto-sync leads from ads into Google Sheets or CRM daily</p>
-        <p class="task-hours">~3 hrs/week</p>
+      <div style="width:0.5px;height:36px;background:var(--color-border-tertiary);"></div>
+      <div style="flex:1;">
+        <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 4px;">Starts at</p>
+        <p style="font-size:17px;font-weight:500;margin:0;">&#8377;15,000</p>
       </div>
-      <div class="task-card" data-hours="4" onclick="toggleTask(this)">
-        <div class="task-icon" style="background:#E1F5EE;">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#0F6E56" stroke-width="1.2"/><path d="M8 5v3l2 1.5" stroke="#0F6E56" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <p class="task-name">Scheduled email digest</p>
-        <p class="task-desc">Daily/weekly KPI summary to your inbox every morning at 8am</p>
-        <p class="task-hours">~4 hrs/week</p>
+      <div style="width:0.5px;height:36px;background:var(--color-border-tertiary);"></div>
+      <div style="flex:1;">
+        <p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 4px;">Delivered</p>
+        <p style="font-size:17px;font-weight:500;margin:0;">20+ automations</p>
       </div>
     </div>
 
-    <!-- CALCULATOR -->
-    <div class="calc-section auto-card">
-      <p style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:1rem;">Time cost calculator</p>
-
-      <div class="slider-row">
-        <span class="slider-label">Hours on reports per week</span>
-        <input type="range" min="1" max="30" value="8" step="1" id="sl-hours" oninput="calc()"/>
-        <span class="slider-val" id="out-hours">8 hrs</span>
-      </div>
-      <div class="slider-row">
-        <span class="slider-label">Your hourly cost (&#8377;)</span>
-        <input type="range" min="500" max="5000" value="1500" step="100" id="sl-rate" oninput="calc()"/>
-        <span class="slider-val" id="out-rate">&#8377;1,500</span>
-      </div>
-      <div class="slider-row">
-        <span class="slider-label">Team members doing this</span>
-        <input type="range" min="1" max="10" value="2" step="1" id="sl-people" oninput="calc()"/>
-        <span class="slider-val" id="out-people">2 people</span>
-      </div>
-
-      <div class="results-grid" style="margin-top:1.25rem;">
-        <div class="result-card">
-          <p class="result-label">Monthly cost</p>
-          <p class="result-val" id="r-monthly">&#8377;96K</p>
-        </div>
-        <div class="result-card">
-          <p class="result-label">Hours lost/month</p>
-          <p class="result-val" id="r-hours">64 hrs</p>
-        </div>
-        <div class="result-card">
-          <p class="result-label">Automation saves</p>
-          <p class="result-val green" id="r-save">~90%</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- VERDICT STRIP -->
-    <div class="verdict" id="verdict-strip" style="background:#E1F5EE;margin-top:10px;">
-      <div class="verdict-dot" style="background:#1D9E75;"></div>
-      <p style="font-size:13px;color:#085041;" id="verdict-text">You're spending &#8377;96,000/month on manual reporting. A one-time automation costs &#8377;15,000 — that's a 6x return in month one.</p>
-    </div>
-
-    <!-- WORKFLOW BEFORE/AFTER -->
-    <p style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px;margin-top:1.5rem;">How it changes your week</p>
-    <div class="workflow-grid">
-      <div class="wf-col">
-        <p class="wf-label" style="color:#A32D2D;">Before</p>
-        <div class="wf-step">
-          <div class="step-num" style="background:#FCEBEB;color:#A32D2D;">1</div>
-          <p class="step-text">Open 4 tabs — Meta, Google, Sheets, last week's report</p>
-        </div>
-        <div class="wf-step">
-          <div class="step-num" style="background:#FCEBEB;color:#A32D2D;">2</div>
-          <p class="step-text">Copy-paste numbers, fix broken formulas</p>
-        </div>
-        <div class="wf-step">
-          <div class="step-num" style="background:#FCEBEB;color:#A32D2D;">3</div>
-          <p class="step-text">Format the PDF, double-check every figure</p>
-        </div>
-        <div class="wf-step">
-          <div class="step-num" style="background:#FCEBEB;color:#A32D2D;">4</div>
-          <p class="step-text">Email to client, wait for "can you add X?" reply</p>
-        </div>
-        <p class="wf-time" style="color:#A32D2D;">3–5 hours every single week</p>
-      </div>
-      <div class="wf-arrow">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="var(--color-text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="wf-col">
-        <p class="wf-label" style="color:#0F6E56;">After</p>
-        <div class="wf-step">
-          <div class="step-num" style="background:#E1F5EE;color:#0F6E56;">1</div>
-          <p class="step-text">Script runs at 8am every Monday automatically</p>
-        </div>
-        <div class="wf-step">
-          <div class="step-num" style="background:#E1F5EE;color:#0F6E56;">2</div>
-          <p class="step-text">Pulls all data, calculates KPIs, formats report</p>
-        </div>
-        <div class="wf-step">
-          <div class="step-num" style="background:#E1F5EE;color:#0F6E56;">3</div>
-          <p class="step-text">PDF lands in your inbox (and client's) automatically</p>
-        </div>
-        <div class="wf-step">
-          <div class="step-num" style="background:#E1F5EE;color:#0F6E56;">4</div>
-          <p class="step-text">You drink chai and actually review the numbers</p>
-        </div>
-        <p class="wf-time" style="color:#0F6E56;">20 minutes to review — zero to build</p>
-      </div>
+    <!-- TESTIMONIAL -->
+    <div style="border-left:2px solid var(--color-border-secondary);padding:6px 0 6px 20px;margin-bottom:2rem;">
+      <p style="font-size:16px;font-family:var(--font-serif);line-height:1.7;margin:0 0 8px;color:var(--color-text-primary);">"Satish replaced our 4-hour Monday spreadsheet ritual with a script that emails the report before I'm awake. Best money we spent this quarter."</p>
+      <p style="font-size:13px;color:var(--color-text-tertiary);margin:0;">Priya M. · Marketing Lead, D2C Brand</p>
     </div>
 
     <!-- CTA -->
-    <div class="cta-strip">
-      <div>
-        <p style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;">Tell me what you're automating manually</p>
-        <p style="font-size:13px;color:var(--color-text-secondary);">Describe your task — I'll tell you if it can be automated and what it costs.</p>
-      </div>
-      <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a quote &#8599;</button>
+    <div style="padding:24px;background:var(--color-background-secondary);border-radius:var(--border-radius-lg);text-align:center;">
+      <p style="font-size:17px;font-weight:500;margin:0 0 6px;">Not sure what to automate first?</p>
+      <p style="font-size:15px;color:var(--color-text-secondary);margin:0 0 16px;line-height:1.6;">Book a free 15-min audit. I'll spot 2 tasks you can automate this week.</p>
+      <button class="cta-btn" onclick="window.open('https://calendly.com/sharma-satishkumar2709/30min','_blank')">Book free audit</button>
     </div>
 
   </div>
 </div>
 
-<section id="contact">
-  <div class="ct-wrap">
-
-    <p style="font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-tertiary);margin-bottom:0.5rem;">Get in touch</p>
-    <h2 style="font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:0.4rem;">Let's talk about your data</h2>
-    <p style="font-size:15px;color:var(--color-text-secondary);margin-bottom:1.75rem;line-height:1.6;">Book a free 20-min call — no pitch, just a look at your current setup and what's possible.</p>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.75rem;">
-
-      <div class="ct-card" style="border:2px solid var(--color-border-info);">
-        <span class="ct-tag">Recommended</span>
-        <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Book a free 20-min call</div>
-        <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;line-height:1.6;">Pick a slot that works for you. We'll look at your data setup together.</div>
-        <div class="ct-pill-row">
-          <span class="ct-pill">Video call</span>
-          <span class="ct-pill">20 minutes</span>
-          <span class="ct-pill">No commitment</span>
-        </div>
-        <button class="ct-cal-btn" onclick="window.open('https://calendly.com/sharma-satishkumar2709/30min','_blank')">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="2" width="14" height="13" rx="2" stroke="#4f8ef7" stroke-width="1.2"/><path d="M1 6h14" stroke="#4f8ef7" stroke-width="1.2"/><path d="M5 1v2M11 1v2" stroke="#4f8ef7" stroke-width="1.2" stroke-linecap="round"/><rect x="4" y="8.5" width="2" height="2" rx="0.5" fill="#4f8ef7"/><rect x="7" y="8.5" width="2" height="2" rx="0.5" fill="#4f8ef7"/><rect x="4" y="11" width="2" height="2" rx="0.5" fill="#4f8ef7"/><rect x="7" y="11" width="2" height="2" rx="0.5" fill="#4f8ef7"/></svg>
-          Book on Calendly
-        </button>
-      </div>
-
-      <div class="ct-card">
-        <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Send a quick message</div>
-        <div style="font-size:13px;color:var(--color-text-secondary);margin-bottom:16px;line-height:1.6;">Prefer to write first? Fill this in and I'll reply within 24 hrs.</div>
-
-        <div id="ct-contact-form">
-          <div style="margin-bottom:12px;">
-            <label class="ct-label">Your name</label>
-            <input type="text" class="ct-input" placeholder="Rahul Mehta" id="ct-name"/>
-          </div>
-          <div style="margin-bottom:12px;">
-            <label class="ct-label">Email address</label>
-            <input type="email" class="ct-input" placeholder="rahul@brand.com" id="ct-email"/>
-          </div>
-          <div style="margin-bottom:12px;">
-            <label class="ct-label">What's your biggest data challenge?</label>
-            <textarea class="ct-textarea" placeholder="We spend ₹2L/month on ads but have no idea which channel actually works..." id="ct-msg"></textarea>
-          </div>
-          <button class="ct-submit" onclick="ctHandleSubmit()">Send message</button>
-        </div>
-
-        <div class="ct-success" id="ct-success-msg">
-          <div style="width:40px;height:40px;border-radius:50%;background:rgba(46,196,160,0.15);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:18px;color:#2ec4a0;">✓</div>
-          <div style="font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:6px;">Message sent!</div>
-          <div style="font-size:13px;color:var(--color-text-secondary);">I'll get back to you within 24 hrs at the email you provided.</div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="ct-divider">
-      <div class="ct-divider-line"></div>
-      <span>or reach me directly</span>
-      <div class="ct-divider-line"></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-      <a href="mailto:sharma.satishkumar2709@gmail.com" style="text-decoration:none;">
-        <div class="ct-card" style="text-align:center;padding:1rem 0.75rem;cursor:pointer;">
-          <div class="ct-icon-box" style="background:rgba(46,196,160,0.12);margin:0 auto 8px;">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="#2ec4a0" stroke-width="1.2"/><path d="M1.5 3.5l6.5 5 6.5-5" stroke="#2ec4a0" stroke-width="1.2" stroke-linecap="round"/></svg>
-          </div>
-          <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;">Email</div>
-          <div style="font-size:11px;color:var(--color-text-tertiary);">sharma.satish...</div>
-        </div>
-      </a>
-
-      <a href="https://wa.me/918369645979" target="_blank" style="text-decoration:none;">
-        <div class="ct-card" style="text-align:center;padding:1rem 0.75rem;cursor:pointer;">
-          <div class="ct-icon-box" style="background:rgba(46,196,160,0.12);margin:0 auto 8px;">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#2ec4a0" stroke-width="1.2"/><path d="M5.5 5.5c.2-.4.8-.8 1.2-.5l.8 1-.6.8c.3.6.8 1.1 1.4 1.4l.8-.6 1 .8c.3.4-.1 1-.5 1.2-1.5.7-3.8-1.6-4.1-4.1z" fill="#2ec4a0"/></svg>
-          </div>
-          <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;">WhatsApp</div>
-          <div style="font-size:11px;color:var(--color-text-tertiary);">+91 83696 45979</div>
-        </div>
-      </a>
-
-      <a href="https://www.linkedin.com/in/satish-sharma-104545403" target="_blank" style="text-decoration:none;">
-        <div class="ct-card" style="text-align:center;padding:1rem 0.75rem;cursor:pointer;">
-          <div class="ct-icon-box" style="background:rgba(79,142,247,0.12);margin:0 auto 8px;">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="#4f8ef7" stroke-width="1.2"/><path d="M4 6.5V12M4 4v.5" stroke="#4f8ef7" stroke-width="1.4" stroke-linecap="round"/><path d="M7.5 12V9c0-1.4 4-1.4 4 0v3M7.5 6.5V12" stroke="#4f8ef7" stroke-width="1.2" stroke-linecap="round"/></svg>
-          </div>
-          <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px;">LinkedIn</div>
-          <div style="font-size:11px;color:var(--color-text-tertiary);">Satish Sharma</div>
-        </div>
-      </a>
-    </div>
-
-    <div class="ct-avail">
-      <div style="width:8px;height:8px;border-radius:50%;background:#1D9E75;flex-shrink:0;"></div>
-      <div style="font-size:13px;color:var(--color-text-secondary);">Available for new projects — typically reply within <span style="font-weight:500;color:var(--color-text-primary);">24 hours</span></div>
-    </div>
-
-  </div>
-</section>
-
 <footer class="footer">
     <span>© 2026 Satish Sharma</span>
 </footer>
 
-<script>
-function ctHandleSubmit(){
-  var n=document.getElementById('ct-name').value.trim();
-  var e=document.getElementById('ct-email').value.trim();
-  var m=document.getElementById('ct-msg').value.trim();
-  if(!n||!e||!m){alert('Please fill in all fields before sending.');return;}
-  document.getElementById('ct-contact-form').style.display='none';
-  document.getElementById('ct-success-msg').style.display='block';
-}
-
-function toggleTask(el){
-  el.classList.toggle('selected');
-  updateTaskHours();
-}
-
-function updateTaskHours(){
-  var selected=document.querySelectorAll('.task-card.selected');
-  if(selected.length===0){return;}
-  var total=0;
-  selected.forEach(function(c){total+=parseInt(c.getAttribute('data-hours'));});
-  document.getElementById('sl-hours').value=Math.min(total,30);
-  calc();
-}
-
-function calc(){
-  var h=parseInt(document.getElementById('sl-hours').value);
-  var r=parseInt(document.getElementById('sl-rate').value);
-  var p=parseInt(document.getElementById('sl-people').value);
-
-  document.getElementById('out-hours').textContent=h+' hrs';
-  document.getElementById('out-rate').textContent='₹'+r.toLocaleString('en-IN');
-  document.getElementById('out-people').textContent=p+(p===1?' person':' people');
-
-  var monthlyHours=h*4*p;
-  var monthlyCost=monthlyHours*r;
-
-  document.getElementById('r-monthly').textContent='₹'+Math.round(monthlyCost/1000)+'K';
-  document.getElementById('r-hours').textContent=monthlyHours+' hrs';
-  document.getElementById('r-save').textContent='~90%';
-
-  var strip=document.getElementById('verdict-strip');
-  var txt=document.getElementById('verdict-text');
-
-  if(monthlyCost<20000){
-    strip.style.background='#E6F1FB';
-    txt.style.color='#0C447C';
-    txt.textContent="You're spending ₹"+Math.round(monthlyCost/1000)+"K/month on manual reporting. Automation starts at ₹8,000 — you recover the cost in month one.";
-  } else if(monthlyCost<80000){
-    strip.style.background='#E1F5EE';
-    txt.style.color='#085041';
-    txt.textContent="You're losing ₹"+Math.round(monthlyCost/1000)+"K/month to manual work. A one-time automation for ₹15,000 pays for itself in under 2 weeks.";
-  } else {
-    strip.style.background='#FAEEDA';
-    txt.style.color='#633806';
-    txt.textContent="₹"+Math.round(monthlyCost/1000)+"K/month on manual reporting is a serious leak. Automating this is one of the highest-ROI investments you can make right now.";
-  }
-}
-
-calc();
-</script>
 
 <style>
-/* ── AUTOMATION WRAP ── */
 .auto-wrap{width:100%;font-family:var(--font-sans);padding:0 0 2rem;}
-.eyebrow{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.5rem;}
-.sec-title{font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:0.4rem;}
-.sec-sub{font-size:14px;color:var(--color-text-secondary);margin-bottom:1.75rem;line-height:1.65;}
-.auto-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;}
-
-/* ── TASK CARDS ── */
-.tasks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:1.75rem;}
-.task-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;cursor:pointer;transition:border-color 0.15s;}
-.task-card:hover{border-color:var(--color-border-secondary);}
-.task-card.selected{border:1.5px solid #1D9E75;background:#f0fdf8;}
-.task-icon{width:32px;height:32px;border-radius:var(--border-radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
-.task-name{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;}
-.task-desc{font-size:12px;color:var(--color-text-secondary);line-height:1.5;margin-bottom:8px;}
-.task-hours{font-size:11px;color:#0F6E56;font-weight:500;}
-
-/* ── CALCULATOR ── */
-.calc-section{margin-bottom:1.75rem;}
-.slider-row{display:flex;align-items:center;gap:12px;margin-bottom:1rem;}
-.slider-label{font-size:13px;color:var(--color-text-secondary);min-width:160px;}
-.slider-val{font-size:13px;font-weight:500;color:var(--color-text-primary);min-width:60px;text-align:right;}
-input[type=range]{flex:1;}
-
-/* ── RESULT CARDS ── */
-.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1rem;}
-.result-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem;text-align:center;}
-.result-label{font-size:11px;color:var(--color-text-tertiary);margin-bottom:6px;}
-.result-val{font-size:22px;font-weight:500;color:var(--color-text-primary);}
-.result-val.green{color:#0F6E56;}
-
-/* ── VERDICT STRIP ── */
-.verdict{border-radius:var(--border-radius-md);padding:14px 16px;display:flex;align-items:center;gap:14px;margin-bottom:1.75rem;}
-.verdict-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-
-/* ── WORKFLOW ── */
-.workflow-grid{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:start;margin-bottom:1.75rem;}
-.wf-col{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.1rem;}
-.wf-arrow{display:flex;align-items:center;justify-content:center;padding-top:3rem;}
-.wf-label{font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px;}
-.wf-step{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;}
-.step-num{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:1px;}
-.step-text{font-size:12px;color:var(--color-text-secondary);line-height:1.5;}
-.wf-time{font-size:12px;font-weight:500;margin-top:10px;padding-top:10px;border-top:0.5px solid var(--color-border-tertiary);}
-
-/* ── CTA ── */
-.cta-strip{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
-.cta-btn{padding:10px 20px;font-size:13px;font-weight:500;background:#1D9E75;color:#fff;border:none;border-radius:var(--border-radius-md);cursor:pointer;white-space:nowrap;font-family:var(--font-sans);}
+.cta-btn{padding:12px 28px;font-size:15px;font-weight:500;background:#1D9E75;color:#fff;border:none;border-radius:var(--border-radius-md);cursor:pointer;white-space:nowrap;font-family:var(--font-sans);}
 .cta-btn:hover{background:#0F6E56;}
 </style>
 
