@@ -63,6 +63,10 @@ def register_routes(server):
     def automation():
         return render_template("automation-section.html")
 
+    @server.route("/marketing-portfolio")
+    def marketing_portfolio():
+        return render_template("marketing-portfolio.html")
+
     @server.route("/submit-audit", methods=["POST"])
     def submit_audit():
         data = request.get_json(silent=True) or {}

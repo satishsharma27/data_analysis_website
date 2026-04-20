@@ -1,0 +1,180 @@
+<div style="padding: 1.25rem 0; font-family: var(--font-sans);">
+
+<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 8px;">
+  <div>
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 4px;">Client · D2C Skincare</div>
+    <div style="font-size: 20px; font-weight: 500;">Kaya Skincare — Marketing performance</div>
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-top: 4px;">Oct 2025 · Meta · Google · Influencer</div>
+  </div>
+  <div style="display: flex; gap: 6px; align-items: center;">
+    <span style="font-size: 12px; padding: 4px 10px; border-radius: var(--border-radius-md); background: var(--color-background-success); color: var(--color-text-success); font-weight: 500;">Live</span>
+    <span style="font-size: 12px; padding: 4px 10px; border-radius: var(--border-radius-md); background: var(--color-background-secondary); color: var(--color-text-secondary);">Last 30 days</span>
+  </div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.25rem;">
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 6px;">Total ad spend</div>
+    <div style="font-size: 22px; font-weight: 500;">₹3,08,500</div>
+    <div style="font-size: 11px; color: var(--color-text-secondary); margin-top: 4px;">vs ₹2,94,000 last mo</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 6px;">Revenue attributed</div>
+    <div style="font-size: 22px; font-weight: 500;">₹10,48,900</div>
+    <div style="font-size: 11px; color: #0F6E56; margin-top: 4px;">↑ 28% MoM</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 6px;">Blended ROAS</div>
+    <div style="font-size: 22px; font-weight: 500;">3.4x</div>
+    <div style="font-size: 11px; color: #0F6E56; margin-top: 4px;">↑ from 2.1x</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 6px;">Blended CAC</div>
+    <div style="font-size: 22px; font-weight: 500;">₹412</div>
+    <div style="font-size: 11px; color: #0F6E56; margin-top: 4px;">↓ ₹96 vs last mo</div>
+  </div>
+</div>
+
+<div style="background: #FAECE7; border-left: 3px solid #D85A30; border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; padding: 12px 14px; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
+  <div>
+    <div style="font-size: 13px; font-weight: 500; color: #712B13; margin-bottom: 2px;">Wasted spend alert</div>
+    <div style="font-size: 13px; color: #993C1D;">₹47,200 spent across 4 campaigns with ROAS &lt; 1. Recommend pausing.</div>
+  </div>
+  <button onclick="sendPrompt('Show me the 4 underperforming campaigns and why they should be paused')" style="font-size: 12px; padding: 6px 12px; border-radius: var(--border-radius-md); background: transparent; border: 0.5px solid #D85A30; color: #712B13; cursor: pointer; white-space: nowrap;">View campaigns ↗</button>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 1.25rem;">
+
+  <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px;">
+    <div style="font-size: 14px; font-weight: 500; margin-bottom: 10px;">Channel performance</div>
+    <div style="position: relative; height: 220px;">
+      <canvas id="channelChart" role="img" aria-label="Bar chart comparing spend and ROAS across Meta, Google, and Influencer channels"></canvas>
+    </div>
+  </div>
+
+  <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px;">
+    <div style="font-size: 14px; font-weight: 500; margin-bottom: 10px;">Spend vs revenue · weekly</div>
+    <div style="position: relative; height: 220px;">
+      <canvas id="trendChart" role="img" aria-label="Line chart showing weekly ad spend and revenue trends over October 2025"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px; margin-bottom: 1rem;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <div style="font-size: 14px; font-weight: 500;">Top campaigns · ranked by ROAS</div>
+    <span style="font-size: 11px; color: var(--color-text-secondary);">10 of 32</span>
+  </div>
+  <table style="width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed;">
+    <colgroup>
+      <col style="width: 38%;">
+      <col style="width: 14%;">
+      <col style="width: 16%;">
+      <col style="width: 16%;">
+      <col style="width: 16%;">
+    </colgroup>
+    <thead>
+      <tr style="color: var(--color-text-secondary); font-size: 12px;">
+        <th style="text-align: left; padding: 8px 6px; border-bottom: 0.5px solid var(--color-border-tertiary); font-weight: 400;">Campaign</th>
+        <th style="text-align: left; padding: 8px 6px; border-bottom: 0.5px solid var(--color-border-tertiary); font-weight: 400;">Channel</th>
+        <th style="text-align: right; padding: 8px 6px; border-bottom: 0.5px solid var(--color-border-tertiary); font-weight: 400;">Spend</th>
+        <th style="text-align: right; padding: 8px 6px; border-bottom: 0.5px solid var(--color-border-tertiary); font-weight: 400;">Revenue</th>
+        <th style="text-align: right; padding: 8px 6px; border-bottom: 0.5px solid var(--color-border-tertiary); font-weight: 400;">ROAS</th>
+      </tr>
+    </thead>
+    <tbody id="campaignBody"></tbody>
+  </table>
+</div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--color-text-secondary); padding-top: 4px;">
+  <span>Built by Satish Sharma · Power BI / Tableau</span>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+(function() {
+  const campaigns = [
+    { name: 'Vitamin C Serum · Retargeting', channel: 'Meta', spend: 18400, rev: 96200, roas: 5.23, status: 'good' },
+    { name: 'Brand search · High intent', channel: 'Google', spend: 22100, rev: 108900, roas: 4.93, status: 'good' },
+    { name: 'Influencer · Skincare creators', channel: 'Influencer', spend: 45000, rev: 198000, roas: 4.40, status: 'good' },
+    { name: 'Sunscreen launch · Lookalike', channel: 'Meta', spend: 31200, rev: 128000, roas: 4.10, status: 'good' },
+    { name: 'Shopping · Core SKUs', channel: 'Google', spend: 28500, rev: 102600, roas: 3.60, status: 'good' },
+    { name: 'Reels · Prospecting broad', channel: 'Meta', spend: 24800, rev: 72800, roas: 2.94, status: 'ok' },
+    { name: 'Display · GDN remarketing', channel: 'Google', spend: 16200, rev: 35600, roas: 2.20, status: 'ok' },
+    { name: 'Anti-aging · Interest stack', channel: 'Meta', spend: 19500, rev: 18700, roas: 0.96, status: 'bad' },
+    { name: 'Acne range · Broad prospecting', channel: 'Meta', spend: 14800, rev: 12100, roas: 0.82, status: 'bad' },
+    { name: 'Micro-influencer bundle', channel: 'Influencer', spend: 12900, rev: 9400, roas: 0.73, status: 'bad' }
+  ];
+
+  const statusColor = {
+    good: { bg: '#E1F5EE', fg: '#0F6E56' },
+    ok:   { bg: '#FAEEDA', fg: '#854F0B' },
+    bad:  { bg: '#FCEBEB', fg: '#A32D2D' }
+  };
+
+  const channelColor = {
+    Meta:       { bg: '#E6F1FB', fg: '#0C447C' },
+    Google:     { bg: '#EEEDFE', fg: '#3C3489' },
+    Influencer: { bg: '#FBEAF0', fg: '#72243E' }
+  };
+
+  document.getElementById('campaignBody').innerHTML = campaigns.map(c => {
+    const s = statusColor[c.status];
+    const ch = channelColor[c.channel];
+    return `
+      <tr>
+        <td style="padding: 9px 6px; border-bottom: 0.5px solid var(--color-border-tertiary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${c.name}</td>
+        <td style="padding: 9px 6px; border-bottom: 0.5px solid var(--color-border-tertiary);">
+          <span style="font-size: 11px; padding: 2px 8px; border-radius: var(--border-radius-md); background: ${ch.bg}; color: ${ch.fg};">${c.channel}</span>
+        </td>
+        <td style="padding: 9px 6px; border-bottom: 0.5px solid var(--color-border-tertiary); text-align: right; font-variant-numeric: tabular-nums;">₹${c.spend.toLocaleString('en-IN')}</td>
+        <td style="padding: 9px 6px; border-bottom: 0.5px solid var(--color-border-tertiary); text-align: right; font-variant-numeric: tabular-nums;">₹${c.rev.toLocaleString('en-IN')}</td>
+        <td style="padding: 9px 6px; border-bottom: 0.5px solid var(--color-border-tertiary); text-align: right;">
+          <span style="font-size: 12px; padding: 2px 8px; border-radius: var(--border-radius-md); background: ${s.bg}; color: ${s.fg}; font-weight: 500; font-variant-numeric: tabular-nums;">${c.roas.toFixed(2)}x</span>
+        </td>
+      </tr>`;
+  }).join('');
+
+  new Chart(document.getElementById('channelChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Meta', 'Google', 'Influencer'],
+      datasets: [
+        { label: 'Spend (₹K)', data: [108, 67, 58], backgroundColor: '#378ADD', borderRadius: 4, yAxisID: 'y', order: 2 },
+        { label: 'ROAS', data: [2.8, 3.9, 3.6], type: 'line', borderColor: '#D85A30', backgroundColor: '#D85A30', borderWidth: 2, tension: 0.3, yAxisID: 'y1', pointRadius: 4, pointStyle: 'rectRot', order: 1 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        y: { position: 'left', title: { display: true, text: 'Spend (₹K)', font: { size: 10 } }, ticks: { font: { size: 10 } } },
+        y1: { position: 'right', title: { display: true, text: 'ROAS', font: { size: 10 } }, ticks: { font: { size: 10 } }, grid: { display: false } },
+        x: { ticks: { font: { size: 11 } } }
+      },
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 10, boxHeight: 10 } } }
+    }
+  });
+
+  new Chart(document.getElementById('trendChart'), {
+    type: 'line',
+    data: {
+      labels: ['Wk 1', 'Wk 2', 'Wk 3', 'Wk 4'],
+      datasets: [
+        { label: 'Spend', data: [72000, 76500, 79000, 81000], borderColor: '#7F77DD', backgroundColor: 'rgba(127, 119, 221, 0.1)', tension: 0.3, fill: true, pointRadius: 3, pointStyle: 'circle' },
+        { label: 'Revenue', data: [186000, 221000, 274000, 367900], borderColor: '#1D9E75', backgroundColor: 'rgba(29, 158, 117, 0.1)', tension: 0.3, fill: true, pointRadius: 3, pointStyle: 'triangle', borderDash: [5,3] }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      scales: {
+        y: { ticks: { font: { size: 10 }, callback: v => '₹' + (v/1000) + 'K' } },
+        x: { ticks: { font: { size: 11 } } }
+      },
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 10, boxHeight: 10 } } }
+    }
+  });
+})();
+</script>
+
+</div>

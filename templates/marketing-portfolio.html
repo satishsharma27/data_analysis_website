@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaya Skincare — Marketing Dashboard · Satish Sharma</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .mp-hero {
+            padding: 3.5rem 0 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .mp-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+        .mp-back:hover { color: #f0f0f0; }
+        .mp-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #4f8ef7;
+            background: rgba(79,142,247,0.1);
+            border: 1px solid rgba(79,142,247,0.2);
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+        .mp-title {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 0.6rem;
+            line-height: 1.25;
+        }
+        .mp-subtitle {
+            font-size: 15px;
+            color: #888;
+            margin-bottom: 1.75rem;
+        }
+        .mp-meta-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .mp-meta-pill {
+            font-size: 12px;
+            color: #888;
+            background: #1c1c1c;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* Outcome metrics row */
+        .mp-outcomes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 2.5rem 0;
+        }
+        @media (max-width: 700px) {
+            .mp-outcomes { grid-template-columns: repeat(2, 1fr); }
+        }
+        .mp-outcome-card {
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.1rem 1.25rem;
+        }
+        .mp-outcome-label {
+            font-size: 11px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.4rem;
+        }
+        .mp-outcome-val {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+        }
+        .mp-outcome-delta {
+            font-size: 12px;
+            color: #2ec4a0;
+        }
+        .mp-outcome-delta.neg { color: #e8714a; }
+
+        /* Case study section */
+        .cs-section {
+            padding: 2.5rem 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .cs-section-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        .cs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.25rem;
+        }
+        @media (max-width: 800px) {
+            .cs-grid { grid-template-columns: 1fr; }
+        }
+        .cs-block {
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.4rem 1.5rem;
+        }
+        .cs-block-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.85rem;
+            font-size: 16px;
+        }
+        .cs-block-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 0.65rem;
+        }
+        .cs-block-body {
+            font-size: 13.5px;
+            color: #888;
+            line-height: 1.7;
+        }
+        .cs-block-body strong { color: #c8d0e0; font-weight: 500; }
+
+        /* Result list */
+        .cs-result-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .cs-result-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13.5px;
+            color: #888;
+            line-height: 1.6;
+        }
+        .cs-result-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #2ec4a0;
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        /* Dashboard embed */
+        .mp-dashboard-wrap {
+            background: #151515;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        .mp-dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .mp-dashboard-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: #f0f0f0;
+        }
+        .mp-dashboard-note {
+            font-size: 12px;
+            color: #555;
+        }
+
+        /* Override dashboard colors for dark theme */
+        #mp-dashboard-content {
+            --color-background-primary: #1c1c1c;
+            --color-background-secondary: #232323;
+            --color-background-success: rgba(15,110,86,0.15);
+            --color-text-success: #2ec4a0;
+            --color-border-tertiary: rgba(255,255,255,0.08);
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #888;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        /* CTA block */
+        .mp-cta {
+            background: linear-gradient(135deg, rgba(79,142,247,0.08), rgba(46,196,160,0.06));
+            border: 1px solid rgba(79,142,247,0.2);
+            border-radius: 14px;
+            padding: 2rem 2.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2.5rem 0;
+        }
+        .mp-cta-text h3 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #f0f0f0;
+            margin-bottom: 0.35rem;
+        }
+        .mp-cta-text p {
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-logo">Satish Sharma</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/#services">Services</a>
+            <a href="/#portfolio">Portfolio</a>
+            <a href="/#about">About</a>
+            <a href="/#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- Hero -->
+        <section class="mp-hero">
+            <a href="/#portfolio" class="mp-back">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Back to Portfolio
+            </a>
+            <div class="mp-tag">Marketing Analytics</div>
+            <h1 class="mp-title">Kaya Skincare — Marketing Performance Dashboard</h1>
+            <p class="mp-subtitle">D2C skincare brand · Meta, Google &amp; Influencer unified view · Power BI</p>
+            <div class="mp-meta-row">
+                <span class="mp-meta-pill">Power BI</span>
+                <span class="mp-meta-pill">Meta Ads</span>
+                <span class="mp-meta-pill">Google Ads</span>
+                <span class="mp-meta-pill">Shopify</span>
+                <span class="mp-meta-pill">Marketing Mix Modelling</span>
+                <span class="mp-meta-pill">Oct 2025</span>
+            </div>
+        </section>
+
+        <!-- Outcome metrics -->
+        <div class="mp-outcomes">
+            <div class="mp-outcome-card">
+                <div class="mp-outcome-label">Blended ROAS</div>
+                <div class="mp-outcome-val">3.4x</div>
+                <div class="mp-outcome-delta">↑ from 2.1x</div>
+            </div>
+            <div class="mp-outcome-card">
+                <div class="mp-outcome-label">Wasted spend recovered</div>
+                <div class="mp-outcome-val">₹47,200</div>
+                <div class="mp-outcome-delta">4 campaigns paused</div>
+            </div>
+            <div class="mp-outcome-card">
+                <div class="mp-outcome-label">CAC reduction</div>
+                <div class="mp-outcome-val">₹412</div>
+                <div class="mp-outcome-delta">↓ from ₹508</div>
+            </div>
+            <div class="mp-outcome-card">
+                <div class="mp-outcome-label">Reporting time saved</div>
+                <div class="mp-outcome-val">97%</div>
+                <div class="mp-outcome-delta">6 hrs → 10 min/month</div>
+            </div>
+        </div>
+
+        <!-- Live Dashboard -->
+        <div class="mp-dashboard-wrap">
+            <div class="mp-dashboard-header">
+                <div class="mp-dashboard-title">Live dashboard preview</div>
+            </div>
+            <div id="mp-dashboard-content">
+                {% include 'marketing_dashboard_embed.html' %}
+            </div>
+        </div>
+
+        <!-- Case Study -->
+        <section class="cs-section">
+            <div class="cs-section-label">Case study</div>
+            <div class="cs-grid">
+
+                <!-- The Problem -->
+                <div class="cs-block">
+                    <div class="cs-block-icon" style="background:rgba(232,113,74,0.12);">🔥</div>
+                    <div class="cs-block-title">The problem</div>
+                    <div class="cs-block-body">
+                        A D2C skincare brand was spending <strong>₹3L/month</strong> across Meta, Google, and influencers with no unified view of what was actually working.
+                        <br><br>
+                        Monthly reports came from three separate tools, took the founder <strong>6 hours to compile</strong>, and arrived <strong>10 days after month-end</strong> — by which point the insights were already stale.
+                        <br><br>
+                        They suspected some campaigns were bleeding money but couldn't prove which ones.
+                    </div>
+                </div>
+
+                <!-- What I built -->
+                <div class="cs-block">
+                    <div class="cs-block-icon" style="background:rgba(79,142,247,0.12);">⚙️</div>
+                    <div class="cs-block-title">What I built</div>
+                    <ul class="cs-result-list">
+                        <li class="cs-result-item"><span class="cs-result-dot" style="background:#4f8ef7;"></span><span>Pulled Meta Ads, Google Ads, and Shopify data into a <strong>single Power BI model</strong> with blended ROAS and CAC calculated across all channels</span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot" style="background:#4f8ef7;"></span><span>Dashboard <strong>refreshes daily</strong> and surfaces not just the numbers — but the decisions</span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot" style="background:#4f8ef7;"></span><span>Underperforming campaigns are <strong>automatically flagged</strong> when ROAS drops below 1.0, with estimated wasted spend called out at the top</span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot" style="background:#4f8ef7;"></span><span>The founder now opens this every <strong>Monday morning</strong> instead of waiting for a monthly PDF</span></li>
+                    </ul>
+                </div>
+
+                <!-- The outcome -->
+                <div class="cs-block">
+                    <div class="cs-block-icon" style="background:rgba(46,196,160,0.12);">📈</div>
+                    <div class="cs-block-title">The outcome</div>
+                    <ul class="cs-result-list">
+                        <li class="cs-result-item"><span class="cs-result-dot"></span><span>Identified <strong>₹47,200 in wasted spend</strong> across 4 campaigns running below break-even in the first 30 days</span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot"></span><span>Paused them and reallocated to top 3 performers — Google brand search, Meta retargeting, and skincare-creator influencers</span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot"></span><span>Blended ROAS moved from <strong>2.1x → 3.4x</strong></span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot"></span><span>Monthly reporting time dropped from <strong>6 hours → 10 minutes</strong></span></li>
+                        <li class="cs-result-item"><span class="cs-result-dot"></span><span>CAC fell from <strong>₹508 → ₹412</strong></span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="mp-cta">
+            <div class="mp-cta-text">
+                <h3>Want a dashboard like this for your brand?</h3>
+                <p>I'll review your current setup and show you exactly what's possible — no pitch, just clarity.</p>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <button onclick="window.open('https://calendly.com/sharma-satishkumar2709/30min','_blank')" class="btn-primary">Book a free call</button>
+                <a href="/#contact" class="btn-outline">Send a message</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <span>© 2026 Satish Sharma</span>
+    </footer>
+
+</body>
+</html>
