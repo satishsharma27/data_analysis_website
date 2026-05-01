@@ -55,6 +55,10 @@ def register_routes(server):
     def home():
         return render_template("index.html")
 
+    @server.route("/dashboard-service")
+    def dashboard_service():
+        return render_template("dashboard-section.html")
+
     @server.route("/data-analysis")
     def data_analysis():
         return render_template("data-analysis.html")

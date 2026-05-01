@@ -2,8 +2,6 @@ from pathlib import Path
 
 from flask import Flask
 
-from .data import load_marketing_data
-from .dashboard import init_dashboard
 from .routes import register_routes
 
 
@@ -20,7 +18,5 @@ def create_app() -> Flask:
     server.config["PROPAGATE_EXCEPTIONS"] = True
 
     register_routes(server)
-    marketing_data = load_marketing_data(project_root)
-    init_dashboard(server, marketing_data)
 
     return server

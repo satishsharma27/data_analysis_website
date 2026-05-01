@@ -29,40 +29,6 @@
             <p>I help marketing agencies and businesses track performance, optimize ROI, and make smarter decisions using data dashboards.</p>
 
 
-            <!-- Audit Form -->
-            <div id="audit-form" class="audit-card hidden">
-                <h2>Free Data Audit</h2>
-                <p>Tell us a little about your tools and your biggest data challenge.</p>
-                <form id="audit-request-form">
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
-                        <p id="email-error" class="error-msg"></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tools">What tools do you use?</label>
-                        <select id="tools" name="tools" required>
-                            <option value="" disabled selected>Select one</option>
-                            <option value="Excel">Excel</option>
-                            <option value="Google Sheets">Google Sheets</option>
-                            <option value="CRM">CRM</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group" id="tools-other-group" style="display:none;">
-                        <label for="tools-other">Others</label>
-                        <input type="text" id="tools-other" name="tools_other" placeholder="Please specify your tool">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="problem">Biggest problem?</label>
-                        <textarea id="problem" name="problem" rows="4" required placeholder="Describe your top data challenge"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-primary">Send request</button>
-                </form>
-            </div>
         </section>
 
 
@@ -83,8 +49,8 @@
                         </svg>
                     </div>
                     <h3>Dashboard creation</h3>
-                    <p>Interactive dashboards using Excel for real-time business insights.</p>
-                    <button onclick="window.location.href='/dashboard'" class="btn-primary" style="margin-top: auto; font-size: 1.15rem;">View Live Demo</button>
+                    <p>Interactive dashboards for real-time business insights.</p>
+                    <button onclick="window.location.href='/dashboard-service'" class="btn-primary" style="margin-top: auto; font-size: 1.15rem;">View Dashboard</button>
                 </div>
                 <div class="card">
                     <div class="card-icon icon-green">
@@ -288,96 +254,6 @@
         btn.textContent='Send message';
       }
     }
-
-    const allowedDomains = ['gmail.com','outlook.com','yahoo.com','hotmail.com','icloud.com','protonmail.com','aol.com','zoho.com'];
-
-    function validateEmailDomain(email) {
-        const domain = email.split('@')[1]?.toLowerCase();
-        return allowedDomains.includes(domain);
-    }
-
-    function toggleAuditForm() {
-        const auditForm = document.getElementById('audit-form');
-        if (auditForm.classList.contains('hidden')) {
-            auditForm.classList.remove('hidden');
-            auditForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-            auditForm.classList.add('hidden');
-        }
-    }
-
-    document.getElementById('open-audit-btn').addEventListener('click', toggleAuditForm);
-
-    const toolsSelect = document.getElementById('tools');
-    const toolsOtherGroup = document.getElementById('tools-other-group');
-    const toolsOtherInput = document.getElementById('tools-other');
-    toolsSelect.addEventListener('change', () => {
-        const isOther = toolsSelect.value === 'Other';
-        toolsOtherGroup.style.display = isOther ? 'block' : 'none';
-        toolsOtherInput.required = isOther;
-    });
-
-    const emailInput = document.getElementById('email');
-    const emailError = document.getElementById('email-error');
-
-    emailInput.addEventListener('blur', () => {
-        if (!emailInput.value.trim()) { emailError.style.display = 'none'; return; }
-        if (!validateEmailDomain(emailInput.value)) {
-            emailError.textContent = 'Please use a personal email (gmail, outlook, yahoo, etc.)';
-            emailError.style.display = 'block';
-        } else {
-            emailError.style.display = 'none';
-        }
-    });
-
-    emailInput.addEventListener('input', () => {
-        if (!emailInput.value.trim()) emailError.style.display = 'none';
-    });
-
-    document.getElementById('audit-request-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (!validateEmailDomain(emailInput.value)) {
-            emailError.textContent = 'Please use a personal email (gmail, outlook, yahoo, etc.)';
-            emailError.style.display = 'block';
-            emailInput.focus();
-            return;
-        }
-
-        const submitBtn = e.target.querySelector('button[type="submit"]');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending…';
-
-        const selectedTool = document.getElementById('tools').value;
-        const payload = {
-            email:   emailInput.value.trim(),
-            tools:   selectedTool === 'Other' ? (toolsOtherInput.value.trim() || 'Other') : selectedTool,
-            problem: document.getElementById('problem').value.trim(),
-        };
-
-        try {
-            const res = await fetch('/submit-audit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload),
-            });
-            const json = await res.json();
-            if (json.ok) {
-                alert('Thank you! Your audit request has been received. I\'ll be in touch soon.');
-                e.target.reset();
-                toolsOtherGroup.style.display = 'none';
-                toolsOtherInput.required = false;
-                document.getElementById('audit-form').classList.add('hidden');
-                emailError.style.display = 'none';
-            } else {
-                alert('Something went wrong. Please try again or email me directly.');
-            }
-        } catch {
-            alert('Network error. Please check your connection and try again.');
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send request';
-        }
-    });
 </script>
 
 </body>

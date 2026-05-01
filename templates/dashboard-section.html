@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Creation — Satish Sharma</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-logo">Satish Sharma</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#services">Services</a>
+        <a href="/#portfolio">Portfolio</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+    </div>
+</nav>
+
+<div class="container">
+<div style="padding-top:3.5rem;">
+
+<style>
+  .wrap { background: #0d1117; border-radius: 16px; padding: 40px 44px 44px; font-family: 'DM Sans', sans-serif; color: #e2e8f0; }
+  .badge { display: inline-block; background: #1a2744; color: #6b9cf4; font-size: 13px; font-weight: 500; padding: 5px 14px; border-radius: 20px; border: 1px solid #2a3f6a; margin-bottom: 20px; }
+  .headline { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 700; color: #f0f4ff; margin: 0 0 32px; line-height: 1.2; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px; }
+  .card { background: #161d2e; border: 1px solid #1e2d4a; border-radius: 12px; padding: 20px 22px; }
+  .card .title { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 600; color: #d4e0f7; margin: 0 0 8px; }
+  .card .desc { font-size: 13px; color: #5a6a80; margin: 0; line-height: 1.6; font-weight: 300; }
+  .stats-row { background: #161d2e; border: 1px solid #1e2d4a; border-radius: 10px; padding: 20px 28px; display: flex; align-items: center; gap: 0; margin-bottom: 20px; }
+  .stat-item { flex: 1; }
+  .stat-item + .stat-item { border-left: 1px solid #1e2d4a; padding-left: 28px; }
+  .stat-item .stat-label { font-size: 13px; color: #4a6080; margin: 0 0 4px; }
+  .stat-item .stat-val { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: #c8d8f0; margin: 0; }
+  .preview { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .pcard { border-radius: 12px; padding: 16px 18px; position: relative; overflow: hidden; }
+  .pcard.blue { background: linear-gradient(135deg, #0f2460 0%, #1a3a8f 100%); }
+  .pcard.rose { background: linear-gradient(135deg, #6b1a4a 0%, #9c2a6a 100%); }
+  .pcard.teal { background: linear-gradient(135deg, #0a3d3a 0%, #0f5c55 100%); }
+  .pcard .pc-label { font-size: 11px; color: rgba(255,255,255,0.55); margin: 0 0 4px; text-align: center; letter-spacing: 0.04em; }
+  .pcard .pc-val { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; color: #fff; margin: 0 0 2px; }
+  .pcard .pc-change { font-size: 11px; color: #4ade80; margin: 0 0 12px; }
+  .pcard .pc-change.down { color: #f87171; }
+  .bars { display: flex; align-items: flex-end; gap: 5px; height: 52px; margin-top: 4px; }
+  .bar { flex: 1; border-radius: 3px 3px 0 0; background: rgba(255,255,255,0.2); }
+  .bar.active { background: rgba(255,255,255,0.6); }
+  .gauge-wrap { display: flex; flex-direction: column; align-items: center; }
+  .gauge-svg { width: 100%; max-width: 120px; }
+  .gauge-pct { font-size: 12px; color: rgba(255,255,255,0.7); margin: 2px 0 0; text-align: center; }
+  .funnel { margin-top: 6px; }
+  .funnel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 8px; }
+  .fmet .fval { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: #fff; margin: 0; }
+  .fmet .flabel { font-size: 10px; color: rgba(255,255,255,0.45); margin: 0; }
+  .fmet .fchg { font-size: 10px; color: #4ade80; margin: 0; }
+  .fmet .fchg.down { color: #f87171; }
+  .funnel-bar { height: 36px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: rgba(255,255,255,0.8); font-weight: 500; }
+  .cta-box { background: #161d2e; border: 1px solid #1e2d4a; border-radius: 12px; padding: 28px 20px; text-align: center; }
+  .cta-box .cta-title { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 600; color: #d4e0f7; margin: 0 0 6px; }
+  .cta-box .cta-sub { font-size: 13px; color: #5a6a80; margin: 0 0 18px; font-weight: 300; }
+  .cta-btn { background: #27c27a; color: #0a1a12; font-size: 14px; font-weight: 600; padding: 11px 28px; border-radius: 8px; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .preview-label { font-size: 12px; color: #3a5070; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 10px; font-weight: 500; }
+</style>
+
+<div class="wrap">
+  <div class="badge">Dashboard</div>
+  <h1 class="headline">Your data, live. Interactive dashboards that tell you what to act on.</h1>
+
+  <div class="cards">
+    <div class="card">
+      <p class="title">Daily ad-spend dashboard</p>
+      <p class="desc">Pulls Meta + Google Ads into one sheet every morning at 8 AM.</p>
+    </div>
+    <div class="card">
+      <p class="title">Digital marketing dashboard</p>
+      <p class="desc">Monitor campaigns, clicks, and conversions across every channel in one place.</p>
+    </div>
+    <div class="card">
+      <p class="title">Marketing performance dashboard</p>
+      <p class="desc">Track ROAS, CAC, and CTR across all channels in one live view.</p>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-item">
+      <p class="stat-label">Typical timeline</p>
+      <p class="stat-val">7–10 days</p>
+    </div>
+    <div class="stat-item">
+      <p class="stat-label">Starts at</p>
+      <p class="stat-val">₹15,000</p>
+    </div>
+  </div>
+
+  <p class="preview-label">Sample dashboard preview</p>
+  <div class="preview">
+    <div class="pcard blue">
+      <p class="pc-label">SESSIONS</p>
+      <p class="pc-val">1,84,320</p>
+      <p class="pc-change">▲ 12.4% vs last period</p>
+      <div class="bars">
+        <div class="bar" style="height:40%"></div>
+        <div class="bar" style="height:55%"></div>
+        <div class="bar" style="height:45%"></div>
+        <div class="bar" style="height:70%"></div>
+        <div class="bar" style="height:60%"></div>
+        <div class="bar active" style="height:85%"></div>
+        <div class="bar active" style="height:100%"></div>
+      </div>
+    </div>
+    <div class="pcard rose">
+      <p class="pc-label">BLENDED ROAS</p>
+      <p class="pc-val">4.8x</p>
+      <p class="pc-change">▲ 18% vs goal</p>
+      <div class="gauge-wrap">
+        <svg class="gauge-svg" viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10,65 A50,50 0 0,1 110,65" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="10" stroke-linecap="round"/>
+          <path d="M10,65 A50,50 0 0,1 110,65" fill="none" stroke="#f472b6" stroke-width="10" stroke-linecap="round" stroke-dasharray="157" stroke-dashoffset="40"/>
+          <line x1="60" y1="65" x2="95" y2="28" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="60" cy="65" r="4" fill="white"/>
+        </svg>
+        <p class="gauge-pct">136% of goal</p>
+      </div>
+    </div>
+    <div class="pcard teal">
+      <p class="pc-label">AD FUNNEL</p>
+      <div class="funnel">
+        <div class="funnel-grid">
+          <div class="fmet"><p class="fval">52K</p><p class="flabel">Impressions</p><p class="fchg">▲ 9.1%</p></div>
+          <div class="fmet"><p class="fval">8.2K</p><p class="flabel">Clicks</p><p class="fchg down">▼ 3.2%</p></div>
+          <div class="fmet"><p class="fval">640</p><p class="flabel">Add to cart</p><p class="fchg">▲ 5.4%</p></div>
+          <div class="fmet"><p class="fval">218</p><p class="flabel">Purchases</p><p class="fchg">▲ 11%</p></div>
+        </div>
+        <div class="funnel-bar" style="background:rgba(255,255,255,0.18); width:100%">52,000</div>
+        <div style="height:4px"></div>
+        <div class="funnel-bar" style="background:rgba(255,255,255,0.14); width:78%">8,200</div>
+        <div style="height:4px"></div>
+        <div class="funnel-bar" style="background:rgba(255,255,255,0.10); width:50%">640</div>
+        <div style="height:4px"></div>
+        <div class="funnel-bar" style="background:rgba(74,222,128,0.3); width:28%">218</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <p class="cta-title">Want a dashboard built for your business?</p>
+    <p class="cta-sub">Book a free 15-min call. I'll map out the exact dashboard your data needs.</p>
+    <button class="cta-btn" onclick="window.open('https://calendly.com/sharma-satishkumar2709/30min','_blank')">Book free audit</button>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:12px;margin:1.5rem 0;">
+    <div style="flex:1;height:1px;background:#1e2d4a;"></div>
+    <span style="font-size:12px;color:#3a5070;white-space:nowrap;">or reach me directly</span>
+    <div style="flex:1;height:1px;background:#1e2d4a;"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+    <a href="mailto:sharma.satishkumar2709@gmail.com" style="text-decoration:none;">
+      <div style="background:#161d2e;border:1px solid #1e2d4a;border-radius:12px;padding:1rem 0.75rem;text-align:center;cursor:pointer;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(46,196,160,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="1.5" stroke="#2ec4a0" stroke-width="1.2"/><path d="M1.5 3.5l6.5 5 6.5-5" stroke="#2ec4a0" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <div style="font-size:12px;font-weight:500;color:#d4e0f7;margin-bottom:2px;">Email</div>
+        <div style="font-size:11px;color:#5a6a80;">sharma.satishkumar2709@gmail.com</div>
+      </div>
+    </a>
+    <a href="https://wa.me/918369645979" target="_blank" style="text-decoration:none;">
+      <div style="background:#161d2e;border:1px solid #1e2d4a;border-radius:12px;padding:1rem 0.75rem;text-align:center;cursor:pointer;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(46,196,160,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="#2ec4a0" stroke-width="1.2"/><path d="M5.5 5.5c.2-.4.8-.8 1.2-.5l.8 1-.6.8c.3.6.8 1.1 1.4 1.4l.8-.6 1 .8c.3.4-.1 1-.5 1.2-1.5.7-3.8-1.6-4.1-4.1z" fill="#2ec4a0"/></svg>
+        </div>
+        <div style="font-size:12px;font-weight:500;color:#d4e0f7;margin-bottom:2px;">WhatsApp</div>
+        <div style="font-size:11px;color:#5a6a80;">+91 83696 45979</div>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/satish-sharma-104545403" target="_blank" style="text-decoration:none;">
+      <div style="background:#161d2e;border:1px solid #1e2d4a;border-radius:12px;padding:1rem 0.75rem;text-align:center;cursor:pointer;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(79,142,247,0.12);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="#4f8ef7" stroke-width="1.2"/><path d="M4 6.5V12M4 4v.5" stroke="#4f8ef7" stroke-width="1.4" stroke-linecap="round"/><path d="M7.5 12V9c0-1.4 4-1.4 4 0v3M7.5 6.5V12" stroke="#4f8ef7" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <div style="font-size:12px;font-weight:500;color:#d4e0f7;margin-bottom:2px;">LinkedIn</div>
+        <div style="font-size:11px;color:#5a6a80;">Satish Sharma</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+</div>
+</div>
+
+<footer class="footer">
+    <span>© 2026 Satish Sharma</span>
+</footer>
+
+</body>
+</html>
