@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 from dotenv import load_dotenv
-from flask import jsonify, render_template, request
+from flask import jsonify, render_template, request, Response
 
 load_dotenv()
 
@@ -51,6 +51,11 @@ def send_audit_email(user_email: str, tools: str, problem: str) -> None:
 
 
 def register_routes(server):
+    @server.route("/robots.txt")
+    def robots():
+        content = "User-agent: *\nAllow: /\nSitemap: https://data-analysis-website-4.onrender.com/sitemap.xml\n"
+        return Response(content, mimetype="text/plain")
+
     @server.route("/")
     def home():
         return render_template("index.html")
